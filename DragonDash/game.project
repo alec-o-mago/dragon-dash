@@ -5,8 +5,8 @@ main_collection = /main/main.collectionc
 shared_state = 1
 
 [display]
-width = 1920
-height = 1080
+width = 1280
+height = 720
 high_dpi = 1
 
 [android]
@@ -21,4 +21,14 @@ show_made_with_defold = 0
 [project]
 title = DragonDash
 dependencies#0 = https://github.com/defold/extension-poki-sdk/archive/refs/heads/main.zip
+
+[graphics]
+default_texture_min_filter = nearest
+default_texture_mag_filter = nearest
+
+[sprite]
+subpixels = 0
+
+[label]
+subpixels = 0
 

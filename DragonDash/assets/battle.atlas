@@ -1,0 +1,12 @@
+images {
+  image: "/assets/placeholder-background.png"
+  pivot_x: 0.0
+  pivot_y: 1.0
+}
+images {
+  image: "/assets/dragon.png"
+}
+images {
+  image: "/assets/player_bullet.png"
+}
+margin: 1
