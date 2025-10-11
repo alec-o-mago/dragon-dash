@@ -2,8 +2,8 @@ local function spawn_bullet(self)
 	-- Get the ID of the Factory component
 	local factory_id = "/player_bullet_spawns#factory" -- Assuming your Factory component is named "factory"
 	local pos = go.get_position()
+	pos.x = pos.x + 64
 	-- Spawn the bullet using the factory
-	-- factory.create(factory_id, pos) will create a new bullet instance at that position
 	factory.create(factory_id, pos)
 end
 
@@ -11,8 +11,8 @@ function init(self)
 	self.speed = 20 -- Pixels per second
 	self.velocity = vmath.vector3()
 	msg.post(".", "acquire_input_focus")
-	self.bullet_timer = timer.delay(1, true, function()
-		-- Call the function to create a bullet
+	-- Bullet Spawning
+	self.bullet_timer = timer.delay(0.5, true, function()
 		spawn_bullet(self)
 	end)
 end
@@ -32,7 +32,6 @@ end
 
 function on_input(self, action_id, action)
 	if action_id == hash("up") then
-		print("UP")
 		if action.pressed then
 			self.velocity.y = self.speed
 		elseif action.released then

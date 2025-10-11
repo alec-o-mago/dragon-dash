@@ -1,0 +1,9 @@
+images {
+  image: "/assets/level001/bg.png"
+  pivot_x: 0.0
+  pivot_y: 1.0
+}
+images {
+  image: "/assets/level001/boss1.png"
+}
+extrude_borders: 2
