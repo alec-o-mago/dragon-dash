@@ -1,0 +1,7 @@
+-- splash.script
+
+function init(self)
+	timer.delay(1, false, function()
+		msg.post('main:/go', "load_main_menu")	
+	end)
+end

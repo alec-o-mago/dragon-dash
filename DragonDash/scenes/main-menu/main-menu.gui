@@ -1,0 +1,25 @@
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+textures {
+  name: "core"
+  texture: "/assets/images/core/core.atlas"
+}
+nodes {
+  position {
+    x: 645.0
+    y: 482.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "Main Menu"
+  font: "default"
+  id: "main-menu"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

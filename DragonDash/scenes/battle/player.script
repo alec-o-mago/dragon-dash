@@ -1,3 +1,5 @@
+-- player.script
+
 local function spawn_bullet(self)
 	-- Get the ID of the Factory component
 	local factory_id = "/player_bullet_spawns#factory" -- Assuming your Factory component is named "factory"
