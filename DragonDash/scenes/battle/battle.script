@@ -1,0 +1,26 @@
+function init(self)
+	self.player_health = 3
+	self.boss_health_max = 100
+	self.boss_health = 100
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("player_took_damage") then
+		print("player_took_damage")
+		print(message.damage)
+		self.player_health = self.player_health - message.damage
+		if self.player_health <= 0 then
+			print("Lose...")
+			msg.post("main:/go", "load_main_menu")
+		end
+	elseif message_id == hash("boss_took_damage") then
+		print("boss_took_damage")
+		if self.boss_health <= 0 then
+			print("WIN!!!")
+			msg.post("main:/go", "load_main_menu")
+		else
+			self.boss_health = self.boss_health - message.damage
+			msg.post("/gui#battle", "update_boss_health", {percentage = (self.boss_health/self.boss_health_max) })
+		end
+	end
+end

@@ -1,11 +1,39 @@
 images {
-  image: "/assets/images/placeholder-background.png"
+  image: "/assets/images/placeholder_background.png"
   pivot_x: 0.0
   pivot_y: 1.0
 }
 images {
-  image: "/assets/images/core/splash.png"
-  pivot_x: 0.0
-  pivot_y: 1.0
+  image: "/assets/images/core/music_button.png"
 }
-extrude_borders: 2
+images {
+  image: "/assets/images/core/info_button.png"
+}
+images {
+  image: "/assets/images/core/sound_button.png"
+}
+images {
+  image: "/assets/images/core/archievement_button.png"
+}
+images {
+  image: "/assets/images/core/upgrade_button.png"
+}
+images {
+  image: "/assets/images/core/play_button.png"
+}
+images {
+  image: "/assets/images/core/health_bar.png"
+}
+images {
+  image: "/assets/images/core/heart.png"
+}
+images {
+  image: "/assets/images/core/gold.png"
+}
+images {
+  image: "/assets/images/core/egg_button.png"
+}
+images {
+  image: "/assets/images/core/egg.png"
+}
+extrude_borders: 1

@@ -1,13 +1,15 @@
 function init(self)
-	--
-	-- go.animate("/sprite#sprite", "color_add.w", go.PLAYBACK_ONCE_PINGPONG, 1, go.EASING_INQUAD, 1)
+	--self.boss_health = 10
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") and message.enter then
+	if message_id == hash("trigger_response") and message.enter then -- boss received damage
 		-- delete the bullet
 		go.delete(message.other_id)
-		-- print("colidiu!")
+		-- handle damage math
+		--self.boss_health = self.boss_health - 1
+		msg.post("battle:/go","boss_took_damage", { damage = 1 })
+		-- make the boss blink white
 		go.set("/sprite#sprite", "color_add.w", 0)
 		go.animate("/sprite#sprite", "color_add.w", go.PLAYBACK_ONCE_PINGPONG, 0.5, go.EASING_INQUAD, 0.3)
 	end

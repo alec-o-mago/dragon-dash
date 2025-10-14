@@ -1,6 +1,15 @@
+script: "/scenes/main-menu/main-menu.gui_script"
 fonts {
   name: "default"
   font: "/builtins/fonts/default.font"
+}
+fonts {
+  name: "bit_potion"
+  font: "/assets/fonts/bit_potion_ext.font"
+}
+fonts {
+  name: "main_menu_title"
+  font: "/assets/fonts/main_menu_title.font"
 }
 textures {
   name: "core"
@@ -8,17 +17,200 @@ textures {
 }
 nodes {
   position {
-    x: 645.0
-    y: 482.0
+    x: 640.0
+    y: 650.0
   }
   size {
-    x: 200.0
+    x: 720.0
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "Main Menu"
-  font: "default"
-  id: "main-menu"
+  text: "DRAGON DASH DANGER"
+  font: "main_menu_title"
+  id: "main-menu-title"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 650.0
+    y: 71.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/play_button"
+  id: "play_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 70.0
+    y: 70.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/sound_button"
+  id: "sound_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 70.0
+    y: 190.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/music_button"
+  id: "music_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 70.0
+    y: 310.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/info_button"
+  id: "info_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1210.0
+    y: 70.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/archievement_button"
+  id: "archievement_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1210.0
+    y: 190.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/egg_button"
+  id: "egg_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1210.0
+    y: 310.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/upgrade_button"
+  id: "upgrade_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1259.0
+    y: 675.0
+  }
+  size {
+    x: 50.0
+    y: 30.0
+  }
+  type: TYPE_TEXT
+  text: "v1.0.1"
+  font: "bit_potion"
+  id: "version_label"
+  pivot: PIVOT_E
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 60.0
+    y: 670.0
+  }
+  size {
+    x: 50.0
+    y: 30.0
+  }
+  type: TYPE_TEXT
+  text: "100b"
+  font: "bit_potion"
+  id: "gold_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 36.0
+    y: 670.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/gold"
+  id: "gold_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 36.0
+    y: 620.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/egg"
+  id: "box"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 60.0
+    y: 620.0
+  }
+  size {
+    x: 50.0
+    y: 30.0
+  }
+  type: TYPE_TEXT
+  text: "69"
+  font: "bit_potion"
+  id: "egg_label"
+  pivot: PIVOT_W
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

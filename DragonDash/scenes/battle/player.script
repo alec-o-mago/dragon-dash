@@ -2,7 +2,7 @@
 
 local function spawn_bullet(self)
 	-- Get the ID of the Factory component
-	local factory_id = "/player_bullet_spawns#factory" -- Assuming your Factory component is named "factory"
+	local factory_id = "/player_bullet_spawn#factory" -- Assuming your Factory component is named "factory"
 	local pos = go.get_position()
 	pos.x = pos.x + 64
 	-- Spawn the bullet using the factory

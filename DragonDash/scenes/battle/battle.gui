@@ -1,0 +1,103 @@
+script: "/scenes/battle/battle.gui_script"
+textures {
+  name: "core"
+  texture: "/assets/images/core/core.atlas"
+}
+nodes {
+  position {
+    x: 1244.0
+    y: 372.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/health_bar"
+  id: "health_bar_background"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1244.0
+    y: 52.0
+  }
+  size {
+    x: 24.0
+    y: 640.0
+  }
+  color {
+    y: 0.0
+    z: 0.251
+  }
+  type: TYPE_BOX
+  id: "health_bar_progress"
+  pivot: PIVOT_S
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 1244.0
+    y: 36.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/heart"
+  id: "health_bar_heart"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 36.0
+    y: 36.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/heart"
+  id: "player_heart_1"
+  inherit_alpha: true
+  alpha: 0.8
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 36.0
+    y: 76.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/heart"
+  id: "player_heart_2"
+  inherit_alpha: true
+  alpha: 0.8
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 36.0
+    y: 116.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/heart"
+  id: "player_heart_3"
+  inherit_alpha: true
+  alpha: 0.8
+  size_mode: SIZE_MODE_AUTO
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

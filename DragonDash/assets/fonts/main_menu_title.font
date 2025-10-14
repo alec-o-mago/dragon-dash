@@ -1,0 +1,6 @@
+font: "/assets/fonts/fibberish.ttf"
+material: "/builtins/fonts/font.material"
+size: 80
+antialias: 0
+outline_alpha: 0.34
+characters: " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

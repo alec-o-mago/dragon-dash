@@ -1,0 +1,21 @@
+-- battle.gui_script
+
+function init(self)
+	self.boss_health_max_size = 640
+	self.health_bar_progress_node = gui.get_node("health_bar_progress")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("update_player_health") then
+		print("update_player_health")
+		print(message)
+	elseif message_id == hash("update_boss_health") then
+		print("update_boss_health")
+		print(message.percentage)
+		gui.set_size(self.health_bar_progress_node,vmath.vector3(24, math.max(0,message.percentage*self.boss_health_max_size), 0) )
+	end
+end
+
+function on_input(self, action_id, action)
+	--
+end
