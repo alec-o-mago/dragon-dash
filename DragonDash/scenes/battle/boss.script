@@ -1,5 +1,20 @@
+-- boss.script
+
+local function spawn_bullet(self)
+	-- Get the ID of the Factory component
+	local factory_id = "/boss_bullet_spawn#factory" -- Assuming your Factory component is named "factory"
+	local player_y = go.get("battle:/player", "position.y")
+	local pos = vmath.vector3(1140,player_y,0.9)
+	--pos.x = pos.x + 64
+	-- Spawn the bullet using the factory
+	factory.create(factory_id, pos)
+end
+
 function init(self)
-	--self.boss_health = 10
+	-- Bullet Spawning
+	self.bullet_timer = timer.delay(0.8, true, function()
+		spawn_bullet(self)
+	end)
 end
 
 function on_message(self, message_id, message, sender)

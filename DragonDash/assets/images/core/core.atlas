@@ -36,4 +36,7 @@ images {
 images {
   image: "/assets/images/core/egg.png"
 }
+images {
+  image: "/assets/images/core/select_level_button.png"
+}
 extrude_borders: 1

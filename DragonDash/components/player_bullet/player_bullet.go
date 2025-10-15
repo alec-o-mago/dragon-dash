@@ -1,6 +1,6 @@
 components {
   id: "player_bullet"
-  component: "/components/player-bullet/player_bullet.script"
+  component: "/components/player_bullet/player_bullet.script"
 }
 embedded_components {
   id: "sprite"

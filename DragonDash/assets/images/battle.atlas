@@ -9,4 +9,7 @@ images {
 images {
   image: "/assets/images/player_bullet.png"
 }
+images {
+  image: "/assets/images/basic_green_bullet.png"
+}
 margin: 1

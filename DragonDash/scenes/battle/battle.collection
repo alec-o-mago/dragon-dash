@@ -75,7 +75,7 @@ embedded_instances {
   "}\\n"
   "textures {\\n"
   "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/assets/images/level001/level001.atlas\\\"\\n"
+  "  texture: \\\"/assets/images/levels/001/001.atlas\\\"\\n"
   "}\\n"
   "\"\n"
   "  scale {\n"
@@ -140,7 +140,7 @@ embedded_instances {
   "}\\n"
   "textures {\\n"
   "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/assets/images/level001/level001.atlas\\\"\\n"
+  "  texture: \\\"/assets/images/levels/001/001.atlas\\\"\\n"
   "}\\n"
   "\"\n"
   "  scale {\n"
@@ -163,7 +163,7 @@ embedded_instances {
   "}\\n"
   "textures {\\n"
   "  sampler: \\\"texture_sampler\\\"\\n"
-  "  texture: \\\"/assets/images/level001/level001.atlas\\\"\\n"
+  "  texture: \\\"/assets/images/levels/001/001.atlas\\\"\\n"
   "}\\n"
   "\"\n"
   "  scale {\n"
@@ -197,11 +197,21 @@ embedded_instances {
   data: "embedded_components {\n"
   "  id: \"factory\"\n"
   "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/components/player-bullet/player_bullet.go\\\"\\n"
+  "  data: \"prototype: \\\"/components/player_bullet/player_bullet.go\\\"\\n"
   "\"\n"
   "}\n"
   ""
   position {
     z: 0.7
   }
+}
+embedded_instances {
+  id: "boss_bullet_spawn"
+  data: "embedded_components {\n"
+  "  id: \"factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/components/boss_bullets/basic_green_bullet/basic_green_bullet.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
 }

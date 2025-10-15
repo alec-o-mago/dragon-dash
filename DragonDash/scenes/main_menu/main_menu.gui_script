@@ -1,0 +1,54 @@
+-- main-menu.script
+
+local function update_level_select_gui(self)
+	local global = require("main.global")
+	local level_label = gui.get_node("level_label")
+	local level_select_left_button = gui.get_node("level_select_left_button")
+	local level_select_right_button = gui.get_node("level_select_right_button")
+	-- Set level label text
+	gui.set_text(level_label, string.format("%03d", global.selected_level):gsub(".", "%0 "):sub(1, -2))
+	if global.selected_level <= 1 then
+		-- disable left level select button
+		gui.set_color(level_select_left_button, vmath.vector4(0.5, 0.5, 0.5, 1))
+	else
+		-- enable left level select button
+		gui.set_color(level_select_left_button, vmath.vector4(1, 1, 1, 1))
+	end
+	if global.selected_level >= global.max_unlucked_level then
+		-- disable right level select button
+		gui.set_color(level_select_right_button, vmath.vector4(0.5, 0.5, 0.5, 1))
+	else
+		-- enable right level select button
+		gui.set_color(level_select_right_button, vmath.vector4(1, 1, 1, 1))
+	end
+	-- set background
+	msg.post("main_menu:/go","change_background",{level=global.selected_level})
+end
+
+function init(self)
+	local global = require("main.global")
+	self.selected_level = global.selected_level
+	gui.set_text(gui.get_node("gold_label"), global.gold)
+	gui.set_text(gui.get_node("eggs_label"), global.eggs)
+	update_level_select_gui()
+	--gui.set_text(gui.get_node("level_label"), string.format("%03d", global.selected_level):gsub(".", "%0 "):sub(1, -2))
+	msg.post(".", "acquire_input_focus")
+end
+
+function on_input(self, action_id, action)
+	local global = require("main.global")
+	if action_id == hash("touch") and action.pressed then
+		local play_button = gui.get_node("play_button")
+		local level_select_left_button = gui.get_node("level_select_left_button")
+		local level_select_right_button = gui.get_node("level_select_right_button")
+		if gui.pick_node(play_button, action.x, action.y) then
+			msg.post("main:/go", "load_battle", {level="001"})
+		elseif gui.pick_node(level_select_left_button, action.x, action.y) and global.selected_level > 1 then
+			global.selected_level = global.selected_level - 1
+			update_level_select_gui()
+		elseif gui.pick_node(level_select_right_button, action.x, action.y) and global.selected_level < global.max_unlucked_level then
+			global.selected_level = global.selected_level + 1
+			update_level_select_gui()
+		end
+	end
+end

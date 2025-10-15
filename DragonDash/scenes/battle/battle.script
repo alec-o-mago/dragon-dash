@@ -1,11 +1,17 @@
+-- battle.script
+
 function init(self)
+	self.global = require("main.global")
 	self.player_health = 3
 	self.boss_health_max = 100
-	self.boss_health = 100
+	self.boss_health = 30
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("player_took_damage") then
+	if message_id == hash("init_data") then
+		print("level:")
+		print(message.level)
+	elseif message_id == hash("player_took_damage") then
 		print("player_took_damage")
 		print(message.damage)
 		self.player_health = self.player_health - message.damage
@@ -20,7 +26,7 @@ function on_message(self, message_id, message, sender)
 			msg.post("main:/go", "load_main_menu")
 		else
 			self.boss_health = self.boss_health - message.damage
-			msg.post("/gui#battle", "update_boss_health", {percentage = (self.boss_health/self.boss_health_max) })
+			msg.post("/gui#battle", "update_boss_health", {percentage = (self.boss_health/self.boss_health_max)})
 		end
 	end
 end
