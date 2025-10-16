@@ -1,12 +1,13 @@
--- boss.script
+-- 001.script
 
 local function spawn_bullet(self)
 	local global = require("main.global")
 	--local player_y = go.get("battle:/player", "position.y")
-	local pos = vmath.vector3(1140, global.player_position.y, 0.9)
+	local pos = vmath.vector3(1140, global.player_position.y, 0)
 	-- pos.x = pos.x + 64
 	-- Spawn the bullet using the factory
-	factory.create("/boss_bullet_spawn#factory", pos)
+	factory.create("#bullet_factory", pos)
+	print("001 spawn bullet")
 end
 
 function init(self)
@@ -24,7 +25,7 @@ function on_message(self, message_id, message, sender)
 		--self.boss_health = self.boss_health - 1
 		msg.post("battle:/go","boss_took_damage", { damage = 1 })
 		-- make the boss blink white
-		go.set("/sprite#sprite", "color_add.w", 0)
-		go.animate("/sprite#sprite", "color_add.w", go.PLAYBACK_ONCE_PINGPONG, 0.5, go.EASING_INQUAD, 0.3)
+		go.set("#sprite", "color_add.w", 0)
+		go.animate("#sprite", "color_add.w", go.PLAYBACK_ONCE_PINGPONG, 0.5, go.EASING_INQUAD, 0.3)
 	end
 end

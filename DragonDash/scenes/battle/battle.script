@@ -2,25 +2,31 @@
 
 function init(self)
 	self.global = require("main.global")
-	self.player_health = 3
-	self.boss_health_max = 100
-	self.boss_health = 30
+	self.player_hearts = 3
+	self.boss_health_max = 1000
+	self.boss_health = 1000
+	msg.post("/gui#battle", "update_player_health", {hearts = self.player_hearts})
+	local global = require("main.global")
+	go.set("/bg1#bg1", "tint", global.LEVEL_COLORS[global.selected_level])
+	go.set("/bg2#bg2", "tint", global.LEVEL_COLORS[global.selected_level])
+	-- load boss for the selected level
+	factory.create("battle:/boss_factories#"..string.format("%03d", global.selected_level))
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("init_data") then
-		print("level:")
-		print(message.level)
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "init")
+		msg.post(sender, "enable")
 	elseif message_id == hash("player_took_damage") then
-		print("player_took_damage")
-		print(message.damage)
-		self.player_health = self.player_health - message.damage
-		if self.player_health <= 0 then
+		if self.player_hearts <= 0 then
 			print("Lose...")
 			msg.post("main:/go", "load_main_menu")
+		else
+			self.player_hearts = self.player_hearts - 1
+			msg.post("/gui#battle", "update_player_health", {hearts = self.player_hearts})
 		end
 	elseif message_id == hash("boss_took_damage") then
-		print("boss_took_damage")
+		--print("boss_took_damage")
 		if self.boss_health <= 0 then
 			print("WIN!!!")
 			msg.post("main:/go", "load_main_menu")

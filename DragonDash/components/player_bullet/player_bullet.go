@@ -12,6 +12,9 @@ embedded_components {
   "  texture: \"/assets/images/battle.atlas\"\n"
   "}\n"
   ""
+  position {
+    z: 0.7
+  }
   scale {
     x: 4.0
     y: 4.0
@@ -24,8 +27,8 @@ embedded_components {
   "mass: 0.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"player_bullet\"\n"
-  "mask: \"enemy\"\n"
+  "group: \"player_bullets\"\n"
+  "mask: \"boss\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"

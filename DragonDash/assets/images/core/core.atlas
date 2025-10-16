@@ -1,9 +1,4 @@
 images {
-  image: "/assets/images/placeholder_background.png"
-  pivot_x: 0.0
-  pivot_y: 1.0
-}
-images {
   image: "/assets/images/core/music_button.png"
 }
 images {
@@ -38,5 +33,10 @@ images {
 }
 images {
   image: "/assets/images/core/select_level_button.png"
+}
+images {
+  image: "/assets/images/core/bg.png"
+  pivot_x: 0.0
+  pivot_y: 1.0
 }
 extrude_borders: 1

@@ -7,12 +7,17 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("update_player_health") then
-		print("update_player_health")
-		print(message)
+		gui.set_visible(gui.get_node("player_heart_1"), message.hearts > 0)
+		gui.set_visible(gui.get_node("player_heart_2"), message.hearts > 1)
+		gui.set_visible(gui.get_node("player_heart_3"), message.hearts > 2)
+		gui.set_visible(gui.get_node("player_heart_4"), message.hearts > 3)
+		gui.set_visible(gui.get_node("player_heart_5"), message.hearts > 4)
+		gui.set_visible(gui.get_node("player_heart_6"), message.hearts > 5)
+		gui.set_visible(gui.get_node("player_heart_7"), message.hearts > 6)
+		gui.set_visible(gui.get_node("player_heart_8"), message.hearts > 7)
+		gui.set_visible(gui.get_node("player_heart_9"), message.hearts > 8)
 	elseif message_id == hash("update_boss_health") then
-		print("update_boss_health")
-		print(message.percentage)
-		gui.set_size(self.health_bar_progress_node,vmath.vector3(24, math.max(0,message.percentage*self.boss_health_max_size), 0) )
+		gui.set_size(self.health_bar_progress_node,vmath.vector3(24, message.percentage*self.boss_health_max_size, 0) )
 	end
 end
 

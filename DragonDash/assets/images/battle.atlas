@@ -1,9 +1,4 @@
 images {
-  image: "/assets/images/placeholder_background.png"
-  pivot_x: 0.0
-  pivot_y: 1.0
-}
-images {
   image: "/assets/images/dragon.png"
 }
 images {
