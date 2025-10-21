@@ -1,20 +1,17 @@
 images {
-  image: "/assets/images/core/music_button.png"
+  image: "/assets/images/core/buttons/info_button.png"
 }
 images {
-  image: "/assets/images/core/info_button.png"
+  image: "/assets/images/core/buttons/sound_button.png"
 }
 images {
-  image: "/assets/images/core/sound_button.png"
+  image: "/assets/images/core/buttons/archievement_button.png"
 }
 images {
-  image: "/assets/images/core/archievement_button.png"
+  image: "/assets/images/core/buttons/upgrade_button.png"
 }
 images {
-  image: "/assets/images/core/upgrade_button.png"
-}
-images {
-  image: "/assets/images/core/play_button.png"
+  image: "/assets/images/core/buttons/play_button.png"
 }
 images {
   image: "/assets/images/core/health_bar.png"
@@ -26,17 +23,36 @@ images {
   image: "/assets/images/core/gold.png"
 }
 images {
-  image: "/assets/images/core/egg_button.png"
+  image: "/assets/images/core/buttons/egg_button.png"
 }
 images {
   image: "/assets/images/core/egg.png"
 }
 images {
-  image: "/assets/images/core/select_level_button.png"
+  image: "/assets/images/core/buttons/select_level_button.png"
 }
 images {
   image: "/assets/images/core/bg.png"
-  pivot_x: 0.0
-  pivot_y: 1.0
+}
+images {
+  image: "/assets/images/core/buttons/music_button.png"
+}
+images {
+  image: "/assets/images/core/bullets/basic_green_bullet.png"
+}
+images {
+  image: "/assets/images/core/bullets/player_bullet.png"
+}
+images {
+  image: "/assets/images/core/tutorial_movement_arrows.png"
+}
+images {
+  image: "/assets/images/core/tutorial_movement_wasd.png"
+}
+images {
+  image: "/assets/images/core/bullets/basic_blue_bullet.png"
+}
+images {
+  image: "/assets/images/core/bullets/basic_red_bullet.png"
 }
 extrude_borders: 1

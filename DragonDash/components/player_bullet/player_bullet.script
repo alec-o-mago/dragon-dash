@@ -2,14 +2,12 @@ go.property("speed", 1000)
 go.property("direction", vmath.vector3(1,0,0))
 
 function init(self)
-	-- self.speed = 1000
-	--self.direction = vmath.vector3(1,0,0)
-	-- self delete after some time
+	-- Self delete after some time
 	timer.delay(5, false, function() go.delete() end)
 end
 
 function fixed_update(self, dt)
-	-- Update the player's position based on velocity
+	-- Bullet movement
 	local pos = go.get_position()
 	pos = pos + self.direction * self.speed * dt
 	go.set_position(pos)

@@ -141,18 +141,18 @@ nodes {
 }
 nodes {
   position {
-    x: 1259.0
-    y: 675.0
+    x: 1260.0
+    y: 690.0
   }
   size {
-    x: 50.0
+    x: 100.0
     y: 30.0
   }
   type: TYPE_TEXT
   text: "v1.0.1"
   font: "bit_potion"
   id: "version_label"
-  pivot: PIVOT_E
+  pivot: PIVOT_NE
   inherit_alpha: true
 }
 nodes {
@@ -263,6 +263,21 @@ nodes {
   font: "level_select"
   id: "level_label"
   inherit_alpha: true
+}
+nodes {
+  position {
+    x: 640.0
+    y: 265.0
+  }
+  size {
+    x: 150.0
+    y: 150.0
+  }
+  type: TYPE_BOX
+  id: "player_select_button"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

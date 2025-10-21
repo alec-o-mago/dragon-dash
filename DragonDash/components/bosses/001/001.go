@@ -18,13 +18,12 @@ embedded_components {
   "friction: 0.1\n"
   "restitution: 0.5\n"
   "group: \"boss\"\n"
+  "mask: \"walls\"\n"
   "mask: \"player_bullets\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
-  "      x: 1165.0\n"
-  "      y: 359.0\n"
   "    }\n"
   "    rotation {\n"
   "    }\n"
@@ -32,8 +31,8 @@ embedded_components {
   "    count: 3\n"
   "    id: \"box\"\n"
   "  }\n"
-  "  data: 117.5\n"
-  "  data: 360.0\n"
+  "  data: 70.0\n"
+  "  data: 100.0\n"
   "  data: 10.0\n"
   "}\n"
   ""
@@ -53,8 +52,6 @@ embedded_components {
   "}\n"
   ""
   position {
-    x: 640.0
-    y: 360.0
     z: 0.5
   }
   scale {

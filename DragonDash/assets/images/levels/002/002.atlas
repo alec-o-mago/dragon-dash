@@ -1,6 +1,4 @@
 images {
-  image: "/assets/images/levels/002/bg.png"
-  pivot_x: 0.0
-  pivot_y: 1.0
+  image: "/assets/images/levels/002/boss1.png"
 }
 extrude_borders: 2

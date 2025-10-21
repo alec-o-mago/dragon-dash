@@ -1,6 +1,6 @@
 components {
-  id: "basic_green_bullet"
-  component: "/components/boss_bullets/basic_green_bullet/basic_green_bullet.script"
+  id: "basic_blue_bullet"
+  component: "/components/boss_bullets/basic_blue_bullet/basic_blue_bullet.script"
 }
 embedded_components {
   id: "collisionobject"
@@ -29,7 +29,7 @@ embedded_components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"basic_green_bullet\"\n"
+  data: "default_animation: \"basic_blue_bullet\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"

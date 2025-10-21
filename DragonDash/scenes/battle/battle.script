@@ -1,16 +1,24 @@
 -- battle.script
 
+local global = require("main.global")
+local boss_id
+local boss_phase = 1
+
 function init(self)
-	self.global = require("main.global")
 	self.player_hearts = 3
-	self.boss_health_max = 1000
-	self.boss_health = 1000
+	self.boss_health_max = global.BOSS_HEALTH[global.selected_level]
+	self.boss_health = global.BOSS_HEALTH[global.selected_level]
 	msg.post("/gui#battle", "update_player_health", {hearts = self.player_hearts})
-	local global = require("main.global")
-	go.set("/bg1#bg1", "tint", global.LEVEL_COLORS[global.selected_level])
-	go.set("/bg2#bg2", "tint", global.LEVEL_COLORS[global.selected_level])
+	go.set("/bg1#bg1","tint", global.LEVEL_COLORS[(global.selected_level%7)+1])
+	go.set("/bg2#bg2","tint", global.LEVEL_COLORS[(global.selected_level%7)+1])
 	-- load boss for the selected level
-	factory.create("battle:/boss_factories#"..string.format("%03d", global.selected_level))
+	boss_id = factory.create("battle:/boss_factories#"..string.format("%03d", global.selected_level), vmath.vector3(1050, 360, 0))
+	-- show tutorial messsage only if first level
+	if global.selected_level == 1 then
+		timer.delay(3, false, function() msg.post("/tutorial_message#sprite","disable") end)
+	else
+		msg.post("/tutorial_message#sprite","disable")
+	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -32,7 +40,12 @@ function on_message(self, message_id, message, sender)
 			msg.post("main:/go", "load_main_menu")
 		else
 			self.boss_health = self.boss_health - message.damage
-			msg.post("/gui#battle", "update_boss_health", {percentage = (self.boss_health/self.boss_health_max)})
+			local boss_percentage = (self.boss_health/self.boss_health_max)
+			msg.post("/gui#battle", "update_boss_health", {percentage = boss_percentage})
+			if boss_phase == 1 and boss_percentage <= 0.5 then
+				boss_phase = 2
+				msg.post(msg.url(boss_id), "phase_2")
+			end
 		end
 	end
 end

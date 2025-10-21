@@ -7,20 +7,25 @@ local M = {}
 M.SCREEN_WIDTH = 1280
 M.SCREEN_HEIGHT = 720
 M.LEVEL_COLORS = {
-	vmath.vector4(0.4, 1.0, 0.4, 1.0), -- 001
-	vmath.vector4(0.4, 0.4, 1.0, 1.0), -- 002
-	vmath.vector4(1.0, 0.4, 0.4, 1.0), -- 003
-	vmath.vector4(0.8, 0.8, 0.5, 1.0), -- 004
-	vmath.vector4(0.5, 0.8, 0.8, 1.0), -- 005
-	vmath.vector4(0.8, 0.5, 0.8, 1.0), -- 006
+	vmath.vector4(0.7, 0.7, 0.7, 1.0), -- gray
+	vmath.vector4(0.6, 0.6, 1.0, 1.0), -- blue
+	vmath.vector4(0.6, 1.0, 0.6, 1.0), -- green
+	vmath.vector4(1.0, 0.6, 0.6, 1.0), -- red
+	vmath.vector4(0.9, 0.9, 0.5, 1.0), -- 
+	vmath.vector4(0.6, 0.9, 0.9, 1.0), -- 
+	vmath.vector4(0.9, 0.6, 0.9, 1.0), -- 
+}
+M.BOSS_HEALTH = {
+	400, 800, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000,
+	500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000,
 }
 
 -- variables
 M.selected_level = 1
-M.max_unlucked_level = 6
+M.max_unlucked_level = 2
 M.gold = 0
 M.eggs = 0
-M.player_position = vmath.vector3(200, 360, 0.8)
+M.player_position = vmath.vector3(200, 360, 0)
 M.last_battle_result = {
 	win = true,
 	time = 0,

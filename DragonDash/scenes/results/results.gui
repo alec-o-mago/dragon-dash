@@ -1,0 +1,58 @@
+nodes {
+  position {
+    x: 324.0
+    y: 330.0
+  }
+  size {
+    x: 400.0
+    y: 450.0
+  }
+  type: TYPE_BOX
+  id: "results_panel"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 966.0
+    y: 330.0
+  }
+  size {
+    x: 400.0
+    y: 450.0
+  }
+  type: TYPE_BOX
+  id: "shop_panel"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 492.0
+    y: 77.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "next_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 839.0
+    y: 77.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "menu_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

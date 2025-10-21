@@ -1,11 +1,11 @@
 -- basic_green_bullet.script
 
-go.property("speed", 300)
+go.property("speed", 330)
 go.property("direction", vmath.vector3(-1,0,0))
 
 function init(self)
 	-- self delete after some time
-	timer.delay(4, false, function() go.delete() end)
+	timer.delay(5, false, function() go.delete() end)
 end
 
 function fixed_update(self, dt)

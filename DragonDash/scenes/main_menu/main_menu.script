@@ -2,8 +2,8 @@
 
 local function update_background_tint()
 	local global = require("main.global")
-	go.set("/bg1#bg1","tint", global.LEVEL_COLORS[global.selected_level])
-	go.set("/bg2#bg2","tint", global.LEVEL_COLORS[global.selected_level])
+	go.set("/bg1#bg1","tint", global.LEVEL_COLORS[(global.selected_level%7)+1])
+	go.set("/bg2#bg2","tint", global.LEVEL_COLORS[(global.selected_level%7)+1])
 end
 
 function init(self)

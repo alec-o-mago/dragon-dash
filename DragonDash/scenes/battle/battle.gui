@@ -6,7 +6,8 @@ textures {
 nodes {
   position {
     x: 1244.0
-    y: 372.0
+    y: 374.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -22,10 +23,11 @@ nodes {
   position {
     x: 1244.0
     y: 52.0
+    z: 0.1
   }
   size {
     x: 24.0
-    y: 640.0
+    y: 644.0
   }
   color {
     y: 0.0
@@ -40,6 +42,7 @@ nodes {
   position {
     x: 1244.0
     y: 36.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -55,6 +58,7 @@ nodes {
   position {
     x: 36.0
     y: 36.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -64,13 +68,13 @@ nodes {
   texture: "core/heart"
   id: "player_heart_1"
   inherit_alpha: true
-  alpha: 0.8
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 36.0
     y: 76.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -80,13 +84,13 @@ nodes {
   texture: "core/heart"
   id: "player_heart_2"
   inherit_alpha: true
-  alpha: 0.8
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 36.0
     y: 116.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -96,13 +100,13 @@ nodes {
   texture: "core/heart"
   id: "player_heart_3"
   inherit_alpha: true
-  alpha: 0.8
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 36.0
     y: 156.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -112,13 +116,13 @@ nodes {
   texture: "core/heart"
   id: "player_heart_4"
   inherit_alpha: true
-  alpha: 0.8
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 36.0
     y: 196.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -128,13 +132,13 @@ nodes {
   texture: "core/heart"
   id: "player_heart_5"
   inherit_alpha: true
-  alpha: 0.8
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 36.0
     y: 236.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -144,13 +148,13 @@ nodes {
   texture: "core/heart"
   id: "player_heart_6"
   inherit_alpha: true
-  alpha: 0.8
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 36.0
     y: 276.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -160,13 +164,13 @@ nodes {
   texture: "core/heart"
   id: "player_heart_7"
   inherit_alpha: true
-  alpha: 0.8
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 36.0
     y: 316.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -176,13 +180,13 @@ nodes {
   texture: "core/heart"
   id: "player_heart_8"
   inherit_alpha: true
-  alpha: 0.8
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 36.0
     y: 356.0
+    z: 0.1
   }
   scale {
     x: 4.0
@@ -192,7 +196,46 @@ nodes {
   texture: "core/heart"
   id: "player_heart_9"
   inherit_alpha: true
-  alpha: 0.8
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 36.0
+    y: 360.0
+  }
+  size {
+    x: 72.0
+    y: 720.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "background_darken_left"
+  inherit_alpha: true
+  alpha: 0.4
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1244.0
+    y: 360.0
+  }
+  size {
+    x: 72.0
+    y: 720.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "background_darken_right"
+  inherit_alpha: true
+  alpha: 0.4
   size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"
