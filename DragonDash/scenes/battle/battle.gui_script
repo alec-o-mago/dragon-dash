@@ -2,7 +2,8 @@
 
 function init(self)
 	self.boss_health_max_size = 644
-	self.health_bar_progress_node = gui.get_node("health_bar_progress")
+	self.health_bar_progress_node_1 = gui.get_node("health_bar_progress_1")
+	self.health_bar_progress_node_2 = gui.get_node("health_bar_progress_2")
 end
 
 function on_message(self, message_id, message, sender)
@@ -17,7 +18,10 @@ function on_message(self, message_id, message, sender)
 		gui.set_visible(gui.get_node("player_heart_8"), message.hearts > 7)
 		gui.set_visible(gui.get_node("player_heart_9"), message.hearts > 8)
 	elseif message_id == hash("update_boss_health") then
-		gui.set_size(self.health_bar_progress_node,vmath.vector3(24, message.percentage*self.boss_health_max_size, 0) )
+		local progress_bar_1_size = math.max(0, ((message.percentage-0.5)*2)*self.boss_health_max_size)
+		local progress_bar_2_size = math.min(self.boss_health_max_size, (message.percentage*2)*self.boss_health_max_size)
+		gui.set_size(self.health_bar_progress_node_1, vmath.vector3(24, progress_bar_1_size, 0))
+		gui.set_size(self.health_bar_progress_node_2, vmath.vector3(24, progress_bar_2_size, 0))
 	end
 end
 

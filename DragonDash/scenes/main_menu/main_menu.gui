@@ -144,9 +144,13 @@ nodes {
     x: 1260.0
     y: 690.0
   }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
   size {
     x: 100.0
-    y: 30.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "v1.0.1"
@@ -171,21 +175,6 @@ nodes {
   id: "gold_label"
   pivot: PIVOT_W
   inherit_alpha: true
-}
-nodes {
-  position {
-    x: 36.0
-    y: 670.0
-  }
-  scale {
-    x: 4.0
-    y: 4.0
-  }
-  type: TYPE_BOX
-  texture: "core/gold"
-  id: "gold_icon"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
@@ -278,6 +267,58 @@ nodes {
   inherit_alpha: true
   alpha: 0.0
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  type: TYPE_TEMPLATE
+  id: "info_menu"
+  inherit_alpha: true
+  template: "/scenes/main_menu/sub_menus/info_menu.gui"
+  enabled: false
+}
+nodes {
+  type: TYPE_BOX
+  id: "info_menu/info_menu"
+  parent: "info_menu"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "info_menu/panel"
+  parent: "info_menu/info_menu"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_BOX
+  id: "info_menu/close_button"
+  parent: "info_menu/info_menu"
+  template_node_child: true
+}
+nodes {
+  type: TYPE_TEXT
+  id: "info_menu/text"
+  parent: "info_menu/info_menu"
+  template_node_child: true
+}
+nodes {
+  position {
+    x: 36.0
+    y: 670.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/gold"
+  id: "gold_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+layers {
+  name: "main_menu"
+}
+layers {
+  name: "sub_menu"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

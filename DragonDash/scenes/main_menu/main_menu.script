@@ -7,6 +7,7 @@ local function update_background_tint()
 end
 
 function init(self)
+	msg.post(".", "acquire_input_focus")
 	go.animate("/dragon", "position.y", go.PLAYBACK_LOOP_PINGPONG, 246, go.EASING_INOUTSINE, 2)
 	update_background_tint()
 end

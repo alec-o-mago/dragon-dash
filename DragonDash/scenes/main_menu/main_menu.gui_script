@@ -1,54 +1,99 @@
--- main-menu.script
+-- main_menu.script
+
+local global = require("main.global")
 
 local function update_level_select_gui(self)
-	local global = require("main.global")
 	local level_label = gui.get_node("level_label")
 	local level_select_left_button = gui.get_node("level_select_left_button")
 	local level_select_right_button = gui.get_node("level_select_right_button")
 	-- Set level label text
 	gui.set_text(level_label, string.format("%03d", global.selected_level):gsub(".", "%0 "):sub(1, -2))
+	-- Configure left level select button
 	if global.selected_level <= 1 then
-		-- disable left level select button
 		gui.set_color(level_select_left_button, vmath.vector4(0.5, 0.5, 0.5, 1))
 	else
-		-- enable left level select button
 		gui.set_color(level_select_left_button, vmath.vector4(1, 1, 1, 1))
 	end
+	-- Configure right level select button
 	if global.selected_level >= global.max_unlucked_level then
-		-- disable right level select button
 		gui.set_color(level_select_right_button, vmath.vector4(0.5, 0.5, 0.5, 1))
 	else
-		-- enable right level select button
 		gui.set_color(level_select_right_button, vmath.vector4(1, 1, 1, 1))
 	end
-	-- set background
+	-- Configure background
 	msg.post("main_menu:/go","change_background",{level=global.selected_level})
 end
 
+local function update_music_button_image()
+	local music_button = gui.get_node("music_button")
+	if global.config_music then
+		gui.play_flipbook(music_button, "music_button")
+	else
+		gui.play_flipbook(music_button, "no_music_button")
+	end
+end
+
+local function toggle_music_button()
+	global.config_music = not global.config_music
+	update_music_button_image()
+end
+
+local function update_sound_button_image()
+	local sound_button = gui.get_node("sound_button")
+	if global.config_sound then
+		gui.play_flipbook(sound_button, "sound_button")
+	else
+		gui.play_flipbook(sound_button, "no_sound_button")
+	end
+end
+
+local function toggle_sound_button()
+	global.config_sound = not global.config_sound
+	update_sound_button_image()
+end
+
 function init(self)
-	local global = require("main.global")
+	msg.post(".", "acquire_input_focus")
+	-- Configure GUI
 	self.selected_level = global.selected_level
 	gui.set_text(gui.get_node("gold_label"), global.gold)
 	gui.set_text(gui.get_node("eggs_label"), global.eggs)
 	update_level_select_gui()
-	--gui.set_text(gui.get_node("level_label"), string.format("%03d", global.selected_level):gsub(".", "%0 "):sub(1, -2))
-	msg.post(".", "acquire_input_focus")
+	update_music_button_image()
+	update_sound_button_image()
 end
 
 function on_input(self, action_id, action)
-	local global = require("main.global")
 	if action_id == hash("touch") and action.pressed then
 		local play_button = gui.get_node("play_button")
 		local level_select_left_button = gui.get_node("level_select_left_button")
 		local level_select_right_button = gui.get_node("level_select_right_button")
+		local info_button = gui.get_node("info_button")
+		local info_menu = gui.get_node("info_menu/info_menu")
+		local info_close_button = gui.get_node("info_menu/close_button")
+		local music_button = gui.get_node("music_button")
+		local sound_button = gui.get_node("sound_button")
+		local upgrade_button = gui.get_node("upgrade_button")
 		if gui.pick_node(play_button, action.x, action.y) then
-			msg.post("main:/go", "load_battle", {level="001"})
+			msg.post("main:/go", "load_battle")
 		elseif gui.pick_node(level_select_left_button, action.x, action.y) and global.selected_level > 1 then
 			global.selected_level = global.selected_level - 1
 			update_level_select_gui()
 		elseif gui.pick_node(level_select_right_button, action.x, action.y) and global.selected_level < global.max_unlucked_level then
 			global.selected_level = global.selected_level + 1
 			update_level_select_gui()
+		elseif gui.pick_node(info_button, action.x, action.y) then
+			gui.set_enabled(info_menu, true)
+		elseif gui.pick_node(info_close_button, action.x, action.y) then
+			gui.set_enabled(info_menu, false)
+		elseif gui.pick_node(music_button, action.x, action.y) then
+			print("music_button")
+			toggle_music_button()
+		elseif gui.pick_node(sound_button, action.x, action.y) then
+			print("sound_button")
+			toggle_sound_button()
+		elseif gui.pick_node(upgrade_button, action.x, action.y) then
+			print("upgrade_button")
 		end
 	end
 end

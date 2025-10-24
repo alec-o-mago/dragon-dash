@@ -1,0 +1,88 @@
+fonts {
+  name: "bit_potion_ext"
+  font: "/assets/fonts/bit_potion_ext.font"
+}
+textures {
+  name: "core"
+  texture: "/assets/images/core/core.atlas"
+}
+nodes {
+  type: TYPE_BOX
+  id: "info_menu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 640.0
+    y: 362.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "core/menu1"
+  id: "panel"
+  parent: "info_menu"
+  inherit_alpha: true
+  slice9 {
+    x: 4.0
+    y: 4.0
+    z: 4.0
+    w: 4.0
+  }
+}
+nodes {
+  position {
+    x: 831.0
+    y: 553.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/small_close_button"
+  id: "close_button"
+  parent: "info_menu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 638.0
+    y: 400.0
+    z: 0.1
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 600.0
+    y: 200.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "Game by Robot Wizard Games\n"
+  "\n"
+  "Bitpotion font by Joeb Rogers"
+  font: "bit_potion_ext"
+  id: "text"
+  pivot: PIVOT_N
+  parent: "info_menu"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

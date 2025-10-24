@@ -34,7 +34,7 @@ nodes {
     z: 0.251
   }
   type: TYPE_BOX
-  id: "health_bar_progress"
+  id: "health_bar_progress_2"
   pivot: PIVOT_S
   inherit_alpha: true
 }
@@ -237,6 +237,24 @@ nodes {
   inherit_alpha: true
   alpha: 0.4
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1244.0
+    y: 52.0
+    z: 0.2
+  }
+  size {
+    x: 24.0
+    y: 644.0
+  }
+  color {
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "health_bar_progress_1"
+  pivot: PIVOT_S
+  inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

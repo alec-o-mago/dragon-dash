@@ -1,58 +1,305 @@
+script: "/scenes/results/results.gui_script"
+fonts {
+  name: "bit_potion_ext"
+  font: "/assets/fonts/bit_potion_ext.font"
+}
+textures {
+  name: "core"
+  texture: "/assets/images/core/core.atlas"
+}
 nodes {
   position {
-    x: 324.0
-    y: 330.0
+    x: 410.0
+    y: 364.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
   }
   size {
-    x: 400.0
-    y: 450.0
+    x: 105.0
+    y: 112.0
   }
   type: TYPE_BOX
+  texture: "core/menu1"
   id: "results_panel"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  slice9 {
+    x: 3.0
+    y: 3.0
+    z: 3.0
+    w: 3.0
+  }
 }
 nodes {
   position {
-    x: 966.0
-    y: 330.0
+    x: 870.0
+    y: 364.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
   }
   size {
-    x: 400.0
-    y: 450.0
+    x: 105.0
+    y: 112.0
   }
   type: TYPE_BOX
+  texture: "core/menu1"
   id: "shop_panel"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  slice9 {
+    x: 3.0
+    y: 3.0
+    z: 3.0
+    w: 3.0
+  }
 }
 nodes {
   position {
-    x: 492.0
-    y: 77.0
+    x: 770.0
+    y: 70.0
+    z: 0.1
   }
-  size {
-    x: 200.0
-    y: 100.0
+  scale {
+    x: 4.0
+    y: 4.0
   }
   type: TYPE_BOX
+  texture: "core/next_button"
   id: "next_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 839.0
-    y: 77.0
+    x: 640.0
+    y: 70.0
+    z: 0.1
   }
-  size {
-    x: 200.0
-    y: 100.0
+  scale {
+    x: 4.0
+    y: 4.0
   }
   type: TYPE_BOX
+  texture: "core/menu_button"
   id: "menu_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 640.0
+    y: 640.0
+    z: 0.2
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/victory"
+  id: "result_image"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 60.0
+    y: 670.0
+    z: 0.1
+  }
+  size {
+    x: 200.0
+    y: 30.0
+  }
+  type: TYPE_TEXT
+  text: "0"
+  font: "bit_potion_ext"
+  id: "gold_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 36.0
+    y: 670.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/gold"
+  id: "gold_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 36.0
+    y: 620.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/egg"
+  id: "eggs_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 60.0
+    y: 620.0
+    z: 0.1
+  }
+  size {
+    x: 200.0
+    y: 30.0
+  }
+  type: TYPE_TEXT
+  text: "0\n"
+  ""
+  font: "bit_potion_ext"
+  id: "eggs_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 510.0
+    y: 70.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/retry_button"
+  id: "retry_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 270.0
+    y: 525.0
+    z: 0.2
+  }
+  size {
+    x: 200.0
+    y: 50.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "00\'00\'\'"
+  font: "bit_potion_ext"
+  id: "time_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 270.0
+    y: 455.0
+    z: 0.2
+  }
+  size {
+    x: 200.0
+    y: 50.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "3"
+  font: "bit_potion_ext"
+  id: "hearts_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 244.0
+    y: 380.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/gold"
+  id: "gained_gold_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 244.0
+    y: 453.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/heart"
+  id: "heart_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 244.0
+    y: 524.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/time"
+  id: "time_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 270.0
+    y: 377.0
+    z: 0.2
+  }
+  size {
+    x: 200.0
+    y: 50.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "+100"
+  font: "bit_potion_ext"
+  id: "gained_gold_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

@@ -6,18 +6,19 @@ function init(self)
 end
 
 function update(self, dt)
-	-- Get and update position for bg1
 	local pos1 = go.get_position("bg1")
-	pos1.x = pos1.x - self.BG_SPEED * dt
-	if pos1.x <= -self.SCREEN_WIDTH then
-		pos1.x = pos1.x + 2*self.SCREEN_WIDTH
-	end
-	go.set_position(pos1, "bg1")
-	-- Get and update position for bg2
 	local pos2 = go.get_position("bg2")
+	-- Calculate movement
+	pos1.x = pos1.x - self.BG_SPEED * dt
 	pos2.x = pos2.x - self.BG_SPEED * dt
-	if pos2.x <= -self.SCREEN_WIDTH then
-		pos2.x = pos2.x + 2*self.SCREEN_WIDTH
+	-- If the background is outside the screen, move them to the other side
+	if pos1.x <= -self.SCREEN_WIDTH then
+		pos1.x = pos2.x + self.SCREEN_WIDTH
 	end
+	if pos2.x <= -self.SCREEN_WIDTH then
+		pos2.x = pos1.x + self.SCREEN_WIDTH
+	end
+	-- Apply movement
+	go.set_position(pos1, "bg1")
 	go.set_position(pos2, "bg2")
 end

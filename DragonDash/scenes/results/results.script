@@ -1,7 +1,9 @@
+-- results.script
+
 function init(self)
-	-- Add initialization code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
+	msg.post(".", "acquire_input_focus")
+	-- Set background tint blue
+	go.set("/background#sprite", "tint", vmath.vector4(0.5, 0.5, 1.0, 1.0))
 end
 
 function final(self)

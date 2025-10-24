@@ -11,14 +11,14 @@ function update(self, dt)
 	-- Calculate movement
 	pos1.x = pos1.x - self.BG_SPEED * dt
 	pos2.x = pos2.x - self.BG_SPEED * dt
-	-- If the background is outside the screen, move them to 
+	-- If the background is outside the screen, move them to the other side
 	if pos1.x <= -self.SCREEN_WIDTH then
 		pos1.x = pos2.x + self.SCREEN_WIDTH
 	end
 	if pos2.x <= -self.SCREEN_WIDTH then
 		pos2.x = pos1.x + self.SCREEN_WIDTH
 	end
-	-- Aplica movimento
+	-- Apply movement
 	go.set_position(pos1, "bg1")
 	go.set_position(pos2, "bg2")
 end

@@ -3,9 +3,11 @@
 local global = require("main.global")
 local boss_id
 local boss_phase = 1
+local time_passed = 0
 
 function init(self)
-	self.player_hearts = 3
+	msg.post(".", "acquire_input_focus")
+	self.player_hearts = global.player_hearts
 	self.boss_health_max = global.BOSS_HEALTH[global.selected_level]
 	self.boss_health = global.BOSS_HEALTH[global.selected_level]
 	msg.post("/gui#battle", "update_player_health", {hearts = self.player_hearts})
@@ -17,8 +19,12 @@ function init(self)
 	if global.selected_level == 1 then
 		timer.delay(3, false, function() msg.post("/tutorial_message#sprite","disable") end)
 	else
-		msg.post("/tutorial_message#sprite","disable")
+		msg.post("/tutorial_message#sprite", "disable")
 	end
+end
+
+function fixed_update(self, dt)
+	time_passed = time_passed + dt
 end
 
 function on_message(self, message_id, message, sender)
@@ -28,7 +34,13 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("player_took_damage") then
 		if self.player_hearts <= 0 then
 			print("Lose...")
-			msg.post("main:/go", "load_main_menu")
+			global.last_battle_result = {
+				win = false,
+				time = time_passed,
+				hearts = 0,
+			}
+			--msg.post("main:/go", "load_main_menu")
+			msg.post("main:/go", "load_results")
 		else
 			self.player_hearts = self.player_hearts - 1
 			msg.post("/gui#battle", "update_player_health", {hearts = self.player_hearts})
@@ -37,7 +49,13 @@ function on_message(self, message_id, message, sender)
 		--print("boss_took_damage")
 		if self.boss_health <= 0 then
 			print("WIN!!!")
-			msg.post("main:/go", "load_main_menu")
+			global.last_battle_result = {
+				win = true,
+				time = time_passed,
+				hearts = self.player_hearts,
+			}
+			--msg.post("main:/go", "load_main_menu")
+			msg.post("main:/go", "load_results")
 		else
 			self.boss_health = self.boss_health - message.damage
 			local boss_percentage = (self.boss_health/self.boss_health_max)

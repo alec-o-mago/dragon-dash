@@ -55,4 +55,34 @@ images {
 images {
   image: "/assets/images/core/bullets/basic_red_bullet.png"
 }
+images {
+  image: "/assets/images/core/buttons/menu_button.png"
+}
+images {
+  image: "/assets/images/core/buttons/next_button.png"
+}
+images {
+  image: "/assets/images/core/buttons/retry_button.png"
+}
+images {
+  image: "/assets/images/core/menu1.png"
+}
+images {
+  image: "/assets/images/core/victory.png"
+}
+images {
+  image: "/assets/images/core/loss.png"
+}
+images {
+  image: "/assets/images/core/time.png"
+}
+images {
+  image: "/assets/images/core/buttons/no_music_button.png"
+}
+images {
+  image: "/assets/images/core/buttons/no_sound_button.png"
+}
+images {
+  image: "/assets/images/core/buttons/small_close_button.png"
+}
 extrude_borders: 1
