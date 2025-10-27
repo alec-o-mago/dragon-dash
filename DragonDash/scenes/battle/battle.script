@@ -36,6 +36,7 @@ function on_message(self, message_id, message, sender)
 			print("Lose...")
 			global.last_battle_result = {
 				win = false,
+				percent = (1 - (self.boss_health/self.boss_health_max)),
 				time = time_passed,
 				hearts = 0,
 			}
@@ -51,6 +52,7 @@ function on_message(self, message_id, message, sender)
 			print("WIN!!!")
 			global.last_battle_result = {
 				win = true,
+				percent = 1,
 				time = time_passed,
 				hearts = self.player_hearts,
 			}

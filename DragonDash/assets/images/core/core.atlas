@@ -85,4 +85,7 @@ images {
 images {
   image: "/assets/images/core/buttons/small_close_button.png"
 }
+images {
+  image: "/assets/images/core/correct.png"
+}
 extrude_borders: 1

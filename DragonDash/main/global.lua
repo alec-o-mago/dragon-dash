@@ -30,6 +30,7 @@ M.eggs = 0
 M.player_position = vmath.vector3(200, 360, 0)
 M.last_battle_result = {
 	win = true,
+	percent = 1.0, -- Percentage of health taken from the boss
 	time = 1000,
 	hearts = 3,
 }
