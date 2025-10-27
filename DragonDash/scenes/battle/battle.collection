@@ -53,7 +53,7 @@ embedded_instances {
   ""
   position {
     x: 212.0
-    y: 360.0
+    y: 425.0
   }
 }
 embedded_instances {
@@ -155,19 +155,52 @@ embedded_instances {
 embedded_instances {
   id: "boss_factories"
   data: "embedded_components {\n"
-  "  id: \"001\"\n"
+  "  id: \"1\"\n"
   "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/components/bosses/001/001.go\\\"\\n"
+  "  data: \"prototype: \\\"/components/bosses/1/1.go\\\"\\n"
   "load_dynamically: true\\n"
-  "dynamic_prototype: true\\n"
   "\"\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"002\"\n"
+  "  id: \"2\"\n"
   "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/components/bosses/002/002.go\\\"\\n"
+  "  data: \"prototype: \\\"/components/bosses/2/2.go\\\"\\n"
   "load_dynamically: true\\n"
-  "dynamic_prototype: true\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"3\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/components/bosses/3/3.go\\\"\\n"
+  "load_dynamically: true\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"4\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/components/bosses/4/4.go\\\"\\n"
+  "load_dynamically: true\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"5\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/components/bosses/5/5.go\\\"\\n"
+  "load_dynamically: true\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"6\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/components/bosses/6/6.go\\\"\\n"
+  "load_dynamically: true\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"7\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/components/bosses/7/7.go\\\"\\n"
+  "load_dynamically: true\\n"
   "\"\n"
   "}\n"
   ""
@@ -262,8 +295,6 @@ embedded_instances {
   "}\\n"
   "\"\n"
   "  position {\n"
-  "    x: 212.0\n"
-  "    y: 508.0\n"
   "    z: 0.99\n"
   "  }\n"
   "  scale {\n"
@@ -272,4 +303,8 @@ embedded_instances {
   "  }\n"
   "}\n"
   ""
+  position {
+    x: 212.0
+    y: 573.0
+  }
 }

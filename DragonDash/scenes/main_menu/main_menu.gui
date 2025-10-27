@@ -22,14 +22,14 @@ textures {
 nodes {
   position {
     x: 640.0
-    y: 650.0
+    y: 640.0
   }
   size {
-    x: 720.0
+    x: 780.0
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "DRAGON DASH DANGER"
+  text: "DRAGON DASH DUNGEONS"
   font: "main_menu_title"
   id: "main-menu-title"
   inherit_alpha: true
@@ -96,8 +96,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1210.0
-    y: 70.0
+    x: 1192.0
+    y: -326.0
   }
   scale {
     x: 4.0
@@ -111,8 +111,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1210.0
-    y: 190.0
+    x: 1192.0
+    y: -206.0
   }
   scale {
     x: 4.0
@@ -126,8 +126,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1210.0
-    y: 310.0
+    x: 1192.0
+    y: -86.0
   }
   scale {
     x: 4.0
@@ -161,50 +161,17 @@ nodes {
 }
 nodes {
   position {
-    x: 60.0
-    y: 670.0
+    x: 100.0
+    y: 655.0
   }
   size {
-    x: 200.0
+    x: 100.0
     y: 30.0
   }
   type: TYPE_TEXT
-  text: "0\n"
-  ""
+  text: "3"
   font: "bit_potion"
-  id: "gold_label"
-  pivot: PIVOT_W
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 36.0
-    y: 620.0
-  }
-  scale {
-    x: 4.0
-    y: 4.0
-  }
-  type: TYPE_BOX
-  texture: "core/egg"
-  id: "eggs_icon"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 60.0
-    y: 620.0
-  }
-  size {
-    x: 200.0
-    y: 30.0
-  }
-  type: TYPE_TEXT
-  text: "0\n"
-  ""
-  font: "bit_potion"
-  id: "eggs_label"
+  id: "skins_label"
   pivot: PIVOT_W
   inherit_alpha: true
 }
@@ -222,6 +189,7 @@ nodes {
   id: "level_select_left_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
@@ -237,6 +205,7 @@ nodes {
   id: "level_select_right_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
@@ -252,6 +221,7 @@ nodes {
   font: "level_select"
   id: "level_label"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -301,15 +271,15 @@ nodes {
 }
 nodes {
   position {
-    x: 36.0
-    y: 670.0
+    x: 52.0
+    y: 658.0
   }
   scale {
     x: 4.0
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "core/gold"
+  texture: "core/dragon_icon"
   id: "gold_icon"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO

@@ -38,7 +38,7 @@ images {
   image: "/assets/images/core/buttons/music_button.png"
 }
 images {
-  image: "/assets/images/core/bullets/basic_green_bullet.png"
+  image: "/assets/images/core/bullets/boss_green_bullet.png"
 }
 images {
   image: "/assets/images/core/bullets/player_bullet.png"
@@ -50,10 +50,10 @@ images {
   image: "/assets/images/core/tutorial_movement_wasd.png"
 }
 images {
-  image: "/assets/images/core/bullets/basic_blue_bullet.png"
+  image: "/assets/images/core/bullets/boss_blue_bullet.png"
 }
 images {
-  image: "/assets/images/core/bullets/basic_red_bullet.png"
+  image: "/assets/images/core/bullets/boss_red_bullet.png"
 }
 images {
   image: "/assets/images/core/buttons/menu_button.png"
@@ -87,5 +87,20 @@ images {
 }
 images {
   image: "/assets/images/core/correct.png"
+}
+images {
+  image: "/assets/images/core/upgrade_screen.png"
+}
+images {
+  image: "/assets/images/core/power.png"
+}
+images {
+  image: "/assets/images/core/menu2.png"
+}
+images {
+  image: "/assets/images/core/menu3.png"
+}
+images {
+  image: "/assets/images/core/dragon_icon.png"
 }
 extrude_borders: 1

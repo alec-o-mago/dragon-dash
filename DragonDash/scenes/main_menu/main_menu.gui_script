@@ -10,13 +10,13 @@ local function update_level_select_gui(self)
 	gui.set_text(level_label, string.format("%03d", global.selected_level):gsub(".", "%0 "):sub(1, -2))
 	-- Configure left level select button
 	if global.selected_level <= 1 then
-		gui.set_color(level_select_left_button, vmath.vector4(0.5, 0.5, 0.5, 1))
+		gui.set_color(level_select_left_button, vmath.vector4(0.4, 0.4, 0.4, 1))
 	else
 		gui.set_color(level_select_left_button, vmath.vector4(1, 1, 1, 1))
 	end
 	-- Configure right level select button
 	if global.selected_level >= global.max_unlucked_level then
-		gui.set_color(level_select_right_button, vmath.vector4(0.5, 0.5, 0.5, 1))
+		gui.set_color(level_select_right_button, vmath.vector4(0.4, 0.4, 0.4, 1))
 	else
 		gui.set_color(level_select_right_button, vmath.vector4(1, 1, 1, 1))
 	end
@@ -56,8 +56,8 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Configure GUI
 	self.selected_level = global.selected_level
-	gui.set_text(gui.get_node("gold_label"), global.gold)
-	gui.set_text(gui.get_node("eggs_label"), global.eggs)
+	--gui.set_text(gui.get_node("gold_label"), global.gold)
+	--gui.set_text(gui.get_node("eggs_label"), global.eggs)
 	update_level_select_gui()
 	update_music_button_image()
 	update_sound_button_image()

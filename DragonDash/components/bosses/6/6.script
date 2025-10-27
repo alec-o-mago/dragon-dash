@@ -1,0 +1,101 @@
+-- 002.script
+
+local global = require("main.global")
+local ref_vector = vmath.vector3(1, 0, 0)
+local phase = 1
+
+local function bullet_burst_1() -- make many bullets spread from boss radially
+	local pos = go.get_position()
+	local angles = {}
+	for i = 0, 11 do
+		angles[i+1] = vmath.quat_rotation_z(math.rad(i*30))
+	end
+	for i, v in pairs(angles) do
+		factory.create("#bullet_factory", pos, angles[i], {direction = vmath.rotate(angles[i], ref_vector)})
+	end
+end
+
+local function bullet_burst_1_lv2() -- make many bullets spread from boss radially
+	local pos = go.get_position()
+	local angles = {}
+	for i = 0, 23 do
+		angles[i+1] = vmath.quat_rotation_z(math.rad(i*15))
+	end
+	for i, ang in pairs(angles) do
+		factory.create("#bullet_factory", pos, ang, {direction = vmath.rotate(ang, ref_vector)})
+	end
+end
+
+local function bullet_pattern_1(loop)
+	if loop > 0 then
+		if phase == 1 then
+			bullet_burst_1()
+		else
+			bullet_burst_1_lv2()
+		end
+		timer.delay(1, false, function() bullet_pattern_1(loop-1) end)
+	else
+		timer.delay(6, false, function() bullet_pattern_1(10) end)
+	end
+end
+
+local function bullet_burst_2() -- creates bullets coming from the boss to the player
+	local boss_pos = go.get_position()
+	local direction_vector = global.player_position - boss_pos
+	local angle = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x))
+	local pos1 = boss_pos
+	local pos2 = boss_pos + vmath.vector3(32, 0, 0)
+	local pos3 = boss_pos + vmath.vector3(-32, 0, 0)
+	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos3, angle, {direction = vmath.rotate(angle, ref_vector)})
+end
+
+local function bullet_burst_2_lv2() -- creates bullets coming from the boss to the player
+	local boss_pos = go.get_position()
+	local direction_vector = global.player_position - boss_pos
+	local angle = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x))
+	local pos1 = boss_pos
+	local pos2 = boss_pos + vmath.vector3(0, 32, 0)
+	local pos3 = boss_pos + vmath.vector3(0, -32, 0)
+	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos3, angle, {direction = vmath.rotate(angle, ref_vector)})
+end
+
+local function bullet_pattern_2(loop)
+	if loop > 0 then
+		if phase == 1 then
+			bullet_burst_2()
+		else
+			bullet_burst_2_lv2()
+		end
+		timer.delay(1, false, function() bullet_pattern_2(loop-1) end)
+	else
+		timer.delay(6, false, function() bullet_pattern_2(10) end)
+	end
+end
+
+function init(self)
+	-- Boss movement
+	go.set_position(vmath.vector3(1100, 560, 0))
+	go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, 160, go.EASING_INOUTSINE, 4)
+	-- Bullet spawning
+	timer.delay(2, false, function() bullet_pattern_1(10) end)
+	timer.delay(5, false, function() bullet_pattern_2(10) end) 
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") and message.enter then -- boss received damage
+		-- delete the bullet
+		go.delete(message.other_id)
+		-- handle damage math
+		--self.boss_health = self.boss_health - 1
+		msg.post("battle:/go","boss_took_damage", { damage = 1 })
+		-- make the boss blink white
+		go.set("#sprite", "color_add.w", 0)
+		go.animate("#sprite", "color_add.w", go.PLAYBACK_ONCE_PINGPONG, 0.5, go.EASING_INQUAD, 0.3)
+	elseif message_id == hash("phase_2") then
+		phase = 2
+	end
+end

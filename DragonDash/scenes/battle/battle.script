@@ -4,23 +4,47 @@ local global = require("main.global")
 local boss_id
 local boss_phase = 1
 local time_passed = 0
+local boss_order
+local current_boss = 1
+
+local function create_random_order(n)
+	-- Create a table with numbers from 1 to n
+	local numbers = {}
+	for i = 1, n do
+		numbers[i] = i
+	end
+	-- Apply the Fisher-Yates shuffle
+	for i = n, 2, -1 do
+		local j = math.random(i) -- Generate a random index from 1 to i
+		-- Swap elements at i and j
+		numbers[i], numbers[j] = numbers[j], numbers[i]
+	end
+	return numbers
+end
+
+local function load_boss(n)
+	boss_id = factory.create("battle:/boss_factories#"..n, vmath.vector3(1050, 360, 0))
+end
 
 function init(self)
+	-- Enable player input
 	msg.post(".", "acquire_input_focus")
+	-- Decide boss order
+	math.randomseed(os.time()) -- randomizes
+	boss_order = create_random_order(global.TOTAL_BOSSES)
+	--
 	self.player_hearts = global.player_hearts
 	self.boss_health_max = global.BOSS_HEALTH[global.selected_level]
 	self.boss_health = global.BOSS_HEALTH[global.selected_level]
 	msg.post("/gui#battle", "update_player_health", {hearts = self.player_hearts})
-	go.set("/bg1#bg1","tint", global.LEVEL_COLORS[(global.selected_level%7)+1])
-	go.set("/bg2#bg2","tint", global.LEVEL_COLORS[(global.selected_level%7)+1])
-	-- load boss for the selected level
-	boss_id = factory.create("battle:/boss_factories#"..string.format("%03d", global.selected_level), vmath.vector3(1050, 360, 0))
-	-- show tutorial messsage only if first level
-	if global.selected_level == 1 then
-		timer.delay(3, false, function() msg.post("/tutorial_message#sprite","disable") end)
-	else
-		msg.post("/tutorial_message#sprite", "disable")
-	end
+	go.set("/bg1#bg1","tint", global.LEVEL_COLORS[boss_order[1]])
+	go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[1]])
+	-- Load first boss
+	load_boss(boss_order[1])
+	-- Remove tutorial messsage after a few seconds
+	go.animate("/tutorial_message#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_INEXPO, 1, 2, function()
+		msg.post("/tutorial_message#sprite","disable")
+	end)
 end
 
 function fixed_update(self, dt)
