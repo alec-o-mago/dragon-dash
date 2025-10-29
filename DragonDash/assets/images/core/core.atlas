@@ -71,9 +71,6 @@ images {
   image: "/assets/images/core/victory.png"
 }
 images {
-  image: "/assets/images/core/loss.png"
-}
-images {
   image: "/assets/images/core/time.png"
 }
 images {
@@ -102,5 +99,8 @@ images {
 }
 images {
   image: "/assets/images/core/dragon_icon.png"
+}
+images {
+  image: "/assets/images/core/particle.png"
 }
 extrude_borders: 1

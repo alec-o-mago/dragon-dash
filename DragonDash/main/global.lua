@@ -7,18 +7,17 @@ local M = {}
 M.SCREEN_WIDTH = 1280
 M.SCREEN_HEIGHT = 720
 M.TOTAL_BOSSES = 7
+M.STARTING_BOSS_HEALTH = 100
+M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
+M.BOSS_Y_POSITIONS = {128, 360, 592}
 M.LEVEL_COLORS = {
 	vmath.vector4(1.0, 0.6, 0.6, 1.0), -- red
 	vmath.vector4(0.6, 1.0, 0.6, 1.0), -- green
 	vmath.vector4(0.6, 0.6, 1.0, 1.0), -- blue
 	vmath.vector4(0.9, 0.9, 0.5, 1.0), -- 
-	vmath.vector4(0.9, 0.5, 0.6, 1.0), -- 
+	vmath.vector4(0.9, 0.5, 0.9, 1.0), -- 
 	vmath.vector4(0.5, 0.9, 0.9, 1.0), -- 
 	vmath.vector4(0.7, 0.7, 0.8, 1.0), -- gray
-}
-M.BOSS_HEALTH = {
-	400, 500, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000,
-	500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000,
 }
 
 -- variables

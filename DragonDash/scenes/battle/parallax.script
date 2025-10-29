@@ -1,7 +1,7 @@
 -- parallax.script
 
 function init(self)
-	self.BG_SPEED = 50
+	self.BG_SPEED = 70
 	self.SCREEN_WIDTH = 1280
 end
 

@@ -109,3 +109,16 @@ embedded_instances {
     x: 1280.0
   }
 }
+embedded_instances {
+  id: "particle"
+  data: "components {\n"
+  "  id: \"1\"\n"
+  "  component: \"/components/particles/spawn.particlefx\"\n"
+  "}\n"
+  ""
+  position {
+    x: 643.0
+    y: 318.0
+    z: 0.9
+  }
+}

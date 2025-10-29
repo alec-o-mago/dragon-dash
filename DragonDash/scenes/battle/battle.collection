@@ -6,6 +6,10 @@ embedded_instances {
   "  id: \"player\"\n"
   "  component: \"/scenes/battle/player.script\"\n"
   "}\n"
+  "components {\n"
+  "  id: \"spawn\"\n"
+  "  component: \"/components/particles/spawn.particlefx\"\n"
+  "}\n"
   "embedded_components {\n"
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
@@ -307,4 +311,12 @@ embedded_instances {
     x: 212.0
     y: 573.0
   }
+}
+embedded_instances {
+  id: "particlefx"
+  data: "components {\n"
+  "  id: \"boss_defeat\"\n"
+  "  component: \"/components/particles/boss_defeat.particlefx\"\n"
+  "}\n"
+  ""
 }

@@ -1,66 +1,69 @@
--- 002.script
+-- 2.script
 
 local global = require("main.global")
 local ref_vector = vmath.vector3(1, 0, 0)
 local phase = 1
+local current_position = 2
 
-local function bullet_burst_1() -- make many bullets spread from boss radially
+local function bullet_burst_1(n) -- make many bullets spread from boss radially
 	local pos = go.get_position()
-	local angles = {}
-	for i = 0, 11 do
-		angles[i+1] = vmath.quat_rotation_z(math.rad(i*30))
-	end
-	for i, v in pairs(angles) do
-		factory.create("#bullet_factory", pos, angles[i], {direction = vmath.rotate(angles[i], ref_vector)})
-	end
+	local angle1 = vmath.quat_rotation_z(math.rad(n*15))
+	local angle2 = vmath.quat_rotation_z(math.rad((n*15)+180))
+	factory.create("#bullet_factory", pos, angle1, {direction = vmath.rotate(angle1, ref_vector)})
+	factory.create("#bullet_factory", pos, angle2, {direction = vmath.rotate(angle2, ref_vector)})
 end
 
-local function bullet_burst_1_lv2() -- make many bullets spread from boss radially
+local function bullet_burst_1_lv2(n) -- make many bullets spread from boss radially
 	local pos = go.get_position()
-	local angles = {}
-	for i = 0, 23 do
-		angles[i+1] = vmath.quat_rotation_z(math.rad(i*15))
-	end
-	for i, ang in pairs(angles) do
-		factory.create("#bullet_factory", pos, ang, {direction = vmath.rotate(ang, ref_vector)})
-	end
+	local angle1 = vmath.quat_rotation_z(math.rad(n*15))
+	local angle2 = vmath.quat_rotation_z(math.rad((n*15)+90))
+	local angle3 = vmath.quat_rotation_z(math.rad((n*15)+180))
+	local angle4 = vmath.quat_rotation_z(math.rad((n*15)+270))
+	factory.create("#bullet_factory", pos, angle1, {direction = vmath.rotate(angle1, ref_vector)})
+	factory.create("#bullet_factory", pos, angle2, {direction = vmath.rotate(angle2, ref_vector)})
+	factory.create("#bullet_factory", pos, angle3, {direction = vmath.rotate(angle3, ref_vector)})
+	factory.create("#bullet_factory", pos, angle4, {direction = vmath.rotate(angle4, ref_vector)})
 end
 
 local function bullet_pattern_1(loop)
 	if loop > 0 then
 		if phase == 1 then
-			bullet_burst_1()
+			bullet_burst_1(loop)
 		else
-			bullet_burst_1_lv2()
+			bullet_burst_1_lv2(loop)
 		end
-		timer.delay(1, false, function() bullet_pattern_1(loop-1) end)
+		timer.delay(0.2, false, function() bullet_pattern_1(loop-1) end)
 	else
-		timer.delay(6, false, function() bullet_pattern_1(10) end)
+		timer.delay(4, false, function() bullet_pattern_1(30) end)
 	end
 end
 
 local function bullet_burst_2() -- creates bullets coming from the boss to the player
 	local boss_pos = go.get_position()
 	local direction_vector = global.player_position - boss_pos
-	local angle = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x))
-	local pos1 = boss_pos
-	local pos2 = boss_pos + vmath.vector3(32, 0, 0)
-	local pos3 = boss_pos + vmath.vector3(-32, 0, 0)
-	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos3, angle, {direction = vmath.rotate(angle, ref_vector)})
+	local angle1 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x))
+	local angle2 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(15))
+	local angle3 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(-15))
+	local pos = boss_pos
+	factory.create("#bullet_factory", pos, angle1, {direction = vmath.rotate(angle1, ref_vector)})
+	factory.create("#bullet_factory", pos, angle2, {direction = vmath.rotate(angle2, ref_vector)})
+	factory.create("#bullet_factory", pos, angle3, {direction = vmath.rotate(angle3, ref_vector)})
 end
 
 local function bullet_burst_2_lv2() -- creates bullets coming from the boss to the player
 	local boss_pos = go.get_position()
 	local direction_vector = global.player_position - boss_pos
-	local angle = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x))
-	local pos1 = boss_pos
-	local pos2 = boss_pos + vmath.vector3(0, 32, 0)
-	local pos3 = boss_pos + vmath.vector3(0, -32, 0)
-	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos3, angle, {direction = vmath.rotate(angle, ref_vector)})
+	local angle1 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x))
+	local angle2 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(10))
+	local angle3 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(-10))
+	local angle4 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(20))
+	local angle5 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(-20))
+	local pos = boss_pos
+	factory.create("#bullet_factory", pos, angle1, {direction = vmath.rotate(angle1, ref_vector)})
+	factory.create("#bullet_factory", pos, angle2, {direction = vmath.rotate(angle2, ref_vector)})
+	factory.create("#bullet_factory", pos, angle3, {direction = vmath.rotate(angle3, ref_vector)})
+	factory.create("#bullet_factory", pos, angle4, {direction = vmath.rotate(angle4, ref_vector)})
+	factory.create("#bullet_factory", pos, angle5, {direction = vmath.rotate(angle5, ref_vector)})
 end
 
 local function bullet_pattern_2(loop)
@@ -76,13 +79,25 @@ local function bullet_pattern_2(loop)
 	end
 end
 
+local function boss_move()
+	math.randomseed(os.time())
+	current_position = current_position + math.random(2)
+	if current_position > 3 then
+		current_position = current_position - 3
+	end
+	go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, global.BOSS_Y_POSITIONS[current_position], go.EASING_LINEAR, 1.5, 2, function() boss_move() end)
+end
+
 function init(self)
 	-- Boss movement
-	go.set_position(vmath.vector3(1100, 560, 0))
-	go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, 160, go.EASING_INOUTSINE, 4)
+	go.set_position(vmath.vector3(1580, 360, 0))
+	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(1060, 360, 0), go.EASING_INOUTSINE, 4)
+	timer.delay(2, true, function() boss_move() end)
 	-- Bullet spawning
-	timer.delay(2, false, function() bullet_pattern_1(10) end)
-	timer.delay(5, false, function() bullet_pattern_2(10) end) 
+	timer.delay(2, false, function() bullet_pattern_1(30) end)
+	timer.delay(5, false, function() bullet_pattern_2(10) end)
+	-- Initialize randomization
+	math.randomseed(os.time())
 end
 
 function on_message(self, message_id, message, sender)

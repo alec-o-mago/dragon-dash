@@ -1,15 +1,20 @@
 -- main_menu.script
 
+local global = require("main.global")
+
 local function update_background_tint()
-	local global = require("main.global")
-	go.set("/bg1#bg1","tint", global.LEVEL_COLORS[(global.selected_level%7)+1])
-	go.set("/bg2#bg2","tint", global.LEVEL_COLORS[(global.selected_level%7)+1])
+	math.randomseed(os.time()) -- randomizes
+	local selected_color = math.random(7)
+	go.set("/bg1#bg1","tint", global.LEVEL_COLORS[selected_color])
+	go.set("/bg2#bg2","tint", global.LEVEL_COLORS[selected_color])
 end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	go.animate("/dragon", "position.y", go.PLAYBACK_LOOP_PINGPONG, 246, go.EASING_INOUTSINE, 2)
 	update_background_tint()
+	-- Main dragon particle effect
+	particlefx.play("/particle#1")
 end
 
 function on_message(self, message_id, message, sender)

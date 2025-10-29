@@ -1,8 +1,9 @@
--- 002.script
+-- 6.script
 
 local global = require("main.global")
 local ref_vector = vmath.vector3(1, 0, 0)
 local phase = 1
+local current_position = 2
 
 local function bullet_burst_1() -- make many bullets spread from boss radially
 	local pos = go.get_position()
@@ -76,10 +77,20 @@ local function bullet_pattern_2(loop)
 	end
 end
 
+local function boss_move()
+	math.randomseed(os.time())
+	current_position = current_position + math.random(2)
+	if current_position > 3 then
+		current_position = current_position - 3
+	end
+	go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, global.BOSS_Y_POSITIONS[current_position], go.EASING_LINEAR, 1.5, 2, function() boss_move() end)
+end
+
 function init(self)
 	-- Boss movement
-	go.set_position(vmath.vector3(1100, 560, 0))
-	go.animate(".", "position.y", go.PLAYBACK_LOOP_PINGPONG, 160, go.EASING_INOUTSINE, 4)
+	go.set_position(vmath.vector3(1580, 360, 0))
+	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(1060, 360, 0), go.EASING_INOUTSINE, 4)
+	timer.delay(2, true, function() boss_move() end)
 	-- Bullet spawning
 	timer.delay(2, false, function() bullet_pattern_1(10) end)
 	timer.delay(5, false, function() bullet_pattern_2(10) end) 

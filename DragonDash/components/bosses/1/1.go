@@ -1,6 +1,10 @@
 components {
-  id: "001"
+  id: "1"
   component: "/components/bosses/1/1.script"
+}
+components {
+  id: "spawn"
+  component: "/components/particles/spawn.particlefx"
 }
 embedded_components {
   id: "bullet_factory"

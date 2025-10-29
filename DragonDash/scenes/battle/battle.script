@@ -5,7 +5,10 @@ local boss_id
 local boss_phase = 1
 local time_passed = 0
 local boss_order
-local current_boss = 1
+local current_boss = 0
+local boss_health_max = 1
+local boss_health = 1
+local player_hearts = 3
 
 local function create_random_order(n)
 	-- Create a table with numbers from 1 to n
@@ -22,8 +25,16 @@ local function create_random_order(n)
 	return numbers
 end
 
-local function load_boss(n)
-	boss_id = factory.create("battle:/boss_factories#"..n, vmath.vector3(1050, 360, 0))
+local function load_next_boss()
+	current_boss = current_boss + 1
+	local next_boss = boss_order[(current_boss%7)+1]
+	boss_id = factory.create("battle:/boss_factories#"..next_boss, vmath.vector3(1050, 360, 0))
+	boss_health_max = global.STARTING_BOSS_HEALTH + (current_boss * 20)
+	boss_health = boss_health_max
+	go.animate("/bg1#bg1","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[boss_order[next_boss]], go.EASING_LINEAR, 2)
+	go.animate("/bg2#bg2","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[boss_order[next_boss]], go.EASING_LINEAR, 2)
+	--go.set("/bg1#bg1","tint", global.LEVEL_COLORS[boss_order[next_boss]])
+	--go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 end
 
 function init(self)
@@ -31,20 +42,20 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
-	boss_order = create_random_order(global.TOTAL_BOSSES)
+	--boss_order = create_random_order(global.TOTAL_BOSSES)
+	boss_order = {3, 3, 3, 3, 3, 3, 3}
 	--
-	self.player_hearts = global.player_hearts
-	self.boss_health_max = global.BOSS_HEALTH[global.selected_level]
-	self.boss_health = global.BOSS_HEALTH[global.selected_level]
-	msg.post("/gui#battle", "update_player_health", {hearts = self.player_hearts})
-	go.set("/bg1#bg1","tint", global.LEVEL_COLORS[boss_order[1]])
-	go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[1]])
+	player_hearts = global.player_hearts
+	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
+	
 	-- Load first boss
-	load_boss(boss_order[1])
+	load_next_boss()
 	-- Remove tutorial messsage after a few seconds
 	go.animate("/tutorial_message#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_INEXPO, 1, 2, function()
 		msg.post("/tutorial_message#sprite","disable")
 	end)
+	-- Particle FX
+	particlefx.play("/player#spawn")
 end
 
 function fixed_update(self, dt)
@@ -56,35 +67,31 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 	elseif message_id == hash("player_took_damage") then
-		if self.player_hearts <= 0 then
+		if player_hearts <= 0 then
 			print("Lose...")
 			global.last_battle_result = {
 				win = false,
-				percent = (1 - (self.boss_health/self.boss_health_max)),
+				percent = (1 - (boss_health/boss_health_max)),
 				time = time_passed,
 				hearts = 0,
 			}
 			--msg.post("main:/go", "load_main_menu")
 			msg.post("main:/go", "load_results")
 		else
-			self.player_hearts = self.player_hearts - 1
-			msg.post("/gui#battle", "update_player_health", {hearts = self.player_hearts})
+			player_hearts = player_hearts - 1
+			msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
 		end
 	elseif message_id == hash("boss_took_damage") then
-		--print("boss_took_damage")
-		if self.boss_health <= 0 then
-			print("WIN!!!")
-			global.last_battle_result = {
-				win = true,
-				percent = 1,
-				time = time_passed,
-				hearts = self.player_hearts,
-			}
-			--msg.post("main:/go", "load_main_menu")
-			msg.post("main:/go", "load_results")
-		else
-			self.boss_health = self.boss_health - message.damage
-			local boss_percentage = (self.boss_health/self.boss_health_max)
+		if boss_health <= 0 then -- Boss was defeated
+			-- Particle effects
+			go.set_position(go.get_position(boss_id), "/particlefx#boss_defeat")
+			particlefx.play("/particlefx#boss_defeat")
+			-- Replace boss
+			go.delete(boss_id)
+			load_next_boss()
+		else -- Boss not defeated
+			boss_health = boss_health - message.damage
+			local boss_percentage = (boss_health/boss_health_max)
 			msg.post("/gui#battle", "update_boss_health", {percentage = boss_percentage})
 			if boss_phase == 1 and boss_percentage <= 0.5 then
 				boss_phase = 2
