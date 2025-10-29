@@ -5,7 +5,7 @@ components {
 embedded_components {
   id: "bullet_factory"
   type: "factory"
-  data: "prototype: \"/components/boss_bullets/green/green_bullet.go\"\n"
+  data: "prototype: \"/components/boss_bullets/big_blue/big_blue_bullet.go\"\n"
   "load_dynamically: true\n"
   "dynamic_prototype: true\n"
   ""

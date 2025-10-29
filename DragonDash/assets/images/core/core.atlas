@@ -103,4 +103,10 @@ images {
 images {
   image: "/assets/images/core/particle.png"
 }
+images {
+  image: "/assets/images/core/bullets/big_boss_blue_bullet.png"
+}
+images {
+  image: "/assets/images/core/bullets/boss_yellow_bullet.png"
+}
 extrude_borders: 1

@@ -1,0 +1,20 @@
+-- basic_green_bullet.script
+
+go.property("speed", 300)
+go.property("direction", vmath.vector3(-1,0,0))
+
+function init(self)
+	-- self delete after some time
+	timer.delay(4, false, function() go.delete() end)
+end
+
+function fixed_update(self, dt)
+	-- Update the bullet position based on velocity
+	local pos = go.get_position()
+	pos = pos + self.direction * self.speed * dt
+	go.set_position(pos)
+end
+
+function on_message(self, message_id, message, sender)
+	-- on_message
+end

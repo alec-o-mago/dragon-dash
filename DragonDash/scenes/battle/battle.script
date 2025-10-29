@@ -43,7 +43,7 @@ function init(self)
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
 	--boss_order = create_random_order(global.TOTAL_BOSSES)
-	boss_order = {3, 3, 3, 3, 3, 3, 3}
+	boss_order = {3, 3, 4, 4, 4, 4, 3}
 	--
 	player_hearts = global.player_hearts
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
@@ -86,6 +86,8 @@ function on_message(self, message_id, message, sender)
 			-- Particle effects
 			go.set_position(go.get_position(boss_id), "/particlefx#boss_defeat")
 			particlefx.play("/particlefx#boss_defeat")
+			-- Reset phase
+			boss_phase = 1
 			-- Replace boss
 			go.delete(boss_id)
 			load_next_boss()

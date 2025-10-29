@@ -75,7 +75,7 @@ local function bullet_pattern_2(loop)
 		end
 		timer.delay(1, false, function() bullet_pattern_2(loop-1) end)
 	else
-		timer.delay(6, false, function() bullet_pattern_2(10) end)
+		timer.delay(4, false, function() bullet_pattern_2(10) end)
 	end
 end
 
