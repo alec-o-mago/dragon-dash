@@ -1,6 +1,6 @@
 components {
-  id: "big_blue_bullet"
-  component: "/components/boss_bullets/big_blue/big_blue_bullet.script"
+  id: "star_pink_bullet"
+  component: "/components/boss_bullets/star_pink/star_pink_bullet.script"
 }
 embedded_components {
   id: "collisionobject"
@@ -22,14 +22,14 @@ embedded_components {
   "    count: 1\n"
   "    id: \"sphere\"\n"
   "  }\n"
-  "  data: 28.0\n"
+  "  data: 21.5\n"
   "}\n"
   ""
 }
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"big_boss_blue_bullet\"\n"
+  data: "default_animation: \"star_boss_pink_bullet\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
@@ -43,4 +43,10 @@ embedded_components {
     x: 4.0
     y: 4.0
   }
+}
+embedded_components {
+  id: "bullet_factory"
+  type: "factory"
+  data: "prototype: \"/components/boss_bullets/pink/pink_bullet.go\"\n"
+  ""
 }

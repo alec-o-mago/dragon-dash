@@ -1,0 +1,34 @@
+-- pink_bullet.script
+
+go.property("target", vmath.vector3(640, 360, 0))
+go.property("phase2", false)
+local ref_vector = vmath.vector3(1, 0, 0)
+
+local function explode(self)
+	-- Spawn bullets
+	local pos = go.get_position()
+	local angle1 = vmath.quat_rotation_z(math.rad(0))
+	local angle2 = vmath.quat_rotation_z(math.rad(90))
+	local angle3 = vmath.quat_rotation_z(math.rad(180))
+	local angle4 = vmath.quat_rotation_z(math.rad(270))
+	factory.create("#bullet_factory", pos, angle1, {direction = vmath.rotate(angle1, ref_vector)})
+	factory.create("#bullet_factory", pos, angle2, {direction = vmath.rotate(angle2, ref_vector)})
+	factory.create("#bullet_factory", pos, angle3, {direction = vmath.rotate(angle3, ref_vector)})
+	factory.create("#bullet_factory", pos, angle4, {direction = vmath.rotate(angle4, ref_vector)})
+	if self.phase2 then
+		local angle5 = vmath.quat_rotation_z(math.rad(45))
+		local angle6 = vmath.quat_rotation_z(math.rad(135))
+		local angle7 = vmath.quat_rotation_z(math.rad(225))
+		local angle8 = vmath.quat_rotation_z(math.rad(315))
+		factory.create("#bullet_factory", pos, angle5, {direction = vmath.rotate(angle5, ref_vector)})
+		factory.create("#bullet_factory", pos, angle6, {direction = vmath.rotate(angle6, ref_vector)})
+		factory.create("#bullet_factory", pos, angle7, {direction = vmath.rotate(angle7, ref_vector)})
+		factory.create("#bullet_factory", pos, angle8, {direction = vmath.rotate(angle8, ref_vector)})
+	end
+	-- Self Delete
+	go.delete()
+end
+
+function init(self)
+	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, self.target, go.EASING_OUTCIRC, 3, 0, function() explode(self) end)
+end

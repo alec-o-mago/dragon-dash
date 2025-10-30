@@ -54,10 +54,10 @@ local function bullet_burst_2_lv2() -- creates bullets coming from the boss to t
 	local boss_pos = go.get_position()
 	local direction_vector = global.player_position - boss_pos
 	local angle1 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x))
-	local angle2 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(10))
-	local angle3 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(-10))
-	local angle4 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(20))
-	local angle5 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(-20))
+	local angle2 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(15))
+	local angle3 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(-15))
+	local angle4 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(30))
+	local angle5 = vmath.quat_rotation_z(math.atan2(direction_vector.y, direction_vector.x) + math.rad(-30))
 	local pos = boss_pos
 	factory.create("#bullet_factory", pos, angle1, {direction = vmath.rotate(angle1, ref_vector)})
 	factory.create("#bullet_factory", pos, angle2, {direction = vmath.rotate(angle2, ref_vector)})

@@ -23,7 +23,7 @@ M.LEVEL_COLORS = {
 -- variables
 M.selected_level = 1
 M.max_unlucked_level = 2
-M.player_hearts = 3
+M.player_hearts = 5
 M.gold = 10000
 M.eggs = 3
 M.player_position = vmath.vector3(200, 360, 0)

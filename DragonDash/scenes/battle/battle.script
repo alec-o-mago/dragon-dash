@@ -43,7 +43,7 @@ function init(self)
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
 	--boss_order = create_random_order(global.TOTAL_BOSSES)
-	boss_order = {3, 3, 4, 4, 4, 4, 3}
+	boss_order = {6, 6, 6, 6, 4, 4, 3}
 	--
 	player_hearts = global.player_hearts
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})

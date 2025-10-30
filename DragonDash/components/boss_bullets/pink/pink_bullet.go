@@ -1,6 +1,6 @@
 components {
-  id: "big_blue_bullet"
-  component: "/components/boss_bullets/big_blue/big_blue_bullet.script"
+  id: "basic_blue_bullet"
+  component: "/components/boss_bullets/pink/pink_bullet.script"
 }
 embedded_components {
   id: "collisionobject"
@@ -22,14 +22,14 @@ embedded_components {
   "    count: 1\n"
   "    id: \"sphere\"\n"
   "  }\n"
-  "  data: 28.0\n"
+  "  data: 12.0\n"
   "}\n"
   ""
 }
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"big_boss_blue_bullet\"\n"
+  data: "default_animation: \"boss_pink_bullet\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"

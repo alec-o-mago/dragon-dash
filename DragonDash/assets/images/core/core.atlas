@@ -109,4 +109,10 @@ images {
 images {
   image: "/assets/images/core/bullets/boss_yellow_bullet.png"
 }
+images {
+  image: "/assets/images/core/bullets/star_boss_pink_bullet.png"
+}
+images {
+  image: "/assets/images/core/bullets/boss_pink_bullet.png"
+}
 extrude_borders: 1
