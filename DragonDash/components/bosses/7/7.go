@@ -3,11 +3,9 @@ components {
   component: "/components/bosses/7/7.script"
 }
 embedded_components {
-  id: "bullet_factory"
+  id: "bullet_factory_short"
   type: "factory"
-  data: "prototype: \"/components/boss_bullets/green/green_bullet.go\"\n"
-  "load_dynamically: true\n"
-  "dynamic_prototype: true\n"
+  data: "prototype: \"/components/boss_bullets/short_bone/short_bone_bullet.go\"\n"
   ""
 }
 embedded_components {
@@ -56,4 +54,10 @@ embedded_components {
     x: 4.0
     y: 4.0
   }
+}
+embedded_components {
+  id: "bullet_factory_long"
+  type: "factory"
+  data: "prototype: \"/components/boss_bullets/long_bone/long_bone_bullet.go\"\n"
+  ""
 }

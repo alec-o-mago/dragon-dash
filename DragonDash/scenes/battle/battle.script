@@ -42,12 +42,10 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
-	--boss_order = create_random_order(global.TOTAL_BOSSES)
-	boss_order = {6, 6, 6, 6, 4, 4, 3}
-	--
+	boss_order = create_random_order(global.TOTAL_BOSSES)
+	-- boss_order = {1, 2, 3, 4, 5, 6, 7}
 	player_hearts = global.player_hearts
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
-	
 	-- Load first boss
 	load_next_boss()
 	-- Remove tutorial messsage after a few seconds
@@ -70,10 +68,8 @@ function on_message(self, message_id, message, sender)
 		if player_hearts <= 0 then
 			print("Lose...")
 			global.last_battle_result = {
-				win = false,
-				percent = (1 - (boss_health/boss_health_max)),
+				bosses_defeated = current_boss - 1,
 				time = time_passed,
-				hearts = 0,
 			}
 			--msg.post("main:/go", "load_main_menu")
 			msg.post("main:/go", "load_results")

@@ -20,19 +20,14 @@ function init(self)
 	-- Enable user inputs
 	msg.post(".", "acquire_input_focus")
 	-- Configure GUI based on last battle result
+	gui.set_text(gui.get_node("bosses_label"), format_time(global.last_battle_result.bosses_defeated))
 	gui.set_text(gui.get_node("time_label"), format_time(global.last_battle_result.time))
-	-- Calculate gold and egg rewards
-	local gold_earned = 50 + (global.selected_level * 50) -- Starts with 100 and increses by 50 after every level
-	--local eggs_earned = math.ceil(global.selected_level / 7) -- Starts with 1 and increases by 1 after every 7 levels
+	-- Calculate gold reward
+	local gold_earned = (global.last_battle_result.bosses_defeated * 100)
 	global.gold = global.gold + gold_earned
-	--global.eggs = global.eggs + eggs_earned
 	gui.set_text(gui.get_node("gold_earned_label"), "+"..gold_earned)
-	--gui.set_text(gui.get_node("eggs_earned_label"), "+"..eggs_earned)
-	-- Hearts Label
-	-- gui.set_text(gui.get_node("hearts_label"), global.last_battle_result.hearts)
-	-- Set current gold and eggs labels
+	-- Set current gold label
 	gui.set_text(gui.get_node("gold_label"), global.gold)
-	gui.set_text(gui.get_node("eggs_label"), global.eggs)
 end
 
 function update(self, dt)

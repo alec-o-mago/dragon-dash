@@ -115,4 +115,10 @@ images {
 images {
   image: "/assets/images/core/bullets/boss_pink_bullet.png"
 }
+images {
+  image: "/assets/images/core/bullets/bone_bullet.png"
+}
+images {
+  image: "/assets/images/core/bullets/long_bone_bullet.png"
+}
 extrude_borders: 1

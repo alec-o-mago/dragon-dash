@@ -24,7 +24,7 @@ M.LEVEL_COLORS = {
 M.selected_level = 1
 M.max_unlucked_level = 2
 M.player_hearts = 5
-M.gold = 10000
+M.gold = 0
 M.eggs = 3
 M.player_position = vmath.vector3(200, 360, 0)
 M.upgrade_levels = {
@@ -38,10 +38,8 @@ M.unlocked_skins = {
 	false, false, false, false, false, false, false,
 }
 M.last_battle_result = { -- Example victory data
-	win = true,
-	percent = 1.0, -- Percentage of health taken from the boss
+	bosses_defeated = 1,
 	time = 120, -- time in seconds
-	hearts = 3, -- player health
 }
 M.config_music = true
 M.config_sound = true
