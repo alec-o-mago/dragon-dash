@@ -42,8 +42,8 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
-	boss_order = create_random_order(global.TOTAL_BOSSES)
-	-- boss_order = {1, 2, 3, 4, 5, 6, 7}
+	--boss_order = create_random_order(global.TOTAL_BOSSES)
+	boss_order = {1, 2, 3, 4, 5, 6, 7}
 	player_hearts = global.player_hearts
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
 	-- Load first boss

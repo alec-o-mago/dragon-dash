@@ -60,26 +60,38 @@ end
 local function bullet_burst_2_lv2() -- creates bullets coming from the boss to the player
 	local boss_pos = go.get_position()
 	local player_pos = global.player_position
-	local pos1 = boss_pos
-	local pos2 = boss_pos + vmath.vector3(0, 64, 0)
-	local pos3 = boss_pos + vmath.vector3(0, -64, 0)
-	local pos4 = boss_pos + vmath.vector3(0, 128, 0)
-	local pos5 = boss_pos + vmath.vector3(0, -128, 0)
+	local pos1 = boss_pos + vmath.vector3(0, 96, 0)
+	local pos2 = boss_pos + vmath.vector3(0, -96, 0)
+	local pos3 = boss_pos + vmath.vector3(96, 0, 0)
+	local pos4 = boss_pos + vmath.vector3(-96, 0, 0)
+	local pos5 = boss_pos + vmath.vector3(64, 64, 0)
+	local pos6 = boss_pos + vmath.vector3(64, -64, 0)
+	local pos7 = boss_pos + vmath.vector3(-64, 64, 0)
+	local pos8 = boss_pos + vmath.vector3(-64, -64, 0)
 	local direction_vector1 = player_pos - pos1
 	local direction_vector2 = player_pos - pos2
 	local direction_vector3 = player_pos - pos3
 	local direction_vector4 = player_pos - pos4
 	local direction_vector5 = player_pos - pos5
+	local direction_vector6 = player_pos - pos6
+	local direction_vector7 = player_pos - pos7
+	local direction_vector8 = player_pos - pos8
 	local angle1 = vmath.quat_rotation_z(math.atan2(direction_vector1.y, direction_vector1.x))
 	local angle2 = vmath.quat_rotation_z(math.atan2(direction_vector2.y, direction_vector2.x))
 	local angle3 = vmath.quat_rotation_z(math.atan2(direction_vector3.y, direction_vector3.x))
 	local angle4 = vmath.quat_rotation_z(math.atan2(direction_vector4.y, direction_vector4.x))
 	local angle5 = vmath.quat_rotation_z(math.atan2(direction_vector5.y, direction_vector5.x))
+	local angle6 = vmath.quat_rotation_z(math.atan2(direction_vector6.y, direction_vector6.x))
+	local angle7 = vmath.quat_rotation_z(math.atan2(direction_vector7.y, direction_vector7.x))
+	local angle8 = vmath.quat_rotation_z(math.atan2(direction_vector8.y, direction_vector8.x))
 	factory.create("#bullet_factory", pos1, angle1, {direction = vmath.rotate(angle1, ref_vector)})
 	factory.create("#bullet_factory", pos2, angle2, {direction = vmath.rotate(angle2, ref_vector)})
 	factory.create("#bullet_factory", pos3, angle3, {direction = vmath.rotate(angle3, ref_vector)})
 	factory.create("#bullet_factory", pos4, angle4, {direction = vmath.rotate(angle4, ref_vector)})
 	factory.create("#bullet_factory", pos5, angle5, {direction = vmath.rotate(angle5, ref_vector)})
+	factory.create("#bullet_factory", pos6, angle6, {direction = vmath.rotate(angle6, ref_vector)})
+	factory.create("#bullet_factory", pos7, angle7, {direction = vmath.rotate(angle7, ref_vector)})
+	factory.create("#bullet_factory", pos8, angle8, {direction = vmath.rotate(angle8, ref_vector)})
 end
 
 local function bullet_pattern_2(loop)

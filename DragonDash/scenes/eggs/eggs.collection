@@ -1,2 +1,14 @@
 name: "eggs"
 scale_along_z: 0
+embedded_instances {
+  id: "go"
+  data: ""
+}
+embedded_instances {
+  id: "gui"
+  data: "components {\n"
+  "  id: \"eggs\"\n"
+  "  component: \"/scenes/eggs/eggs.gui\"\n"
+  "}\n"
+  ""
+}

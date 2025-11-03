@@ -86,10 +86,8 @@ images {
   image: "/assets/images/core/correct.png"
 }
 images {
-  image: "/assets/images/core/upgrade_screen.png"
-}
-images {
   image: "/assets/images/core/power.png"
+  pivot_y: 0.514836
 }
 images {
   image: "/assets/images/core/menu2.png"
@@ -120,5 +118,8 @@ images {
 }
 images {
   image: "/assets/images/core/bullets/long_bone_bullet.png"
+}
+images {
+  image: "/assets/images/core/buttons/skin_button.png"
 }
 extrude_borders: 1

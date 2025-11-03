@@ -41,9 +41,9 @@ local function bullet_pattern_1(loop)
 end
 
 local function bullet_burst_2() -- creates bullets coming from the boss to the player
-	local pos1 = global.player_position + vmath.vector3(0, 356, 0)
-	local pos2 = global.player_position + vmath.vector3(32, 388, 0)
-	local pos3 = global.player_position + vmath.vector3(-32, 388, 0)
+	local pos1 = global.player_position + vmath.vector3(0, 456, 0)
+	local pos2 = global.player_position + vmath.vector3(32, 488, 0)
+	local pos3 = global.player_position + vmath.vector3(-32, 488, 0)
 	local angle = vmath.quat_rotation_z(math.rad(-90))
 	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
 	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})
@@ -51,11 +51,11 @@ local function bullet_burst_2() -- creates bullets coming from the boss to the p
 end
 
 local function bullet_burst_2_lv2() -- creates bullets coming from the boss to the player
-	local pos1 = global.player_position + vmath.vector3(0, 356, 0)
-	local pos2 = global.player_position + vmath.vector3(32, 388, 0)
-	local pos3 = global.player_position + vmath.vector3(-32, 388, 0)
-	local pos4 = global.player_position + vmath.vector3(64, 420, 0)
-	local pos5 = global.player_position + vmath.vector3(-64, 420, 0)
+	local pos1 = global.player_position + vmath.vector3(0, 456, 0)
+	local pos2 = global.player_position + vmath.vector3(32, 488, 0)
+	local pos3 = global.player_position + vmath.vector3(-32, 488, 0)
+	local pos4 = global.player_position + vmath.vector3(64, 520, 0)
+	local pos5 = global.player_position + vmath.vector3(-64, 520, 0)
 	local angle = vmath.quat_rotation_z(math.rad(-90))
 	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
 	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})

@@ -1,8 +1,6 @@
 -- results.gui_script
 
 local global = require("main.global")
-local enable_retry = true
-local enable_next = true
 
 local function format_time(seconds)
 	-- Calculate minutes and seconds
@@ -12,15 +10,11 @@ local function format_time(seconds)
 	return string.format("%02d'%02d''", minutes, remainingSeconds)
 end
 
-local function format_percentage(percentage)
-	return string.format("%.2f%%", percentage)
-end
-
 function init(self)
 	-- Enable user inputs
 	msg.post(".", "acquire_input_focus")
 	-- Configure GUI based on last battle result
-	gui.set_text(gui.get_node("bosses_label"), format_time(global.last_battle_result.bosses_defeated))
+	gui.set_text(gui.get_node("bosses_label"), global.last_battle_result.bosses_defeated)
 	gui.set_text(gui.get_node("time_label"), format_time(global.last_battle_result.time))
 	-- Calculate gold reward
 	local gold_earned = (global.last_battle_result.bosses_defeated * 100)
@@ -47,7 +41,7 @@ function on_input(self, action_id, action)
 		local retry_button = gui.get_node("retry_button")
 		local menu_button = gui.get_node("menu_button")
 		--local eggs_button = gui.get_node("eggs_button")
-		if gui.pick_node(retry_button, action.x, action.y) and enable_retry then
+		if gui.pick_node(retry_button, action.x, action.y) then
 			msg.post("main:/go", "load_battle")
 		elseif gui.pick_node(menu_button, action.x, action.y) then
 			msg.post("main:/go", "load_main_menu")

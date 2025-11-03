@@ -36,11 +36,5 @@ embedded_instances {
   "  data: \"collection: \\\"/scenes/eggs/eggs.collection\\\"\\n"
   "\"\n"
   "}\n"
-  "embedded_components {\n"
-  "  id: \"upgrade_proxy\"\n"
-  "  type: \"collectionproxy\"\n"
-  "  data: \"collection: \\\"/scenes/upgrade/upgrade.collection\\\"\\n"
-  "\"\n"
-  "}\n"
   ""
 }

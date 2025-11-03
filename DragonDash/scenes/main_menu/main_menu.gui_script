@@ -56,7 +56,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Configure GUI
 	self.selected_level = global.selected_level
-	--gui.set_text(gui.get_node("gold_label"), global.gold)
+	gui.set_text(gui.get_node("gold_label"), global.gold)
 	--gui.set_text(gui.get_node("eggs_label"), global.eggs)
 	update_level_select_gui()
 	update_music_button_image()
@@ -73,7 +73,6 @@ function on_input(self, action_id, action)
 		local info_close_button = gui.get_node("info_menu/close_button")
 		local music_button = gui.get_node("music_button")
 		local sound_button = gui.get_node("sound_button")
-		local upgrade_button = gui.get_node("upgrade_button")
 		if gui.pick_node(play_button, action.x, action.y) then
 			msg.post("main:/go", "load_battle")
 		elseif gui.pick_node(level_select_left_button, action.x, action.y) and global.selected_level > 1 then
@@ -92,8 +91,6 @@ function on_input(self, action_id, action)
 		elseif gui.pick_node(sound_button, action.x, action.y) then
 			print("sound_button")
 			toggle_sound_button()
-		elseif gui.pick_node(upgrade_button, action.x, action.y) then
-			print("upgrade_button")
 		end
 	end
 end
