@@ -29,7 +29,7 @@ images {
   image: "/assets/images/core/egg.png"
 }
 images {
-  image: "/assets/images/core/buttons/select_level_button.png"
+  image: "/assets/images/core/buttons/arrow_button.png"
 }
 images {
   image: "/assets/images/core/bg.png"
@@ -86,10 +86,6 @@ images {
   image: "/assets/images/core/correct.png"
 }
 images {
-  image: "/assets/images/core/power.png"
-  pivot_y: 0.514836
-}
-images {
   image: "/assets/images/core/menu2.png"
 }
 images {
@@ -121,5 +117,8 @@ images {
 }
 images {
   image: "/assets/images/core/buttons/skin_button.png"
+}
+images {
+  image: "/assets/images/core/skin-bg.png"
 }
 extrude_borders: 1
