@@ -1,0 +1,80 @@
+-- eggs.gui_script
+
+
+local global = require("main.global")
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	-- Set left select button off
+	local select_left_button = gui.get_node("select_left_button")
+	gui.set_color(select_left_button, vmath.vector4(0.5, 0.5, 0.5, 1))
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("touch") and action.pressed then
+		local menu_button = gui.get_node("menu_button")
+		local skin_1_button = gui.get_node("skin_bg1")
+		local skin_2_button = gui.get_node("skin_bg2")
+		local skin_3_button = gui.get_node("skin_bg3")
+		local skin_4_button = gui.get_node("skin_bg4")
+		local skin_5_button = gui.get_node("skin_bg5")
+		local skin_6_button = gui.get_node("skin_bg6")
+		local skin_7_button = gui.get_node("skin_bg7")
+		local skin_8_button = gui.get_node("skin_bg8")
+		local skin_9_button = gui.get_node("skin_bg9")
+		local skin_10_button = gui.get_node("skin_bg10")
+		local skin_11_button = gui.get_node("skin_bg11")
+		local skin_12_button = gui.get_node("skin_bg12")
+		local skin_13_button = gui.get_node("skin_bg13")
+		local skin_14_button = gui.get_node("skin_bg14")
+		local skin_15_button = gui.get_node("skin_bg15")
+		if gui.pick_node(menu_button, action.x, action.y) then
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_1_button, action.x, action.y) then
+			global.player_1_selected_skin = 1
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_2_button, action.x, action.y) then
+			global.player_1_selected_skin = 2
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_3_button, action.x, action.y) then
+			global.player_1_selected_skin = 3
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_4_button, action.x, action.y) then
+			global.player_1_selected_skin = 4
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_5_button, action.x, action.y) then
+			global.player_1_selected_skin = 5
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_6_button, action.x, action.y) then
+			global.player_1_selected_skin = 6
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_7_button, action.x, action.y) then
+			global.player_1_selected_skin = 7
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_8_button, action.x, action.y) then
+			global.player_1_selected_skin = 8
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_9_button, action.x, action.y) then
+			global.player_1_selected_skin = 9
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_10_button, action.x, action.y) then
+			global.player_1_selected_skin = 10
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_11_button, action.x, action.y) then
+			global.player_1_selected_skin = 11
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_12_button, action.x, action.y) then
+			global.player_1_selected_skin = 12
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_13_button, action.x, action.y) then
+			global.player_1_selected_skin = 13
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_14_button, action.x, action.y) then
+			global.player_1_selected_skin = 14
+			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_15_button, action.x, action.y) then
+			global.player_1_selected_skin = 15
+			msg.post("main:/go", "load_main_menu")
+		end
+	end
+end

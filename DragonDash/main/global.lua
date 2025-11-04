@@ -6,6 +6,7 @@ local M = {}
 -- constants
 M.SCREEN_WIDTH = 1280
 M.SCREEN_HEIGHT = 720
+M.MAX_EGGS = 30
 M.TOTAL_BOSSES = 7
 M.STARTING_BOSS_HEALTH = 100
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
@@ -21,21 +22,20 @@ M.LEVEL_COLORS = {
 }
 
 -- variables
-M.selected_level = 1
-M.max_unlucked_level = 2
 M.player_hearts = 5
-M.gold = 0
+M.gold = 1000
 M.eggs = 3
 M.player_position = vmath.vector3(200, 360, 0)
-M.upgrade_levels = {
-	main_power = 1,
-	pet_power = 1,
-	hearts = 1,
-}
+M.player_1_selected_skin = 3
+M.player_2_selected_skin = 2
 M.unlocked_skins = {
-	false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false, false, false,
+}
+M.high_score = {
+	bosses_defeated = 1,
+	time = 120, -- time in seconds
 }
 M.last_battle_result = { -- Example victory data
 	bosses_defeated = 1,

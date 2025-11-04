@@ -4,7 +4,7 @@ embedded_instances {
   id: "go"
   data: "components {\n"
   "  id: \"eggs\"\n"
-  "  component: \"/scenes/eggs/eggs.script\"\n"
+  "  component: \"/scenes/skins/skins.script\"\n"
   "}\n"
   ""
 }
@@ -12,11 +12,11 @@ embedded_instances {
   id: "gui"
   data: "components {\n"
   "  id: \"eggs\"\n"
-  "  component: \"/scenes/eggs/eggs.gui\"\n"
+  "  component: \"/scenes/skins/skins.gui\"\n"
   "}\n"
   ""
   position {
-    z: 0.1
+    z: 0.2
   }
 }
 embedded_instances {

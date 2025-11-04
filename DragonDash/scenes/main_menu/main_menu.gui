@@ -112,21 +112,6 @@ nodes {
 nodes {
   position {
     x: 70.0
-    y: 190.0
-  }
-  scale {
-    x: 4.0
-    y: 4.0
-  }
-  type: TYPE_BOX
-  texture: "core/egg_button"
-  id: "egg_button"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 70.0
     y: 310.0
   }
   scale {
@@ -134,8 +119,23 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
+  texture: "core/egg_button"
+  id: "eggs_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 70.0
+    y: 190.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
   texture: "core/skin_button"
-  id: "skin_button"
+  id: "skins_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -174,38 +174,6 @@ nodes {
   id: "eggs_label"
   pivot: PIVOT_W
   inherit_alpha: true
-}
-nodes {
-  position {
-    x: 465.0
-    y: 470.0
-  }
-  scale {
-    x: -4.0
-    y: 4.0
-  }
-  type: TYPE_BOX
-  texture: "core/select_level_button"
-  id: "level_select_left_button"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-  enabled: false
-}
-nodes {
-  position {
-    x: 815.0
-    y: 470.0
-  }
-  scale {
-    x: 4.0
-    y: 4.0
-  }
-  type: TYPE_BOX
-  texture: "core/select_level_button"
-  id: "level_select_right_button"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-  enabled: false
 }
 nodes {
   position {
