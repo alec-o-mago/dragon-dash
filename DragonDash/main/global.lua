@@ -8,6 +8,8 @@ M.SCREEN_WIDTH = 1280
 M.SCREEN_HEIGHT = 720
 M.MAX_EGGS = 30
 M.TOTAL_BOSSES = 7
+M.STARTING_SKIN_COST = 100
+M.SKIN_COST_INCREMENT = 20
 M.STARTING_BOSS_HEALTH = 100
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
 M.BOSS_Y_POSITIONS = {128, 360, 592}
@@ -29,9 +31,9 @@ M.player_position = vmath.vector3(200, 360, 0)
 M.player_1_selected_skin = 3
 M.player_2_selected_skin = 2
 M.unlocked_skins = {
-	false, false, false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false, false, false,
+	true, true, true, false, false, false, false, false, false, false,
+	false, false, false, false, false, --false, false, false, false, false,
+	--false, false, false, false, false, false, false, false, false, false,
 }
 M.high_score = {
 	bosses_defeated = 1,

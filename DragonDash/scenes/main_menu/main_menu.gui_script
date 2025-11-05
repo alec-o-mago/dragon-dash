@@ -3,7 +3,6 @@
 
 local global = require("main.global")
 
-
 local function update_music_button_image()
 	local music_button = gui.get_node("music_button")
 	if global.config_music then
@@ -37,8 +36,12 @@ function init(self)
 	-- Configure GUI
 	self.selected_level = global.selected_level
 	gui.set_text(gui.get_node("gold_label"), global.gold)
-	--gui.set_text(gui.get_node("eggs_label"), global.eggs)
-	--gui.set_color(level_select_left_button, vmath.vector4(0.4, 0.4, 0.4, 1))
+	if global.gold < (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs)) then -- If not enough gold
+		gui.set_color(gui.get_node("eggs_button"), vmath.vector4(0.4, 0.4, 0.4, 1))
+	else
+		gui.set_color(gui.get_node("gold_label"), vmath.vector4(0.2, 1, 0.2, 1))
+	end
+	gui.set_text(gui.get_node("eggs_label"), string.format("%.1f%%", (global.eggs/global.MAX_EGGS*100)))
 	update_music_button_image()
 	update_sound_button_image()
 end
@@ -55,7 +58,7 @@ function on_input(self, action_id, action)
 		local sound_button = gui.get_node("sound_button")
 		if gui.pick_node(play_button, action.x, action.y) then
 			msg.post("main:/go", "load_battle")
-		elseif gui.pick_node(eggs_button, action.x, action.y) then
+		elseif gui.pick_node(eggs_button, action.x, action.y) and global.gold >= (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs)) then
 			msg.post("main:/go", "load_eggs")
 		elseif gui.pick_node(skins_button, action.x, action.y) then
 			msg.post("main:/go", "load_skins")

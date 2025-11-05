@@ -2,6 +2,13 @@
 
 local global = require("main.global")
 
+local function calculate_gold(n)
+	if n < 0 then -- n: number of bosses defeated (integer >= 0)
+		return 0
+	end
+	return 5 * n * n + 95 * n
+end
+
 local function format_time(seconds)
 	-- Calculate minutes and seconds
 	local minutes = math.floor(seconds / 60)
@@ -17,23 +24,11 @@ function init(self)
 	gui.set_text(gui.get_node("bosses_label"), global.last_battle_result.bosses_defeated)
 	gui.set_text(gui.get_node("time_label"), format_time(global.last_battle_result.time))
 	-- Calculate gold reward
-	local gold_earned = (global.last_battle_result.bosses_defeated * 100)
+	local gold_earned = calculate_gold(global.last_battle_result.bosses_defeated)
 	global.gold = global.gold + gold_earned
 	gui.set_text(gui.get_node("gold_earned_label"), "+"..gold_earned)
 	-- Set current gold label
 	gui.set_text(gui.get_node("gold_label"), global.gold)
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Learn more: https://defold.com/manuals/script/
-	-- Remove this function if not needed
-end
-
-function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
 end
 
 function on_input(self, action_id, action)

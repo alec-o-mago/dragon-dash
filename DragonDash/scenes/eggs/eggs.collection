@@ -42,3 +42,65 @@ embedded_instances {
   "}\n"
   ""
 }
+embedded_instances {
+  id: "big_egg"
+  data: "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"big_egg\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "size {\\n"
+  "  x: 32.0\\n"
+  "  y: 32.0\\n"
+  "}\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/assets/images/player/player.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 640.0\n"
+  "    y: 360.0\n"
+  "    z: 0.1\n"
+  "  }\n"
+  "  scale {\n"
+  "    x: 4.0\n"
+  "    y: 4.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"bg\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"skin_bg\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/assets/images/core/core.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 640.0\n"
+  "    y: 360.0\n"
+  "  }\n"
+  "  scale {\n"
+  "    x: 37.0\n"
+  "    y: 37.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    z: 0.2
+  }
+}
+embedded_instances {
+  id: "fx"
+  data: "components {\n"
+  "  id: \"open_egg\"\n"
+  "  component: \"/components/particles/open_egg.particlefx\"\n"
+  "}\n"
+  ""
+  position {
+    x: 640.0
+    y: 360.0
+  }
+}

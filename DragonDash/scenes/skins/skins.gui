@@ -58,11 +58,11 @@ nodes {
     y: 555.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -73,11 +73,11 @@ nodes {
     y: 555.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg2"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -88,11 +88,11 @@ nodes {
     y: 555.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg3"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -103,11 +103,11 @@ nodes {
     y: 555.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg4"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -118,11 +118,11 @@ nodes {
     y: 555.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg5"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -133,11 +133,11 @@ nodes {
     y: 360.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg6"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -148,11 +148,11 @@ nodes {
     y: 360.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg7"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -163,11 +163,11 @@ nodes {
     y: 360.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg8"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -178,11 +178,11 @@ nodes {
     y: 360.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg9"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -193,11 +193,11 @@ nodes {
     y: 360.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg10"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -208,11 +208,11 @@ nodes {
     y: 165.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg11"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -223,11 +223,11 @@ nodes {
     y: 165.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg12"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -238,11 +238,11 @@ nodes {
     y: 165.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg13"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -253,11 +253,11 @@ nodes {
     y: 165.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg14"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -268,11 +268,11 @@ nodes {
     y: 165.0
   }
   scale {
-    x: 32.0
-    y: 32.0
+    x: 34.0
+    y: 34.0
   }
   type: TYPE_BOX
-  texture: "core/skin-bg"
+  texture: "core/skin_bg"
   id: "skin_bg15"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO

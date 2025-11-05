@@ -119,6 +119,6 @@ images {
   image: "/assets/images/core/buttons/skin_button.png"
 }
 images {
-  image: "/assets/images/core/skin-bg.png"
+  image: "/assets/images/core/skin_bg.png"
 }
 extrude_borders: 1

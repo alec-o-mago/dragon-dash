@@ -1,3 +1,9 @@
+images {
+  image: "/assets/images/player/question_mark.png"
+}
+images {
+  image: "/assets/images/player/big_egg.png"
+}
 animations {
   id: "01"
   images {

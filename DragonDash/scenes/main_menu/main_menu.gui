@@ -22,16 +22,22 @@ textures {
 nodes {
   position {
     x: 640.0
-    y: 640.0
+    y: 690.0
+  }
+  scale {
+    x: 1.5
+    y: 1.5
   }
   size {
-    x: 780.0
-    y: 100.0
+    x: 554.0
+    y: 140.0
   }
   type: TYPE_TEXT
-  text: "DRAGON DASH DUNGEONS"
+  text: "DRAGON DASH\n"
+  "DUNGEONS"
   font: "main_menu_title"
   id: "main-menu-title"
+  pivot: PIVOT_N
   inherit_alpha: true
 }
 nodes {
@@ -51,8 +57,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1209.0
-    y: 70.0
+    x: 1210.0
+    y: 190.0
   }
   scale {
     x: 4.0
@@ -66,8 +72,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1209.0
-    y: 190.0
+    x: 1210.0
+    y: 310.0
   }
   scale {
     x: 4.0
@@ -81,8 +87,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1209.0
-    y: 310.0
+    x: 1210.0
+    y: 70.0
   }
   scale {
     x: 4.0
@@ -96,7 +102,7 @@ nodes {
 }
 nodes {
   position {
-    x: 70.0
+    x: -120.0
     y: 70.0
   }
   scale {
@@ -112,7 +118,7 @@ nodes {
 nodes {
   position {
     x: 70.0
-    y: 310.0
+    y: 190.0
   }
   scale {
     x: 4.0
@@ -127,7 +133,7 @@ nodes {
 nodes {
   position {
     x: 70.0
-    y: 190.0
+    y: 310.0
   }
   scale {
     x: 4.0
@@ -161,15 +167,15 @@ nodes {
 }
 nodes {
   position {
-    x: 60.0
-    y: 610.0
+    x: 68.0
+    y: 99.0
   }
   size {
     x: 150.0
     y: 32.0
   }
   type: TYPE_TEXT
-  text: "5%"
+  text: "15%"
   font: "bit_potion"
   id: "eggs_label"
   pivot: PIVOT_W
@@ -239,8 +245,8 @@ nodes {
 }
 nodes {
   position {
-    x: 36.0
-    y: 610.0
+    x: 39.0
+    y: 98.0
   }
   scale {
     x: 4.0
@@ -254,16 +260,16 @@ nodes {
 }
 nodes {
   position {
-    x: 60.0
-    y: 670.0
+    x: 68.0
+    y: 44.0
     z: 0.1
   }
   size {
-    x: 150.0
+    x: 200.0
     y: 32.0
   }
   type: TYPE_TEXT
-  text: "1000\n"
+  text: "100/150\n"
   ""
   font: "bit_potion"
   id: "gold_label"
@@ -272,8 +278,8 @@ nodes {
 }
 nodes {
   position {
-    x: 36.0
-    y: 670.0
+    x: 39.0
+    y: 43.0
     z: 0.1
   }
   scale {
@@ -283,6 +289,39 @@ nodes {
   type: TYPE_BOX
   texture: "core/gold"
   id: "gold_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1156.0
+    y: -47.0
+    z: 0.1
+  }
+  size {
+    x: 175.0
+    y: 32.0
+  }
+  type: TYPE_TEXT
+  text: "1000/150"
+  font: "bit_potion"
+  id: "gold_label1"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 1132.0
+    y: -47.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/gold"
+  id: "gold_icon1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
