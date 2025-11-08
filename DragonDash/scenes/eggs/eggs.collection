@@ -69,7 +69,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"bg\"\n"
+  "  id: \"sprite1\"\n"
   "  type: \"sprite\"\n"
   "  data: \"default_animation: \\\"skin_bg\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"

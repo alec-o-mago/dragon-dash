@@ -3,6 +3,10 @@ textures {
   name: "core"
   texture: "/assets/images/core/core.atlas"
 }
+textures {
+  name: "player"
+  texture: "/assets/images/player/player.atlas"
+}
 nodes {
   position {
     x: 70.0

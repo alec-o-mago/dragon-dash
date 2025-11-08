@@ -40,6 +40,14 @@ end
 function init(self)
 	-- Enable player input
 	msg.post(".", "acquire_input_focus")
+	-- Remove tutorial messsage after a few seconds
+	go.animate("/tutorial_message#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_INEXPO, 1, 2	, function()
+		msg.post("/tutorial_message#sprite","disable")
+	end)
+	-- main dragon skin
+	sprite.play_flipbook(msg.url("/player#sprite"), string.format("%02d", global.player_1_selected_skin))
+	-- Particle FX
+	particlefx.play("/player#spawn")
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
 	boss_order = create_random_order(global.TOTAL_BOSSES)
@@ -47,15 +55,9 @@ function init(self)
 	player_hearts = global.player_hearts
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
 	-- Load first boss
-	load_next_boss()
-	-- Remove tutorial messsage after a few seconds
-	go.animate("/tutorial_message#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_INEXPO, 1, 2, function()
-		msg.post("/tutorial_message#sprite","disable")
+	timer.delay(2, false, function ()
+		load_next_boss()
 	end)
-	-- main dragon skin
-	sprite.play_flipbook(msg.url("/player#sprite"), string.format("%02d", global.player_1_selected_skin))
-	-- Particle FX
-	particlefx.play("/player#spawn")
 end
 
 function fixed_update(self, dt)

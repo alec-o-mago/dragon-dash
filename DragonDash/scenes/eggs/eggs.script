@@ -28,11 +28,10 @@ function init(self)
 		global.gold = global.gold - (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs))
 		global.eggs = global.eggs + 1
 		-- TODO save progress here
-		-- effects
+		-- Visual Effects
 		particlefx.play("/fx#open_egg")
 		loop_egg_colors()
 		timer.delay(1, false, function()
-			-- go.set("/big_egg#sprite", "default_animation", string.format("%02d", choosen_skin))
 			sprite.play_flipbook("/big_egg#sprite", string.format("%02d", choosen_skin))
 		end)
 	end
