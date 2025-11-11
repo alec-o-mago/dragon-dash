@@ -514,3 +514,513 @@ animations {
   playback: PLAYBACK_LOOP_FORWARD
   fps: 10
 }
+animations {
+  id: "31"
+  images {
+    image: "/assets/images/player/31/1.png"
+  }
+  images {
+    image: "/assets/images/player/31/2.png"
+  }
+  images {
+    image: "/assets/images/player/31/3.png"
+  }
+  images {
+    image: "/assets/images/player/31/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "32"
+  images {
+    image: "/assets/images/player/32/1.png"
+  }
+  images {
+    image: "/assets/images/player/32/2.png"
+  }
+  images {
+    image: "/assets/images/player/32/3.png"
+  }
+  images {
+    image: "/assets/images/player/32/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "33"
+  images {
+    image: "/assets/images/player/33/1.png"
+  }
+  images {
+    image: "/assets/images/player/33/2.png"
+  }
+  images {
+    image: "/assets/images/player/33/3.png"
+  }
+  images {
+    image: "/assets/images/player/33/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "34"
+  images {
+    image: "/assets/images/player/34/1.png"
+  }
+  images {
+    image: "/assets/images/player/34/2.png"
+  }
+  images {
+    image: "/assets/images/player/34/3.png"
+  }
+  images {
+    image: "/assets/images/player/34/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "35"
+  images {
+    image: "/assets/images/player/35/1.png"
+  }
+  images {
+    image: "/assets/images/player/35/2.png"
+  }
+  images {
+    image: "/assets/images/player/35/3.png"
+  }
+  images {
+    image: "/assets/images/player/35/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "36"
+  images {
+    image: "/assets/images/player/36/1.png"
+  }
+  images {
+    image: "/assets/images/player/36/2.png"
+  }
+  images {
+    image: "/assets/images/player/36/3.png"
+  }
+  images {
+    image: "/assets/images/player/36/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "37"
+  images {
+    image: "/assets/images/player/37/1.png"
+  }
+  images {
+    image: "/assets/images/player/37/2.png"
+  }
+  images {
+    image: "/assets/images/player/37/3.png"
+  }
+  images {
+    image: "/assets/images/player/37/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "38"
+  images {
+    image: "/assets/images/player/38/1.png"
+  }
+  images {
+    image: "/assets/images/player/38/2.png"
+  }
+  images {
+    image: "/assets/images/player/38/3.png"
+  }
+  images {
+    image: "/assets/images/player/38/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "39"
+  images {
+    image: "/assets/images/player/39/1.png"
+  }
+  images {
+    image: "/assets/images/player/39/2.png"
+  }
+  images {
+    image: "/assets/images/player/39/3.png"
+  }
+  images {
+    image: "/assets/images/player/39/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "40"
+  images {
+    image: "/assets/images/player/40/1.png"
+  }
+  images {
+    image: "/assets/images/player/40/2.png"
+  }
+  images {
+    image: "/assets/images/player/40/3.png"
+  }
+  images {
+    image: "/assets/images/player/40/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "41"
+  images {
+    image: "/assets/images/player/41/1.png"
+  }
+  images {
+    image: "/assets/images/player/41/2.png"
+  }
+  images {
+    image: "/assets/images/player/41/3.png"
+  }
+  images {
+    image: "/assets/images/player/41/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "42"
+  images {
+    image: "/assets/images/player/42/1.png"
+  }
+  images {
+    image: "/assets/images/player/42/2.png"
+  }
+  images {
+    image: "/assets/images/player/42/3.png"
+  }
+  images {
+    image: "/assets/images/player/42/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "43"
+  images {
+    image: "/assets/images/player/43/1.png"
+  }
+  images {
+    image: "/assets/images/player/43/2.png"
+  }
+  images {
+    image: "/assets/images/player/43/3.png"
+  }
+  images {
+    image: "/assets/images/player/43/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "44"
+  images {
+    image: "/assets/images/player/44/1.png"
+  }
+  images {
+    image: "/assets/images/player/44/2.png"
+  }
+  images {
+    image: "/assets/images/player/44/3.png"
+  }
+  images {
+    image: "/assets/images/player/44/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "45"
+  images {
+    image: "/assets/images/player/45/1.png"
+  }
+  images {
+    image: "/assets/images/player/45/2.png"
+  }
+  images {
+    image: "/assets/images/player/45/3.png"
+  }
+  images {
+    image: "/assets/images/player/45/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "46"
+  images {
+    image: "/assets/images/player/46/1.png"
+  }
+  images {
+    image: "/assets/images/player/46/2.png"
+  }
+  images {
+    image: "/assets/images/player/46/3.png"
+  }
+  images {
+    image: "/assets/images/player/46/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "47"
+  images {
+    image: "/assets/images/player/47/1.png"
+  }
+  images {
+    image: "/assets/images/player/47/2.png"
+  }
+  images {
+    image: "/assets/images/player/47/3.png"
+  }
+  images {
+    image: "/assets/images/player/47/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "48"
+  images {
+    image: "/assets/images/player/48/1.png"
+  }
+  images {
+    image: "/assets/images/player/48/2.png"
+  }
+  images {
+    image: "/assets/images/player/48/3.png"
+  }
+  images {
+    image: "/assets/images/player/48/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "49"
+  images {
+    image: "/assets/images/player/49/1.png"
+  }
+  images {
+    image: "/assets/images/player/49/2.png"
+  }
+  images {
+    image: "/assets/images/player/49/3.png"
+  }
+  images {
+    image: "/assets/images/player/49/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "50"
+  images {
+    image: "/assets/images/player/50/1.png"
+  }
+  images {
+    image: "/assets/images/player/50/2.png"
+  }
+  images {
+    image: "/assets/images/player/50/3.png"
+  }
+  images {
+    image: "/assets/images/player/50/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "51"
+  images {
+    image: "/assets/images/player/51/1.png"
+  }
+  images {
+    image: "/assets/images/player/51/2.png"
+  }
+  images {
+    image: "/assets/images/player/51/3.png"
+  }
+  images {
+    image: "/assets/images/player/51/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "52"
+  images {
+    image: "/assets/images/player/52/1.png"
+  }
+  images {
+    image: "/assets/images/player/52/2.png"
+  }
+  images {
+    image: "/assets/images/player/52/3.png"
+  }
+  images {
+    image: "/assets/images/player/52/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "53"
+  images {
+    image: "/assets/images/player/53/1.png"
+  }
+  images {
+    image: "/assets/images/player/53/2.png"
+  }
+  images {
+    image: "/assets/images/player/53/3.png"
+  }
+  images {
+    image: "/assets/images/player/53/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "54"
+  images {
+    image: "/assets/images/player/54/1.png"
+  }
+  images {
+    image: "/assets/images/player/54/2.png"
+  }
+  images {
+    image: "/assets/images/player/54/3.png"
+  }
+  images {
+    image: "/assets/images/player/54/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "55"
+  images {
+    image: "/assets/images/player/55/1.png"
+  }
+  images {
+    image: "/assets/images/player/55/2.png"
+  }
+  images {
+    image: "/assets/images/player/55/3.png"
+  }
+  images {
+    image: "/assets/images/player/55/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "56"
+  images {
+    image: "/assets/images/player/56/1.png"
+  }
+  images {
+    image: "/assets/images/player/56/2.png"
+  }
+  images {
+    image: "/assets/images/player/56/3.png"
+  }
+  images {
+    image: "/assets/images/player/56/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "57"
+  images {
+    image: "/assets/images/player/57/1.png"
+  }
+  images {
+    image: "/assets/images/player/57/2.png"
+  }
+  images {
+    image: "/assets/images/player/57/3.png"
+  }
+  images {
+    image: "/assets/images/player/57/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "58"
+  images {
+    image: "/assets/images/player/58/1.png"
+  }
+  images {
+    image: "/assets/images/player/58/2.png"
+  }
+  images {
+    image: "/assets/images/player/58/3.png"
+  }
+  images {
+    image: "/assets/images/player/58/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "59"
+  images {
+    image: "/assets/images/player/59/1.png"
+  }
+  images {
+    image: "/assets/images/player/59/2.png"
+  }
+  images {
+    image: "/assets/images/player/59/3.png"
+  }
+  images {
+    image: "/assets/images/player/59/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}
+animations {
+  id: "60"
+  images {
+    image: "/assets/images/player/60/1.png"
+  }
+  images {
+    image: "/assets/images/player/60/2.png"
+  }
+  images {
+    image: "/assets/images/player/60/3.png"
+  }
+  images {
+    image: "/assets/images/player/60/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+}

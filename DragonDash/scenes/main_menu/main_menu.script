@@ -15,6 +15,7 @@ function init(self)
 	update_background_tint()
 	-- Main dragon skin
 	sprite.play_flipbook(msg.url("/dragon#sprite"), string.format("%02d", global.player_1_selected_skin))
+	--sprite.play_flipbook(msg.url("/dragon#sprite"), "56")
 	-- Main dragon particle effect
 	particlefx.play("/particle#1")
 end

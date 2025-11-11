@@ -6,7 +6,7 @@ local M = {}
 -- Constants
 M.SCREEN_WIDTH = 1280
 M.SCREEN_HEIGHT = 720
-M.MAX_EGGS = 30
+M.MAX_EGGS = 60
 M.TOTAL_BOSSES = 7
 M.STARTING_SKIN_COST = 100
 M.SKIN_COST_INCREMENT = 20
@@ -32,6 +32,9 @@ M.player_1_selected_skin = 3
 M.player_2_selected_skin = 2
 M.unlocked_skins = {
 	true, true, true, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, false, false, false, false,
 }

@@ -27,6 +27,7 @@ function init(self)
 		global.unlocked_skins[choosen_skin] = true
 		global.gold = global.gold - (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs))
 		global.eggs = global.eggs + 1
+		global.player_1_selected_skin = choosen_skin
 		-- TODO save progress here
 		-- Visual Effects
 		particlefx.play("/fx#open_egg")
