@@ -37,7 +37,21 @@ local function load_next_boss()
 	--go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 end
 
+local function on_commercial_break_finished(self)
+	-- continue game
+	print("Comercial finished")
+	--sound.pause("#sound", false)
+	msg.post("main:/go", "set_time_step", { factor = 1, mode = 0 }) -- Unpause
+end
+
 function init(self)
+	-- Poki SDK
+	if html5 then
+		poki_sdk.gameplay_start()
+		-- ( TODO: pause sounds )
+		msg.post("main:/go", "set_time_step", { factor = 0, mode = 0 }) -- Pause the game
+		poki_sdk.commercial_break(function() on_commercial_break_finished(self) end)
+	end
 	-- Enable player input
 	msg.post(".", "acquire_input_focus")
 	-- Remove tutorial messsage after a few seconds
@@ -51,7 +65,7 @@ function init(self)
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
 	boss_order = create_random_order(global.TOTAL_BOSSES)
-	-- boss_order = {1, 2, 3, 4, 5, 6, 7}
+	--boss_order = {7, 7, 3, 4, 5, 6, 7}
 	player_hearts = global.player_hearts
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
 	-- Load first boss
@@ -76,6 +90,9 @@ function on_message(self, message_id, message, sender)
 				time = time_passed,
 			}
 			--msg.post("main:/go", "load_main_menu")
+			if html5 then
+				poki_sdk.gameplay_stop() -- Tell Poki SDK that game play has stopped
+			end
 			msg.post("main:/go", "load_results")
 		else
 			player_hearts = player_hearts - 1

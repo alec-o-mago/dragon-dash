@@ -1,5 +1,21 @@
 -- main.script
 
+local global = require("main.global")
+
+local function load_game()
+	print("load_game()")
+	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
+	local save_data = sys.load(save_file)
+	global.gold = save_data.gold or global.STARTING_GOLD
+	global.eggs = save_data.eggs or global.STARTING_EGGS
+	global.high_score = save_data.high_score or global.STARTING_HIGH_SCORE
+	global.player_1_selected_skin = save_data.player_1_selected_skin or global.STARTING_PLAYER_1_SKIN
+	global.player_2_selected_skin = save_data.player_2_selected_skin or global.STARTING_PLAYER_2_SKIN
+	-- Load unlocked skins in a way that doesn't break the save system if I add more skins in the future
+	for i = 1, #save_data.unlocked_skins do
+		global.unlocked_skins[i] = save_data.unlocked_skins[i]
+	end
+end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")

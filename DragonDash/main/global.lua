@@ -11,13 +11,22 @@ M.TOTAL_BOSSES = 7
 M.STARTING_SKIN_COST = 100
 M.SKIN_COST_INCREMENT = 20
 M.STARTING_BOSS_HEALTH = 100
+M.BOSS_HEALTH_INCREMENT = 15
+M.STARTING_GOLD = 0
+M.STARTING_EGGS = 0
+M.STARTING_PLAYER_1_SKIN = 1
+M.STARTING_PLAYER_2_SKIN = 2
+M.STARTING_HIGH_SCORE = {
+	bosses_defeated = 0,
+	time = 0, -- Time in seconds
+}
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
 M.BOSS_Y_POSITIONS = {128, 360, 592}
 M.LEVEL_COLORS = {
 	vmath.vector4(1.0, 0.6, 0.6, 1.0), -- red
 	vmath.vector4(0.6, 1.0, 0.6, 1.0), -- green
 	vmath.vector4(0.6, 0.6, 1.0, 1.0), -- blue
-	vmath.vector4(0.9, 0.9, 0.5, 1.0), -- 
+	vmath.vector4(0.9, 0.9, 0.5, 1.0), -- yellow
 	vmath.vector4(0.9, 0.5, 0.9, 1.0), -- 
 	vmath.vector4(0.5, 0.9, 0.9, 1.0), -- 
 	vmath.vector4(0.7, 0.7, 0.8, 1.0), -- gray

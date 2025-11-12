@@ -35,13 +35,22 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Configure GUI
 	self.selected_level = global.selected_level
-	gui.set_text(gui.get_node("gold_label"), global.gold)
-	if global.gold < (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs)) then -- If not enough gold
+	local next_egg_cost = (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs))
+	if global.gold < next_egg_cost then -- If not enough gold
 		gui.set_color(gui.get_node("eggs_button"), vmath.vector4(0.4, 0.4, 0.4, 1))
 	else
 		gui.set_color(gui.get_node("gold_label"), vmath.vector4(0.2, 1, 0.2, 1))
 	end
-	gui.set_text(gui.get_node("eggs_label"), string.format("%.1f%%", (global.eggs/global.MAX_EGGS*100)))
+	if global.eggs < global.MAX_EGGS then
+		gui.set_text(gui.get_node("eggs_label"), string.format("%.1f%%", (global.eggs/global.MAX_EGGS*100)))
+		gui.set_text(gui.get_node("gold_label"), global.gold.."/"..next_egg_cost)
+	else
+		gui.set_text(gui.get_node("eggs_label"), "100%")
+		gui.set_color(gui.get_node("eggs_label"), vmath.vector4(0.9, 0.9, 0.1, 1))
+		gui.set_text(gui.get_node("gold_label"), global.gold)
+		gui.set_color(gui.get_node("gold_label"), vmath.vector4(0.9, 0.9, 0.1, 1))
+	end
+	
 	update_music_button_image()
 	update_sound_button_image()
 end

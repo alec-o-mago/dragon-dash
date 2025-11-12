@@ -14,21 +14,28 @@ local function loop_egg_colors()
 end
 
 function init(self)
-	-- Select a random skin to unlock
+	-- Select a random locked skin to unlock
 	local falseIndices = {}
 	for i, value in ipairs(global.unlocked_skins) do
-		if not value then -- Check if the value is false
+		if not value then
 			table.insert(falseIndices, i)
 		end
 	end
-	if #falseIndices > 0 then -- There is a skin to unlock
+	if #falseIndices > 0 then -- If there is a skin left to unlock
 		local randomIndexInFalseIndices = math.random(1, #falseIndices)
 		local choosen_skin = falseIndices[randomIndexInFalseIndices]
 		global.unlocked_skins[choosen_skin] = true
 		global.gold = global.gold - (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs))
 		global.eggs = global.eggs + 1
 		global.player_1_selected_skin = choosen_skin
-		-- TODO save progress here
+		-- Save game progress
+		local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
+		sys.save(save_file, {
+			gold = global.gold,
+			eggs = global.eggs,
+			player_1_selected_skin = global.player_1_selected_skin,
+			unlocked_skins = global.unlocked_skins,
+		})
 		-- Visual Effects
 		particlefx.play("/fx#open_egg")
 		loop_egg_colors()
