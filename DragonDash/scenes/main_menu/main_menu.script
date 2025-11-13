@@ -18,10 +18,18 @@ function init(self)
 	--sprite.play_flipbook(msg.url("/dragon#sprite"), "56")
 	-- Main dragon particle effect
 	particlefx.play("/particle#1")
+	-- Sound Effects
+	if global.config_music then
+		sound.play("go#sound")
+	end
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("change_background") then
 		update_background_tint()
+	elseif message_id == hash("music_on") then
+		sound.play("go#sound")
+	elseif message_id == hash("music_off") then
+		sound.stop("go#sound")
 	end
 end

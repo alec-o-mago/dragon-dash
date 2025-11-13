@@ -35,13 +35,16 @@ local function load_next_boss()
 	go.animate("/bg2#bg2","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[boss_order[next_boss]], go.EASING_LINEAR, 2)
 	--go.set("/bg1#bg1","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 	--go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[next_boss]])
+	-- Make the world faster
+	msg.post("main:/go", "set_battle_speed", { speed = 1 + (current_boss - 1)*0.02})
+	go.set("/go#sound", "speed", 1 + (current_boss - 1)*0.03)
 end
 
 local function on_commercial_break_finished(self)
 	-- continue game
 	print("Comercial finished")
 	--sound.pause("#sound", false)
-	msg.post("main:/go", "set_time_step", { factor = 1, mode = 0 }) -- Unpause
+	msg.post("main:/go", "set_time_step", { factor = 1, mode = 0 }) -- Ad break unpause
 end
 
 function init(self)
@@ -72,6 +75,10 @@ function init(self)
 	timer.delay(2, false, function ()
 		load_next_boss()
 	end)
+	-- Sound Effects
+	if global.config_music then
+		sound.play("go#sound")
+	end
 end
 
 function fixed_update(self, dt)
@@ -89,9 +96,9 @@ function on_message(self, message_id, message, sender)
 				bosses_defeated = current_boss - 1,
 				time = time_passed,
 			}
-			--msg.post("main:/go", "load_main_menu")
+			msg.post("main:/go", "set_battle_speed", { speed = 1 })
 			if html5 then
-				poki_sdk.gameplay_stop() -- Tell Poki SDK that game play has stopped
+				poki_sdk.gameplay_stop() -- Tell Poki SDK that gameplay has stopped
 			end
 			msg.post("main:/go", "load_results")
 		else

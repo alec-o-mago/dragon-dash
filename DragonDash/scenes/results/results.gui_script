@@ -18,7 +18,6 @@ local function format_time(seconds)
 end
 
 local function animate_gold_earned(n, current, increment)
-	print("n: "..n)
 	if n >= 1 then
 		gui.set_text(gui.get_node("gold_earned_label"), "+"..math.floor(current))
 		timer.delay(0.05, false, function() animate_gold_earned(n-1, current+increment, increment) end)
@@ -64,7 +63,13 @@ function init(self)
 	end
 	-- Save game progress
 	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
-	sys.save(save_file, { gold = global.gold, high_score = global.high_score })
+	sys.save(save_file, {
+		gold = global.gold,
+		eggs = global.eggs,
+		player_1_selected_skin = global.player_1_selected_skin,
+		unlocked_skins = global.unlocked_skins,
+		high_score = global.high_score,
+	})
 	-- Animate Gold Earned
 	print("gold earned: "..gold_earned)
 	animate_gold_earned(30, 0, gold_earned/30)

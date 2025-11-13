@@ -3,9 +3,12 @@
 local global = require("main.global")
 
 local function load_game()
-	print("load_game()")
+	--print("load_game()")
 	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
 	local save_data = sys.load(save_file)
+	--for key, value in pairs(save_data) do
+	--	print(key .. ": " .. tostring(value))
+	--end
 	global.gold = save_data.gold or global.STARTING_GOLD
 	global.eggs = save_data.eggs or global.STARTING_EGGS
 	global.high_score = save_data.high_score or global.STARTING_HIGH_SCORE
@@ -19,8 +22,10 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	msg.post('/go#splash_proxy', "load")
 	self.loaded_proxy = nil
+	--load_game()
+	msg.post('/go#main_menu_proxy', "load")
+	--msg.post('/go#splash_proxy', "load")
 end
 
 function on_message(self, message_id, message, sender)
@@ -43,5 +48,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("load_results") then
 		msg.post(self.loaded_proxy, "unload")
 		msg.post('/go#results_proxy', "load")
+	elseif message_id == hash("set_battle_speed") then
+		msg.post("#battle_proxy", "set_time_step", { factor = message.speed, mode = 0 })
 	end
 end

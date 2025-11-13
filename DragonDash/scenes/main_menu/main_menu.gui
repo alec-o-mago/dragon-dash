@@ -102,21 +102,6 @@ nodes {
 }
 nodes {
   position {
-    x: -120.0
-    y: 70.0
-  }
-  scale {
-    x: 4.0
-    y: 4.0
-  }
-  type: TYPE_BOX
-  texture: "core/archievement_button"
-  id: "archievement_button"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
     x: 70.0
     y: 190.0
   }
@@ -167,7 +152,7 @@ nodes {
 }
 nodes {
   position {
-    x: 68.0
+    x: 65.0
     y: 99.0
   }
   size {
@@ -175,7 +160,7 @@ nodes {
     y: 32.0
   }
   type: TYPE_TEXT
-  text: "15%"
+  text: "12.3%"
   font: "bit_potion"
   id: "eggs_label"
   pivot: PIVOT_W
@@ -196,21 +181,6 @@ nodes {
   id: "level_label"
   inherit_alpha: true
   enabled: false
-}
-nodes {
-  position {
-    x: 640.0
-    y: 265.0
-  }
-  size {
-    x: 150.0
-    y: 150.0
-  }
-  type: TYPE_BOX
-  id: "player_select_button"
-  inherit_alpha: true
-  alpha: 0.0
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   type: TYPE_TEMPLATE
@@ -245,7 +215,7 @@ nodes {
 }
 nodes {
   position {
-    x: 39.0
+    x: 36.0
     y: 98.0
   }
   scale {
@@ -260,8 +230,8 @@ nodes {
 }
 nodes {
   position {
-    x: 68.0
-    y: 44.0
+    x: 65.0
+    y: 40.0
     z: 0.1
   }
   size {
@@ -269,7 +239,7 @@ nodes {
     y: 32.0
   }
   type: TYPE_TEXT
-  text: "100/150\n"
+  text: "100/120\n"
   ""
   font: "bit_potion"
   id: "gold_label"
@@ -278,8 +248,8 @@ nodes {
 }
 nodes {
   position {
-    x: 39.0
-    y: 43.0
+    x: 36.0
+    y: 40.0
     z: 0.1
   }
   scale {

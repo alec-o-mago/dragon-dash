@@ -6,6 +6,12 @@ embedded_instances {
   "  id: \"eggs\"\n"
   "  component: \"/scenes/eggs/eggs.script\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/assets/sounds/egg.ogg\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }
 embedded_instances {

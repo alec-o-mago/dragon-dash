@@ -1,6 +1,7 @@
 -- eggs.script
 
 local global = require("main.global")
+local can_unlock_more = false
 
 local function loop_egg_colors()
 	-- Define the starting values for the animation
@@ -13,7 +14,9 @@ local function loop_egg_colors()
 	end)
 end
 
-function init(self)
+local function unlock_egg()
+	-- Reset main image to egg
+	sprite.play_flipbook("/big_egg#sprite", "big_egg")
 	-- Select a random locked skin to unlock
 	local falseIndices = {}
 	for i, value in ipairs(global.unlocked_skins) do
@@ -30,17 +33,38 @@ function init(self)
 		global.player_1_selected_skin = choosen_skin
 		-- Save game progress
 		local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
+		local save_data = sys.load(save_file)
 		sys.save(save_file, {
 			gold = global.gold,
 			eggs = global.eggs,
 			player_1_selected_skin = global.player_1_selected_skin,
 			unlocked_skins = global.unlocked_skins,
+			high_score = save_data.highscore or global.STARTING_HIGH_SCORE
 		})
 		-- Visual Effects
 		particlefx.play("/fx#open_egg")
 		loop_egg_colors()
 		timer.delay(1, false, function()
 			sprite.play_flipbook("/big_egg#sprite", string.format("%02d", choosen_skin))
+			-- Sound Effects
+			if global.config_sound then
+				sound.play("go#sound")
+			end
 		end)
+	end
+	-- Check if player can unlock another egg
+	local next_egg_cost = (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs))
+	if global.gold < next_egg_cost then
+		msg.post("eggs:/gui#eggs", "disable_eggs_button")
+	end
+end
+
+function init(self)
+	unlock_egg()
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("more_eggs") then
+		unlock_egg()
 	end
 end

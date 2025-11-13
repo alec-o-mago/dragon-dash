@@ -1,6 +1,6 @@
 -- basic_green_bullet.script
 
-go.property("speed", 330)
+go.property("speed", 300)
 go.property("direction", vmath.vector3(-1,0,0))
 
 function init(self)

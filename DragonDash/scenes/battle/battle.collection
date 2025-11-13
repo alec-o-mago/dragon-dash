@@ -141,6 +141,14 @@ embedded_instances {
   "  id: \"battle\"\n"
   "  component: \"/scenes/battle/battle.script\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/assets/sounds/main_theme.ogg\\\"\\n"
+  "looping: 1\\n"
+  "speed: 1.1\\n"
+  "\"\n"
+  "}\n"
   ""
 }
 embedded_instances {
