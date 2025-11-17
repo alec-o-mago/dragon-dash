@@ -42,8 +42,8 @@ end
 
 local function on_commercial_break_finished(self)
 	-- continue game
-	print("Comercial finished")
-	--sound.pause("#sound", false)
+	-- print("Comercial finished")
+	sound.pause("/go#sound", false)
 	msg.post("main:/go", "set_time_step", { factor = 1, mode = 0 }) -- Ad break unpause
 end
 
@@ -51,7 +51,7 @@ function init(self)
 	-- Poki SDK
 	if html5 then
 		poki_sdk.gameplay_start()
-		-- ( TODO: pause sounds )
+		sound.pause("/go#sound", true)
 		msg.post("main:/go", "set_time_step", { factor = 0, mode = 0 }) -- Pause the game
 		poki_sdk.commercial_break(function() on_commercial_break_finished(self) end)
 	end
@@ -91,7 +91,6 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "enable")
 	elseif message_id == hash("player_took_damage") then
 		if player_hearts <= 0 then
-			print("Lose...")
 			global.last_battle_result = {
 				bosses_defeated = current_boss - 1,
 				time = time_passed,

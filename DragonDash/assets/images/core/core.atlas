@@ -121,4 +121,7 @@ images {
 images {
   image: "/assets/images/core/skin_bg.png"
 }
+images {
+  image: "/assets/images/core/buttons/ad_button.png"
+}
 extrude_borders: 1

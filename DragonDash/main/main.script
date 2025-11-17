@@ -15,15 +15,17 @@ local function load_game()
 	global.player_1_selected_skin = save_data.player_1_selected_skin or global.STARTING_PLAYER_1_SKIN
 	global.player_2_selected_skin = save_data.player_2_selected_skin or global.STARTING_PLAYER_2_SKIN
 	-- Load unlocked skins in a way that doesn't break the save system if I add more skins in the future
-	for i = 1, #save_data.unlocked_skins do
-		global.unlocked_skins[i] = save_data.unlocked_skins[i]
+	if save_data.unlocked_skins then -- If there is save data for unlocked skins in the first place
+		for i = 1, #save_data.unlocked_skins do
+			global.unlocked_skins[i] = save_data.unlocked_skins[i]
+		end
 	end
 end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.loaded_proxy = nil
-	--load_game()
+	load_game()
 	msg.post('/go#main_menu_proxy', "load")
 	--msg.post('/go#splash_proxy', "load")
 end

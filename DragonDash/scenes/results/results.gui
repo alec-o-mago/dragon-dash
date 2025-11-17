@@ -390,5 +390,41 @@ nodes {
   pivot: PIVOT_W
   inherit_alpha: true
 }
+nodes {
+  position {
+    x: 890.0
+    y: 195.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/ad_button"
+  id: "ad_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 950.0
+    y: 201.0
+    z: 0.2
+  }
+  size {
+    x: 250.0
+    y: 50.0
+  }
+  color {
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "(+1000)"
+  font: "bit_potion_ext"
+  id: "ad_gold_earned_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
