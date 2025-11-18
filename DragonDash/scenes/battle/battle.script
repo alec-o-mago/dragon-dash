@@ -1,5 +1,6 @@
 -- battle.script
 
+
 local global = require("main.global")
 local boss_id
 local boss_phase = 1
@@ -36,15 +37,15 @@ local function load_next_boss()
 	--go.set("/bg1#bg1","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 	--go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 	-- Make the world faster
-	msg.post("main:/go", "set_battle_speed", { speed = 1 + (current_boss - 1)*0.02})
-	go.set("/go#sound", "speed", 1 + (current_boss - 1)*0.03)
+	msg.post("main:/go", "set_battle_speed", { speed = 0.96 + current_boss * 0.02})
+	go.set("/go#sound", "speed", 1 + current_boss * 0.02)
 end
 
 local function on_commercial_break_finished(self)
 	-- continue game
 	-- print("Comercial finished")
 	sound.pause("/go#sound", false)
-	msg.post("main:/go", "set_time_step", { factor = 1, mode = 0 }) -- Ad break unpause
+	msg.post("main:/go", "set_time_step", { factor = 1, mode = 0 }) -- Unpause the game
 end
 
 function init(self)
@@ -57,10 +58,22 @@ function init(self)
 	end
 	-- Enable player input
 	msg.post(".", "acquire_input_focus")
-	-- Remove tutorial messsage after a few seconds
-	go.animate("/tutorial_message#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_INEXPO, 1, 2	, function()
-		msg.post("/tutorial_message#sprite","disable")
-	end)
+	-- Manage Tutorial messages
+	local sysinfo = sys.get_sys_info()
+	if sysinfo.system_name == "Android" or sysinfo.system_name == "iPhone OS" then -- User is playing from mobile
+		go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.5, 0, function()
+			go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.5, 0, function()
+				go.delete("/tutorial_message_mobile")
+			end)
+		end)
+		go.delete("/tutorial_message_keyboard")
+	else -- User is playing from desktop
+		print("desktop")
+		go.animate("/tutorial_message_keyboard#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_INEXPO, 1.5, 1.5, function()
+			go.delete("/tutorial_message_keyboard")
+		end)
+		go.delete("/tutorial_message_mobile")
+	end
 	-- main dragon skin
 	sprite.play_flipbook(msg.url("/player#sprite"), string.format("%02d", global.player_1_selected_skin))
 	-- Particle FX
@@ -72,7 +85,7 @@ function init(self)
 	player_hearts = global.player_hearts
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
 	-- Load first boss
-	timer.delay(2, false, function ()
+	timer.delay(2.5, false, function ()
 		load_next_boss()
 	end)
 	-- Sound Effects

@@ -426,5 +426,41 @@ nodes {
   pivot: PIVOT_W
   inherit_alpha: true
 }
+nodes {
+  position {
+    x: 5.0
+    y: 5.0
+  }
+  rotation {
+    z: 10.0
+  }
+  type: TYPE_PARTICLEFX
+  id: "party_left_fx"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  particlefx: "party_left"
+}
+nodes {
+  position {
+    x: 1275.0
+    y: 5.0
+  }
+  rotation {
+    z: -10.0
+  }
+  type: TYPE_PARTICLEFX
+  id: "party_right_fx"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  particlefx: "party_right"
+}
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
+particlefxs {
+  name: "party_left"
+  particlefx: "/components/particles/party_left.particlefx"
+}
+particlefxs {
+  name: "party_right"
+  particlefx: "/components/particles/party_right.particlefx"
+}

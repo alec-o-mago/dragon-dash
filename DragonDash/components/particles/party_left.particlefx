@@ -1,6 +1,6 @@
 emitters {
   mode: PLAY_MODE_ONCE
-  duration: 1.25
+  duration: 1.5
   space: EMISSION_SPACE_WORLD
   rotation {
     z: -0.38268343
@@ -40,7 +40,7 @@ emitters {
   properties {
     key: EMITTER_KEY_PARTICLE_SPEED
     points {
-      y: 350.0
+      y: 360.0
     }
     spread: 50.0
   }

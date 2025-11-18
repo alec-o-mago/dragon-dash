@@ -23,13 +23,13 @@ M.STARTING_HIGH_SCORE = {
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
 M.BOSS_Y_POSITIONS = {128, 360, 592}
 M.LEVEL_COLORS = {
-	vmath.vector4(1.0, 0.6, 0.6, 1.0), -- red
-	vmath.vector4(0.6, 1.0, 0.6, 1.0), -- green
-	vmath.vector4(0.6, 0.6, 1.0, 1.0), -- blue
-	vmath.vector4(0.9, 0.9, 0.5, 1.0), -- yellow
-	vmath.vector4(0.9, 0.5, 0.9, 1.0), -- 
-	vmath.vector4(0.5, 0.9, 0.9, 1.0), -- 
-	vmath.vector4(0.7, 0.7, 0.8, 1.0), -- gray
+	vmath.vector4(0.6, 0.4, 0.4, 1.0), -- red
+	vmath.vector4(0.4, 0.6, 0.4, 1.0), -- green
+	vmath.vector4(0.4, 0.4, 0.6, 1.0), -- blue
+	vmath.vector4(0.6, 0.6, 0.3, 1.0), -- yellow
+	vmath.vector4(0.6, 0.3, 0.6, 1.0), -- 
+	vmath.vector4(0.3, 0.6, 0.6, 1.0), -- 
+	vmath.vector4(0.5, 0.5, 0.5, 1.0), -- gray
 }
 
 -- Variables

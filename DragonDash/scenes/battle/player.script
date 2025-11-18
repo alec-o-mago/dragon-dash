@@ -1,5 +1,6 @@
 -- player.script
 
+
 local invunerable = false
 
 local function spawn_bullet()

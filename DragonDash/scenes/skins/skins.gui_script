@@ -18,6 +18,25 @@ local function set_skins()
 	gui.set_text(gui.get_node("page_label"), current_page.."/4")
 end
 
+local function change_skin(skin)
+	-- Change skin
+	global.player_1_selected_skin = skin + ((current_page-1)*15)
+	-- Save game progress
+	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
+	sys.save(save_file, {
+		gold = global.gold,
+		eggs = global.eggs,
+		player_1_selected_skin = global.player_1_selected_skin,
+		player_2_selected_skin = global.player_2_selected_skin,
+		config_music = global.config_music,
+		config_sound = global.config_sound,
+		unlocked_skins = global.unlocked_skins,
+		high_score = global.high_score,
+	})
+	-- Leave
+	msg.post("main:/go", "load_main_menu")
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Enable and disable skins based on obtaine dor not
@@ -59,50 +78,35 @@ function on_input(self, action_id, action)
 			end
 			set_skins()
 		elseif gui.pick_node(skin_1_button, action.x, action.y) and global.unlocked_skins[1 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 1 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(1)
 		elseif gui.pick_node(skin_2_button, action.x, action.y) and global.unlocked_skins[2 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 2 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(2)
 		elseif gui.pick_node(skin_3_button, action.x, action.y) and global.unlocked_skins[3 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 3 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(3)
 		elseif gui.pick_node(skin_4_button, action.x, action.y) and global.unlocked_skins[4 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 4 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(4)
 		elseif gui.pick_node(skin_5_button, action.x, action.y) and global.unlocked_skins[5 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 5 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(5)
 		elseif gui.pick_node(skin_6_button, action.x, action.y) and global.unlocked_skins[6 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 6 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(6)
 		elseif gui.pick_node(skin_7_button, action.x, action.y) and global.unlocked_skins[7 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 7 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(7)
 		elseif gui.pick_node(skin_8_button, action.x, action.y) and global.unlocked_skins[8 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 8 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(8)
 		elseif gui.pick_node(skin_9_button, action.x, action.y) and global.unlocked_skins[9 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 9 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(9)
 		elseif gui.pick_node(skin_10_button, action.x, action.y) and global.unlocked_skins[10 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 10 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(10)
 		elseif gui.pick_node(skin_11_button, action.x, action.y) and global.unlocked_skins[11 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 11 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(11)
 		elseif gui.pick_node(skin_12_button, action.x, action.y) and global.unlocked_skins[12 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 12 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(12)
 		elseif gui.pick_node(skin_13_button, action.x, action.y) and global.unlocked_skins[13 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 13 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(13)
 		elseif gui.pick_node(skin_14_button, action.x, action.y) and global.unlocked_skins[14 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 14 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(14)
 		elseif gui.pick_node(skin_15_button, action.x, action.y) and global.unlocked_skins[15 + ((current_page-1)*15)] then
-			global.player_1_selected_skin = 15 + ((current_page-1)*15)
-			msg.post("main:/go", "load_main_menu")
+			change_skin(15)
 		end
 	end
 end

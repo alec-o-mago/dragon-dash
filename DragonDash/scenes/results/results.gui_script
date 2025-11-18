@@ -99,11 +99,17 @@ function init(self)
 		gold = global.gold,
 		eggs = global.eggs,
 		player_1_selected_skin = global.player_1_selected_skin,
+		player_2_selected_skin = global.player_2_selected_skin,
+		config_music = global.config_music,
+		config_sound = global.config_sound,
 		unlocked_skins = global.unlocked_skins,
 		high_score = global.high_score,
 	})
 	-- Animate Gold Earned
 	animate_gold_earned(30, 0, gold_earned/30)
+	-- ParticleFX
+	gui.play_particlefx(gui.get_node("party_left_fx"))
+	gui.play_particlefx(gui.get_node("party_right_fx"))
 	-- Disable Ad button if not in HTML5
 	if not html5 then
 		gui.set_enabled(gui.get_node("ad_button"), false)

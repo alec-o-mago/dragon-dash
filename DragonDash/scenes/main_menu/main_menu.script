@@ -28,8 +28,8 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("change_background") then
 		update_background_tint()
 	elseif message_id == hash("music_on") then
-		sound.play("go#sound")
+		sound.pause("go#sound", true)
 	elseif message_id == hash("music_off") then
-		sound.stop("go#sound")
+		sound.pause("go#sound", false)
 	end
 end

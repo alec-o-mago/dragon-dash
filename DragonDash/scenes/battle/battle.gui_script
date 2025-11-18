@@ -1,5 +1,6 @@
 -- battle.gui_script
 
+
 function init(self)
 	self.boss_health_max_size = 644
 	self.health_bar_progress_node_1 = gui.get_node("health_bar_progress_1")

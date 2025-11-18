@@ -124,4 +124,7 @@ images {
 images {
   image: "/assets/images/core/buttons/ad_button.png"
 }
+images {
+  image: "/assets/images/core/tutorial_movement_touch.png"
+}
 extrude_borders: 1
