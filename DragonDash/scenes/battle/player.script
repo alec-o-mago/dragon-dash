@@ -39,6 +39,8 @@ function init(self)
 	self.bullet_timer = timer.delay(0.5, true, function()
 		spawn_bullet()
 	end)
+	self.dragging = false
+	self.last_drag_pos = vmath.vector3()
 end
 
 function fixed_update(self, dt)
@@ -96,6 +98,17 @@ function on_input(self, action_id, action)
 		elseif action.released then
 			self.velocity.x = 0
 		end
+	elseif action_id == hash("touch") then
+		if action.pressed then
+			self.dragging = true
+			self.last_drag_pos = vmath.vector3(action.x, action.y, 0)
+		elseif action.released then
+			self.dragging = false
+		end
+	elseif not action_id and self.dragging then -- Mouse moves
+		local current_drag_position = vmath.vector3(action.x, action.y, 0)
+		local movement = current_drag_position - self.last_drag_pos
+		go.set_position(go.get_position()+movement)
+		self.last_drag_pos = current_drag_position
 	end
-	--self.velocity = vmath.normalize(self.velocity)
 end
