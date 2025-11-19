@@ -1,8 +1,20 @@
 -- results.script
 
+
+local global = require("main.global")
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Set background tint blue
-	go.set("/background#sprite", "tint", vmath.vector4(0.2, 0.2, 1.0, 1.0))
-	--particlefx.play("/partyfx")
+	go.set("/background#sprite", "tint", vmath.vector4(0.2, 0.2, 0.8, 1.0))
+	-- Play victory sound
+	if global.config_music then
+		sound.play("/go#sound")
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("stop_sound") then
+		sound.stop("/go#sound")
+	end
 end

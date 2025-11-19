@@ -37,14 +37,14 @@ local function load_next_boss()
 	--go.set("/bg1#bg1","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 	--go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 	-- Make the world faster
-	msg.post("main:/go", "set_battle_speed", { speed = 0.96 + current_boss * 0.02})
-	go.set("/go#sound", "speed", 1 + current_boss * 0.02)
+	msg.post("main:/go", "set_battle_speed", { speed = 0.98 + current_boss * 0.02})
+	go.set("/go#background_sound", "speed", 1 + current_boss * 0.02)
 end
 
 local function on_commercial_break_finished(self)
 	-- continue game
 	-- print("Comercial finished")
-	sound.pause("/go#sound", false)
+	sound.pause("/go#background_sound", false)
 	msg.post("main:/go", "set_time_step", { factor = 1, mode = 0 }) -- Unpause the game
 end
 
@@ -52,7 +52,7 @@ function init(self)
 	-- Poki SDK
 	if html5 then
 		poki_sdk.gameplay_start()
-		sound.pause("/go#sound", true)
+		sound.pause("/go#background_sound", true)
 		msg.post("main:/go", "set_time_step", { factor = 0, mode = 0 }) -- Pause the game
 		poki_sdk.commercial_break(function() on_commercial_break_finished(self) end)
 	end
@@ -90,7 +90,7 @@ function init(self)
 	end)
 	-- Sound Effects
 	if global.config_music then
-		sound.play("go#sound")
+		sound.play("go#background_sound")
 	end
 end
 
@@ -116,6 +116,9 @@ function on_message(self, message_id, message, sender)
 		else
 			player_hearts = player_hearts - 1
 			msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
+			if global.config_sound then
+				sound.play("/go#player_hit_sound")
+			end
 		end
 	elseif message_id == hash("boss_took_damage") then
 		if boss_health <= 0 then -- Boss was defeated
@@ -134,6 +137,10 @@ function on_message(self, message_id, message, sender)
 			if boss_phase == 1 and boss_percentage <= 0.5 then
 				boss_phase = 2
 				msg.post(msg.url(boss_id), "phase_2")
+			end
+			-- Boss hit Sound
+			if global.config_sound then 
+				sound.play("go#boss_hit_sound")
 			end
 		end
 	end

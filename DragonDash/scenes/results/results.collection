@@ -6,6 +6,12 @@ embedded_instances {
   "  id: \"results\"\n"
   "  component: \"/scenes/results/results.script\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/assets/sounds/victory.ogg\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }
 embedded_instances {

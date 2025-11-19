@@ -50,6 +50,7 @@ local function handle_rewarded_ad()
 		if status == poki_sdk.REWARDED_BREAK_START then
 			-- Pause game sounds and gameplay while the ad plays.
 			-- print("Rewarded break started")
+			msg.post("results:/go", "stop_sound")
 		elseif status == poki_sdk.REWARDED_BREAK_SUCCESS then
 			-- The ad finished successfully, grant the player their reward.
 			-- Resume game sounds and gameplay.
@@ -83,8 +84,8 @@ function init(self)
 		global.high_score.time = global.last_battle_result.time
 		gui.set_color(gui.get_node("highscore_time_label"), vmath.vector4(0.9, 0.9, 0.1, 1))
 	end
-	gui.set_text(gui.get_node("highscore_bosses_label"), global.last_battle_result.bosses_defeated)
-	gui.set_text(gui.get_node("highscore_time_label"), format_time(global.last_battle_result.time))
+	gui.set_text(gui.get_node("highscore_bosses_label"), global.high_score.bosses_defeated)
+	gui.set_text(gui.get_node("highscore_time_label"), format_time(global.high_score.time))
 	-- Configure GUI based on last battle result
 	gui.set_text(gui.get_node("bosses_label"), global.last_battle_result.bosses_defeated)
 	gui.set_text(gui.get_node("time_label"), format_time(global.last_battle_result.time))
