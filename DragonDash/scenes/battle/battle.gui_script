@@ -18,6 +18,7 @@ function on_message(self, message_id, message, sender)
 		gui.set_visible(gui.get_node("player_heart_7"), message.hearts > 6)
 		gui.set_visible(gui.get_node("player_heart_8"), message.hearts > 7)
 		gui.set_visible(gui.get_node("player_heart_9"), message.hearts > 8)
+		gui.set_visible(gui.get_node("player_heart_10"), message.hearts > 9)
 	elseif message_id == hash("update_boss_health") then
 		local progress_bar_1_size = math.max(0, ((message.percentage-0.5)*2) * self.boss_health_max_size)
 		local progress_bar_2_size = math.min(self.boss_health_max_size, (message.percentage*2) * self.boss_health_max_size)
