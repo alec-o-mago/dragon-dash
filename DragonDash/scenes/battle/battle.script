@@ -28,7 +28,7 @@ end
 
 local function load_next_boss()
 	current_boss = current_boss + 1
-	local next_boss = boss_order[(current_boss%7)]
+	local next_boss = boss_order[(current_boss%7)+1]
 	boss_id = factory.create("battle:/boss_factories#"..next_boss, vmath.vector3(1050, 360, 0))
 	boss_health_max = global.STARTING_BOSS_HEALTH + (current_boss * 20)
 	boss_health = boss_health_max
