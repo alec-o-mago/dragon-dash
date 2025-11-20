@@ -16,10 +16,6 @@ M.STARTING_GOLD = 0
 M.STARTING_EGGS = 0
 M.STARTING_PLAYER_1_SKIN = 1
 M.STARTING_PLAYER_2_SKIN = 2
-M.STARTING_HIGH_SCORE = {
-	bosses_defeated = 0,
-	time = 0, -- Time in seconds
-}
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
 M.BOSS_Y_POSITIONS = {128, 360, 592}
 M.LEVEL_COLORS = {
@@ -39,6 +35,12 @@ M.eggs = 3
 M.player_position = vmath.vector3(200, 360, 0)
 M.player_1_selected_skin = 3
 M.player_2_selected_skin = 2
+M.high_score_bosses_defeated = 0
+M.high_score_time = 0
+M.last_battle_bosses_defeated = 1
+M.last_battle_time = 120 -- Time in seconds
+M.config_music = true
+M.config_sound = true
 M.unlocked_skins = {
 	true, true, true, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, false, false, false, false,
@@ -47,16 +49,6 @@ M.unlocked_skins = {
 	false, false, false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, false, false, false, false,
 }
-M.high_score = {
-	bosses_defeated = 1,
-	time = 120, -- Time in seconds
-}
-M.last_battle_result = { -- Example battle data
-	bosses_defeated = 1,
-	time = 120, -- Time in seconds
-}
-M.config_music = true
-M.config_sound = true
 
 -- Module return
 return M

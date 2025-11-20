@@ -62,6 +62,9 @@ local function handle_rewarded_ad()
 			gui.set_enabled(gui.get_node("ad_gold_earned_label"), false)
 			animate_gold_earned(30, gold_earned, (gold_earned+gold_to_reward)/30)
 			update_gold_eggs_label()
+			-- ParticleFX
+			gui.play_particlefx(gui.get_node("party_left_fx"))
+			gui.play_particlefx(gui.get_node("party_right_fx"))
 		elseif status == poki_sdk.REWARDED_BREAK_ERROR then
 			-- An error occurred while showing the ad.
 			-- Inform the player if necessary and resume gameplay.
@@ -76,21 +79,21 @@ function init(self)
 	-- Enable user inputs
 	msg.post(".", "acquire_input_focus")
 	-- Check High Score
-	if global.high_score.bosses_defeated < global.last_battle_result.bosses_defeated then
-		global.high_score.bosses_defeated = global.last_battle_result.bosses_defeated
+	if global.high_score_bosses_defeated < global.last_battle_bosses_defeated then
+		global.high_score_bosses_defeated = global.last_battle_bosses_defeated
 		gui.set_color(gui.get_node("highscore_bosses_label"), vmath.vector4(0.9, 0.9, 0.1, 1))
 	end
-	if global.high_score.time < global.last_battle_result.time then
-		global.high_score.time = global.last_battle_result.time
+	if global.high_score_time < global.last_battle_time then
+		global.high_score_time = global.last_battle_time
 		gui.set_color(gui.get_node("highscore_time_label"), vmath.vector4(0.9, 0.9, 0.1, 1))
 	end
-	gui.set_text(gui.get_node("highscore_bosses_label"), global.high_score.bosses_defeated)
-	gui.set_text(gui.get_node("highscore_time_label"), format_time(global.high_score.time))
+	gui.set_text(gui.get_node("highscore_bosses_label"), global.high_score_bosses_defeated)
+	gui.set_text(gui.get_node("highscore_time_label"), format_time(global.high_score_time))
 	-- Configure GUI based on last battle result
-	gui.set_text(gui.get_node("bosses_label"), global.last_battle_result.bosses_defeated)
-	gui.set_text(gui.get_node("time_label"), format_time(global.last_battle_result.time))
+	gui.set_text(gui.get_node("bosses_label"), global.last_battle_bosses_defeated)
+	gui.set_text(gui.get_node("time_label"), format_time(global.last_battle_time))
 	-- Calculate gold reward
-	gold_earned = calculate_gold(global.last_battle_result.bosses_defeated, global.last_battle_result.time)
+	gold_earned = calculate_gold(global.last_battle_bosses_defeated, global.last_battle_time)
 	global.gold = global.gold + gold_earned
 	--gui.set_text(gui.get_node("gold_earned_label"), "+"..gold_earned)
 	update_gold_eggs_label()
@@ -104,7 +107,8 @@ function init(self)
 		config_music = global.config_music,
 		config_sound = global.config_sound,
 		unlocked_skins = global.unlocked_skins,
-		high_score = global.high_score,
+		high_score_bosses_defeated = global.high_score_bosses_defeated,
+		high_score_time = global.high_score_bosses_defeated,
 	})
 	-- Animate Gold Earned
 	animate_gold_earned(30, 0, gold_earned/30)

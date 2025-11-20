@@ -17,10 +17,10 @@ scale_mode = fit
 wasm_streaming = 1
 show_fullscreen_button = 0
 show_made_with_defold = 0
-splash_image = /assets/images/core/bg.png
+splash_image = /assets/images/system/game_logo_20x.png
 
 [project]
-title = DragonDash
+title = Dragon Dash Dungeons
 dependencies#0 = https://github.com/defold/extension-poki-sdk/archive/refs/heads/main.zip
 
 [graphics]

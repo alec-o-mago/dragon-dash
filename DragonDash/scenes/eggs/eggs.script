@@ -1,7 +1,6 @@
 -- eggs.script
 
 local global = require("main.global")
-local can_unlock_more = false
 
 local function loop_egg_colors()
 	-- Define the starting values for the animation
@@ -33,13 +32,16 @@ local function unlock_egg()
 		global.player_1_selected_skin = choosen_skin
 		-- Save game progress
 		local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
-		local save_data = sys.load(save_file)
 		sys.save(save_file, {
 			gold = global.gold,
 			eggs = global.eggs,
 			player_1_selected_skin = global.player_1_selected_skin,
+			player_2_selected_skin = global.player_2_selected_skin,
+			config_music = global.config_music,
+			config_sound = global.config_sound,
 			unlocked_skins = global.unlocked_skins,
-			high_score = save_data.highscore or global.STARTING_HIGH_SCORE
+			high_score_bosses_defeated = global.high_score_bosses_defeated,
+			high_score_time = global.high_score_time,
 		})
 		-- Visual Effects
 		particlefx.play("/fx#open_egg")

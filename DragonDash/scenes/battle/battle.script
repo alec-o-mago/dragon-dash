@@ -28,7 +28,7 @@ end
 
 local function load_next_boss()
 	current_boss = current_boss + 1
-	local next_boss = boss_order[(current_boss%7)+1]
+	local next_boss = boss_order[(current_boss%7)]
 	boss_id = factory.create("battle:/boss_factories#"..next_boss, vmath.vector3(1050, 360, 0))
 	boss_health_max = global.STARTING_BOSS_HEALTH + (current_boss * 20)
 	boss_health = boss_health_max
@@ -37,7 +37,7 @@ local function load_next_boss()
 	--go.set("/bg1#bg1","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 	--go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 	-- Make the world faster
-	msg.post("main:/go", "set_battle_speed", { speed = 0.98 + current_boss * 0.02})
+	msg.post("main:/go", "set_battle_speed", { speed = 0.94 + current_boss * 0.03})
 	go.set("/go#background_sound", "speed", 1 + current_boss * 0.02)
 end
 
@@ -60,19 +60,18 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Manage Tutorial messages
 	local sysinfo = sys.get_sys_info()
-	if sysinfo.system_name == "Android" or sysinfo.system_name == "iPhone OS" then -- User is playing from mobile
+	if sysinfo.system_name == "Android" or sysinfo.system_name == "iPhone OS" or (html5 and html5.run("(typeof window.orientation !== \"undefined\") || (navigator.userAgent.indexOf('IEMobile') !== -1);")) then -- User is playing from mobile
+		go.delete("/tutorial_message_keyboard")
 		go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.5, 0, function()
 			go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.5, 0, function()
 				go.delete("/tutorial_message_mobile")
 			end)
 		end)
-		go.delete("/tutorial_message_keyboard")
 	else -- User is playing from desktop
-		print("desktop")
+		go.delete("/tutorial_message_mobile")
 		go.animate("/tutorial_message_keyboard#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_INEXPO, 1.5, 1.5, function()
 			go.delete("/tutorial_message_keyboard")
 		end)
-		go.delete("/tutorial_message_mobile")
 	end
 	-- main dragon skin
 	sprite.play_flipbook(msg.url("/player#sprite"), string.format("%02d", global.player_1_selected_skin))
@@ -81,11 +80,11 @@ function init(self)
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
 	boss_order = create_random_order(global.TOTAL_BOSSES)
-	--boss_order = {7, 7, 3, 4, 5, 6, 7}
+	--boss_order = {1, 2, 3, 4, 5, 6, 7}
 	player_hearts = global.player_hearts
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
 	-- Load first boss
-	timer.delay(2.5, false, function ()
+	timer.delay(2.4, false, function ()
 		load_next_boss()
 	end)
 	-- Sound Effects
@@ -103,11 +102,9 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 	elseif message_id == hash("player_took_damage") then
-		if player_hearts <= 0 then
-			global.last_battle_result = {
-				bosses_defeated = current_boss - 1,
-				time = time_passed,
-			}
+		if player_hearts <= 0 then -- Player defeated
+			global.last_battle_bosses_defeated = current_boss - 1
+			global.last_battle_time = time_passed
 			msg.post("main:/go", "set_battle_speed", { speed = 1 })
 			if html5 then
 				poki_sdk.gameplay_stop() -- Tell Poki SDK that gameplay has stopped

@@ -31,7 +31,8 @@ local function change_skin(skin)
 		config_music = global.config_music,
 		config_sound = global.config_sound,
 		unlocked_skins = global.unlocked_skins,
-		high_score = global.high_score,
+		high_score_bosses_defeated = global.high_score_bosses_defeated,
+		high_score_time = global.high_score_time,
 	})
 	-- Leave
 	msg.post("main:/go", "load_main_menu")
