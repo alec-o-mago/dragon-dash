@@ -2,6 +2,7 @@
 
 
 local global = require("main.global")
+local device = require("main.device")
 local boss_id
 local boss_phase = 1
 local time_passed = 0
@@ -59,8 +60,8 @@ function init(self)
 	-- Enable player input
 	msg.post(".", "acquire_input_focus")
 	-- Manage Tutorial messages
-	local sysinfo = sys.get_sys_info()
-	if sysinfo.system_name == "Android" or sysinfo.system_name == "iPhone OS" or (html5 and html5.run("(typeof window.orientation !== \"undefined\") || (navigator.userAgent.indexOf('IEMobile') !== -1);")) then -- User is playing from mobile
+	--local sysinfo = sys.get_sys_info()
+	if device.type == "mobile" or device.type == "tablet" then -- User is playing from mobile
 		go.delete("/tutorial_message_keyboard")
 		go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.5, 0, function()
 			go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.5, 0, function()

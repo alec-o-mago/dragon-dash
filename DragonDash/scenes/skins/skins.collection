@@ -1,9 +1,9 @@
-name: "eggs"
+name: "skins"
 scale_along_z: 0
 embedded_instances {
   id: "go"
   data: "components {\n"
-  "  id: \"eggs\"\n"
+  "  id: \"skins\"\n"
   "  component: \"/scenes/skins/skins.script\"\n"
   "}\n"
   ""
@@ -11,7 +11,7 @@ embedded_instances {
 embedded_instances {
   id: "gui"
   data: "components {\n"
-  "  id: \"eggs\"\n"
+  "  id: \"gui\"\n"
   "  component: \"/scenes/skins/skins.gui\"\n"
   "}\n"
   ""
