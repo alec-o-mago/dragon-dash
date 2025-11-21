@@ -56,7 +56,7 @@ local function handle_rewarded_ad()
 			-- Resume game sounds and gameplay.
 			-- print("Rewarded break success! Granting reward.")
 			-- Add code here to give the player their reward (e.g., add coins, items).
-			local gold_to_reward = math.floor(calculate_gold(global.last_battle_result.bosses_defeated, global.last_battle_result.time)*1.5)
+			local gold_to_reward = math.floor(calculate_gold(global.last_battle_bosses_defeated, global.last_battle_time)*1.5)
 			global.gold = global.gold + gold_to_reward
 			gui.set_enabled(gui.get_node("ad_button"), false)
 			gui.set_enabled(gui.get_node("ad_gold_earned_label"), false)

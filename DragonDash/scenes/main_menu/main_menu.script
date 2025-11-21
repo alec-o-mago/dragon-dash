@@ -14,7 +14,7 @@ function init(self)
 	go.animate("/dragon", "position.y", go.PLAYBACK_LOOP_PINGPONG, 246, go.EASING_INOUTSINE, 2)
 	update_background_tint()
 	-- Main dragon skin
-	sprite.play_flipbook(msg.url("/dragon#sprite"), string.format("%02d", global.player_1_selected_skin))
+	sprite.play_flipbook(msg.url("/dragon#sprite"), tostring(global.player_1_selected_skin))
 	--sprite.play_flipbook(msg.url("/dragon#sprite"), "56")
 	-- Main dragon particle effect
 	particlefx.play("/particle#1")

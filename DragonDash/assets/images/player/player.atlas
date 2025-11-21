@@ -5,7 +5,7 @@ images {
   image: "/assets/images/player/big_egg.png"
 }
 animations {
-  id: "01"
+  id: "1"
   images {
     image: "/assets/images/player/01/1.png"
   }
@@ -22,7 +22,7 @@ animations {
   fps: 10
 }
 animations {
-  id: "02"
+  id: "2"
   images {
     image: "/assets/images/player/02/1.png"
   }
@@ -39,7 +39,7 @@ animations {
   fps: 10
 }
 animations {
-  id: "03"
+  id: "3"
   images {
     image: "/assets/images/player/03/1.png"
   }
@@ -56,7 +56,7 @@ animations {
   fps: 10
 }
 animations {
-  id: "04"
+  id: "4"
   images {
     image: "/assets/images/player/04/1.png"
   }
@@ -73,7 +73,7 @@ animations {
   fps: 10
 }
 animations {
-  id: "05"
+  id: "5"
   images {
     image: "/assets/images/player/05/1.png"
   }
@@ -90,7 +90,7 @@ animations {
   fps: 10
 }
 animations {
-  id: "06"
+  id: "6"
   images {
     image: "/assets/images/player/06/1.png"
   }
@@ -107,7 +107,7 @@ animations {
   fps: 10
 }
 animations {
-  id: "07"
+  id: "7"
   images {
     image: "/assets/images/player/07/1.png"
   }
@@ -124,7 +124,7 @@ animations {
   fps: 10
 }
 animations {
-  id: "08"
+  id: "8"
   images {
     image: "/assets/images/player/08/1.png"
   }
@@ -141,7 +141,7 @@ animations {
   fps: 10
 }
 animations {
-  id: "09"
+  id: "9"
   images {
     image: "/assets/images/player/09/1.png"
   }

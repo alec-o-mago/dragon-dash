@@ -292,7 +292,7 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "player/01"
+  texture: "player/1"
   id: "skin_show1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -308,7 +308,7 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "player/02"
+  texture: "player/2"
   id: "skin_show2"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -324,7 +324,7 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "player/03"
+  texture: "player/3"
   id: "skin_show3"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -340,7 +340,7 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "player/04"
+  texture: "player/4"
   id: "skin_show4"
   layer: "layer2"
   inherit_alpha: true
@@ -357,7 +357,7 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "player/05"
+  texture: "player/5"
   id: "skin_show5"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -373,7 +373,7 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "player/06"
+  texture: "player/6"
   id: "skin_show6"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -389,7 +389,7 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "player/07"
+  texture: "player/7"
   id: "skin_show7"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -405,7 +405,7 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "player/08"
+  texture: "player/8"
   id: "skin_show8"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -421,7 +421,7 @@ nodes {
     y: 4.0
   }
   type: TYPE_BOX
-  texture: "player/09"
+  texture: "player/9"
   id: "skin_show9"
   layer: "layer2"
   inherit_alpha: true
