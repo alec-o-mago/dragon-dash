@@ -50,7 +50,7 @@ embedded_components {
   "}\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
-  "  texture: \"/assets/images/bosses/1/1.atlas\"\n"
+  "  texture: \"/assets/images/core/core.atlas\"\n"
   "}\n"
   ""
   position {

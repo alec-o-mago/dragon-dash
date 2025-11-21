@@ -38,3 +38,6 @@ subpixels = 0
 [physics]
 max_collision_object_count = 256
 
+[native_extension]
+app_manifest = /default.appmanifest
+

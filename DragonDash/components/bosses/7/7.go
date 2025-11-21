@@ -36,7 +36,7 @@ embedded_components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"boss1\"\n"
+  data: "default_animation: \"boss7\"\n"
   "material: \"/assets/shaders/sprite_color_add.material\"\n"
   "size {\n"
   "  x: 64.0\n"
@@ -44,7 +44,7 @@ embedded_components {
   "}\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
-  "  texture: \"/assets/images/bosses/7/7.atlas\"\n"
+  "  texture: \"/assets/images/core/core.atlas\"\n"
   "}\n"
   ""
   position {

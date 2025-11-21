@@ -127,4 +127,25 @@ images {
 images {
   image: "/assets/images/core/tutorial_movement_touch.png"
 }
+images {
+  image: "/assets/images/core/bosses/boss1.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss2.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss3.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss4.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss5.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss6.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss7.png"
+}
 extrude_borders: 1
