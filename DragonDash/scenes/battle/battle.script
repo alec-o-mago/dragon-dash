@@ -38,7 +38,7 @@ local function load_next_boss()
 	--go.set("/bg1#bg1","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 	--go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[next_boss]])
 	-- Make the world faster
-	msg.post("main:/go", "set_battle_speed", { speed = 0.94 + current_boss * 0.03})
+	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.03})
 	go.set("/go#background_sound", "speed", 1 + current_boss * 0.02)
 end
 
@@ -60,7 +60,6 @@ function init(self)
 	-- Enable player input
 	msg.post(".", "acquire_input_focus")
 	-- Manage Tutorial messages
-	--local sysinfo = sys.get_sys_info()
 	if device.type == "mobile" or device.type == "tablet" then -- User is playing from mobile
 		go.delete("/tutorial_message_keyboard")
 		go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.5, 0, function()
