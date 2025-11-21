@@ -19,7 +19,7 @@ end
 local function bullet_burst_1_lv2() -- make many bullets spread from boss radially
 	local pos = go.get_position()
 	local angles = {}
-	for i = 0, 4 do
+	for i = 0, 3 do
 		angles[i+1] = vmath.quat_rotation_z(math.rad(math.random(360)))
 	end
 	for i, ang in pairs(angles) do
