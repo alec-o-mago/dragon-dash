@@ -18,6 +18,7 @@ wasm_streaming = 1
 show_fullscreen_button = 0
 show_made_with_defold = 0
 splash_image = /assets/images/system/game_logo_20x.png
+show_console_banner = 0
 
 [project]
 title = Dragon Dash Dungeons
