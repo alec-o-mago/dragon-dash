@@ -13,10 +13,10 @@ local function load_game()
 	global.eggs = save_data.eggs or global.STARTING_EGGS
 	global.high_score_bosses_defeated = save_data.high_score_bosses_defeated or global.high_score_bosses_defeated
 	global.high_score_time = save_data.high_score_time or global.high_score_time
-	print("save_data.high_score_bosses_defeated: "..(save_data.high_score_bosses_defeated or "vazio"))
-	print("save_data.high_score_time: "..(save_data.high_score_time or "vazio"))
-	print("global.high_score_bosses_defeated: "..global.high_score_bosses_defeated)
-	print("global.high_score_time: "..global.high_score_time)
+	--print("save_data.high_score_bosses_defeated: "..(save_data.high_score_bosses_defeated or "vazio"))
+	--print("save_data.high_score_time: "..(save_data.high_score_time or "vazio"))
+	--print("global.high_score_bosses_defeated: "..global.high_score_bosses_defeated)
+	--print("global.high_score_time: "..global.high_score_time)
 	global.player_1_selected_skin = save_data.player_1_selected_skin or global.STARTING_PLAYER_1_SKIN
 	global.player_2_selected_skin = save_data.player_2_selected_skin or global.STARTING_PLAYER_2_SKIN
 	global.config_music = (save_data.config_music == nil) or save_data.config_music
