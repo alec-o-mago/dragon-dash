@@ -30,7 +30,7 @@ M.LEVEL_COLORS = {
 
 -- Variables
 M.player_hearts = 5
-M.gold = 2000
+M.gold = 100
 M.eggs = 3
 M.player_position = vmath.vector3(200, 360, 0)
 M.player_1_selected_skin = 3
