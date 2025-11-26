@@ -51,11 +51,15 @@ end
 
 function init(self)
 	-- Poki SDK
+	-- if html5 then
+	-- 	poki_sdk.gameplay_start()
+	--	sound.pause("/go#background_sound", true)
+	--	msg.post("main:/go", "set_time_step", { factor = 0, mode = 0 }) -- Pause the game
+	--	poki_sdk.commercial_break(function() on_commercial_break_finished(self) end)
+	--end
+	-- Crazy Games SDK
 	if html5 then
-		poki_sdk.gameplay_start()
-		sound.pause("/go#background_sound", true)
-		msg.post("main:/go", "set_time_step", { factor = 0, mode = 0 }) -- Pause the game
-		poki_sdk.commercial_break(function() on_commercial_break_finished(self) end)
+		crazygames.gameplay_start()
 	end
 	-- Enable player input
 	msg.post(".", "acquire_input_focus")
@@ -106,8 +110,12 @@ function on_message(self, message_id, message, sender)
 			global.last_battle_bosses_defeated = current_boss - 1
 			global.last_battle_time = time_passed
 			msg.post("main:/go", "set_battle_speed", { speed = 1 })
+			--if html5 then
+			--	poki_sdk.gameplay_stop() -- Tell Poki SDK that gameplay has stopped
+			--end
+			-- Crazy Games SDK
 			if html5 then
-				poki_sdk.gameplay_stop() -- Tell Poki SDK that gameplay has stopped
+				crazygames.gameplay_stop()
 			end
 			msg.post("main:/go", "load_results")
 		else

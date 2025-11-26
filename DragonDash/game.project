@@ -8,6 +8,7 @@ shared_state = 1
 width = 1280
 height = 720
 high_dpi = 1
+dynamic_orientation = 1
 
 [android]
 input_method = HiddenInputField
@@ -22,7 +23,7 @@ show_console_banner = 0
 
 [project]
 title = Dragon Dash Dungeons
-dependencies#0 = https://github.com/defold/extension-poki-sdk/archive/refs/heads/main.zip
+dependencies#0 = https://github.com/defold/extension-crazygames/archive/refs/tags/1.2.0.zip
 
 [graphics]
 default_texture_min_filter = nearest

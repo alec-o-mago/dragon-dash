@@ -13,6 +13,37 @@ local function loop_egg_colors()
 	end)
 end
 
+local function save_game()
+	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
+	sys.save(save_file, {
+		gold = global.gold,
+		eggs = global.eggs,
+		player_1_selected_skin = global.player_1_selected_skin,
+		player_2_selected_skin = global.player_2_selected_skin,
+		config_music = global.config_music,
+		config_sound = global.config_sound,
+		unlocked_skins = global.unlocked_skins,
+		high_score_bosses_defeated = global.high_score_bosses_defeated,
+		high_score_time = global.high_score_time,
+	})
+end
+
+local function save_game_crazy_games()
+	local save_data = {
+		gold = global.gold,
+		eggs = global.eggs,
+		player_1_selected_skin = global.player_1_selected_skin,
+		player_2_selected_skin = global.player_2_selected_skin,
+		config_music = global.config_music,
+		config_sound = global.config_sound,
+		unlocked_skins = global.unlocked_skins,
+		high_score_bosses_defeated = global.high_score_bosses_defeated,
+		high_score_time = global.high_score_time,
+	}
+	local json_str = json.encode(save_data)
+	crazygames.set_item("dragon_dash_dungeons_save_file", json_str)
+end
+
 local function unlock_egg()
 	-- Reset main image to egg
 	sprite.play_flipbook("/big_egg#sprite", "big_egg")
@@ -31,18 +62,11 @@ local function unlock_egg()
 		global.eggs = global.eggs + 1
 		global.player_1_selected_skin = choosen_skin
 		-- Save game progress
-		local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
-		sys.save(save_file, {
-			gold = global.gold,
-			eggs = global.eggs,
-			player_1_selected_skin = global.player_1_selected_skin,
-			player_2_selected_skin = global.player_2_selected_skin,
-			config_music = global.config_music,
-			config_sound = global.config_sound,
-			unlocked_skins = global.unlocked_skins,
-			high_score_bosses_defeated = global.high_score_bosses_defeated,
-			high_score_time = global.high_score_time,
-		})
+		if html5 then
+			save_game_crazy_games()
+		else
+			save_game()
+		end
 		-- Visual Effects
 		particlefx.play("/fx#open_egg")
 		loop_egg_colors()

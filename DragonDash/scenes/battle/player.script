@@ -28,7 +28,7 @@ local function loop_blink_transparent(loop)
 		end)
 	else
 		invunerable = false
-		-- msg.post("#collisionobject","enable")
+		-- msg.post("#collisionobject", "enable")
 	end
 end
 

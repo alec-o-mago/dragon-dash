@@ -1,22 +1,17 @@
 -- main.script
 
+
 local global = require("main.global")
+-- local crazygames = require("crazygames")
+-- local json = require("json")
 
 local function load_game()
-	--print("load_game()")
 	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
 	local save_data = sys.load(save_file)
-	--for key, value in pairs(save_data) do
-	--	print(key .. ": " .. tostring(value))
-	--end
 	global.gold = save_data.gold or global.STARTING_GOLD
 	global.eggs = save_data.eggs or global.STARTING_EGGS
 	global.high_score_bosses_defeated = save_data.high_score_bosses_defeated or global.high_score_bosses_defeated
 	global.high_score_time = save_data.high_score_time or global.high_score_time
-	--print("save_data.high_score_bosses_defeated: "..(save_data.high_score_bosses_defeated or "vazio"))
-	--print("save_data.high_score_time: "..(save_data.high_score_time or "vazio"))
-	--print("global.high_score_bosses_defeated: "..global.high_score_bosses_defeated)
-	--print("global.high_score_time: "..global.high_score_time)
 	global.player_1_selected_skin = save_data.player_1_selected_skin or global.STARTING_PLAYER_1_SKIN
 	global.player_2_selected_skin = save_data.player_2_selected_skin or global.STARTING_PLAYER_2_SKIN
 	global.config_music = (save_data.config_music == nil) or save_data.config_music
@@ -29,11 +24,52 @@ local function load_game()
 	end
 end
 
+local function load_game_crazy_games()
+	local json_str = crazygames.get_item("dragon_dash_dungeons_save_file")
+	if json_str then
+		local save_data = json.decode(json_str)
+		global.gold = save_data.gold or global.STARTING_GOLD
+		global.eggs = save_data.eggs or global.STARTING_EGGS
+		global.high_score_bosses_defeated = save_data.high_score_bosses_defeated or global.high_score_bosses_defeated
+		global.high_score_time = save_data.high_score_time or global.high_score_time
+		global.player_1_selected_skin = save_data.player_1_selected_skin or global.STARTING_PLAYER_1_SKIN
+		global.player_2_selected_skin = save_data.player_2_selected_skin or global.STARTING_PLAYER_2_SKIN
+		global.config_music = (save_data.config_music == nil) and true or save_data.config_music  -- Assuming default true if nil
+		global.config_sound = (save_data.config_sound == nil) and true or save_data.config_sound  -- Assuming default true if nil
+
+		-- Load unlocked skins without breaking if new skins are added later
+		if save_data.unlocked_skins then
+			for i = 1, #save_data.unlocked_skins do
+				global.unlocked_skins[i] = save_data.unlocked_skins[i]
+			end
+		end
+	else
+		-- Set defaults if no save data exists
+		global.gold = global.STARTING_GOLD
+		global.eggs = global.STARTING_EGGS
+		global.high_score_bosses_defeated = global.high_score_bosses_defeated  -- Assuming this has a default
+		global.high_score_time = global.high_score_time  -- Assuming this has a default
+		global.player_1_selected_skin = global.STARTING_PLAYER_1_SKIN
+		global.player_2_selected_skin = global.STARTING_PLAYER_2_SKIN
+		global.config_music = true
+		global.config_sound = true
+		-- unlocked_skins should already be initialized to defaults in global
+	end
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.loaded_proxy = nil
-	load_game()
-	msg.post('/go#main_menu_proxy', "load")
+	if html5 then
+		load_game_crazy_games()
+	else
+		load_game()
+	end
+	if global.eggs > global.STARTING_EGGS or global.gold > global.STARTING_GOLD then -- If player already played before
+		msg.post('/go#main_menu_proxy', "load") -- Start game on main menu for old players
+	else
+		msg.post('/go#battle_proxy', "load") -- Start game on battle for new players
+	end
 end
 
 function on_message(self, message_id, message, sender)
