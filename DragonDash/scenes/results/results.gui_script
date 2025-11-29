@@ -134,7 +134,7 @@ function init(self)
 	gui.set_text(gui.get_node("bosses_label"), global.last_battle_bosses_defeated)
 	gui.set_text(gui.get_node("time_label"), format_time(global.last_battle_time))
 	-- Calculate gold reward
-	gold_earned = calculate_gold(global.last_battle_bosses_defeated, global.last_battle_time)
+	gold_earned = calculate_gold(global.last_battle_bosses_defeated, global.last_battle_time) * 2 -- Gold temporarily increased
 	global.gold = global.gold + gold_earned
 	--gui.set_text(gui.get_node("gold_earned_label"), "+"..gold_earned)
 	update_gold_eggs_label()
