@@ -55,7 +55,7 @@ local function change_skin(skin)
 	-- Change skin
 	global.player_1_selected_skin = skin + ((current_page-1)*15)
 	-- Save game progress
-	if html5 then
+	if html5 and crazygames then
 		save_game_crazy_games()
 	else
 		save_game()

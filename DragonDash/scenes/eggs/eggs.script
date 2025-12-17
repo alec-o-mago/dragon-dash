@@ -62,7 +62,7 @@ local function unlock_egg()
 		global.eggs = global.eggs + 1
 		global.player_1_selected_skin = choosen_skin
 		-- Save game progress
-		if html5 then
+		if html5 and crazygames then
 			save_game_crazy_games()
 		else
 			save_game()

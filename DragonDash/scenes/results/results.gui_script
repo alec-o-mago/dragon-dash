@@ -125,7 +125,7 @@ function init(self)
 		gui.set_color(gui.get_node("highscore_time_label"), vmath.vector4(0.9, 0.9, 0.1, 1))
 		high_score_break = true
 	end
-	if html5 and high_score_break then
+	if html5 and crazygames and high_score_break then
 		crazygames.happytime()
 	end
 	gui.set_text(gui.get_node("highscore_bosses_label"), global.high_score_bosses_defeated)
@@ -139,7 +139,7 @@ function init(self)
 	--gui.set_text(gui.get_node("gold_earned_label"), "+"..gold_earned)
 	update_gold_eggs_label()
 	-- Save game progress
-	if html5 then
+	if html5 and crazygames then
 		save_game_crazy_games()
 	else
 		save_game()

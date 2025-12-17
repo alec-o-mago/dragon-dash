@@ -10,7 +10,7 @@ local boss_order
 local current_boss = 0
 local boss_health_max = 1
 local boss_health = 1
-local player_hearts = 3
+local player_hearts = 5
 
 local function create_random_order(n)
 	-- Create a table with numbers from 1 to n
@@ -58,7 +58,7 @@ function init(self)
 	--	poki_sdk.commercial_break(function() on_commercial_break_finished(self) end)
 	--end
 	-- Crazy Games SDK
-	if html5 then
+	if html5 and crazygames then
 		crazygames.gameplay_start()
 	end
 	-- Enable player input
@@ -114,7 +114,7 @@ function on_message(self, message_id, message, sender)
 			--	poki_sdk.gameplay_stop() -- Tell Poki SDK that gameplay has stopped
 			--end
 			-- Crazy Games SDK
-			if html5 then
+			if html5 and crazygames then
 				crazygames.gameplay_stop()
 			end
 			msg.post("main:/go", "load_results")
