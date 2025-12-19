@@ -60,7 +60,7 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.loaded_proxy = nil
-	if html5 then
+	if html5 and crazygames then
 		load_game_crazy_games()
 	else
 		load_game()
