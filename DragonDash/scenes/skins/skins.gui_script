@@ -21,7 +21,7 @@ end
 
 
 local function save_game()
-	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
+	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
 	sys.save(save_file, {
 		gold = global.gold,
 		eggs = global.eggs,

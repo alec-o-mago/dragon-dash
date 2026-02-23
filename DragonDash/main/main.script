@@ -3,10 +3,9 @@
 
 local global = require("main.global")
 -- local crazygames = require("crazygames")
--- local json = require("json")
 
 local function load_game()
-	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
+	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
 	local save_data = sys.load(save_file)
 	global.gold = save_data.gold or global.STARTING_GOLD
 	global.eggs = save_data.eggs or global.STARTING_EGGS
@@ -25,7 +24,7 @@ local function load_game()
 end
 
 local function load_game_crazy_games()
-	local json_str = crazygames.get_item("dragon_dash_dungeons_save_file")
+	local json_str = crazygames.get_item("dragon_dungeons_save_file")
 	if json_str then
 		local save_data = json.decode(json_str)
 		global.gold = save_data.gold or global.STARTING_GOLD

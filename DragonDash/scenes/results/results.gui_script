@@ -80,7 +80,7 @@ end
 ]]
 
 local function save_game()
-	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
+	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
 	sys.save(save_file, {
 		gold = global.gold,
 		eggs = global.eggs,
@@ -107,7 +107,7 @@ local function save_game_crazy_games()
 		high_score_time = global.high_score_time,
 	}
 	local json_str = json.encode(save_data)
-	crazygames.set_item("dragon_dash_dungeons_save_file", json_str)
+	crazygames.set_item("dragon_dungeons_save_file", json_str)
 end
 
 function init(self)
