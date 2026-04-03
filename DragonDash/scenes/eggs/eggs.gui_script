@@ -13,15 +13,18 @@ end
 
 function on_input(self, action_id, action)
 	local menu_button = gui.get_node("menu_button")
-	local skin_button = gui.get_node("skin_button")
 	local eggs_button = gui.get_node("eggs_button")
+	local skin_button = gui.get_node("skin_button")
+	local upgrades_button = gui.get_node("upgrades_button")
 	if action_id == hash("touch") and action.pressed and enable_leave then
 		if gui.pick_node(menu_button, action.x, action.y) then
 			msg.post("main:/go", "load_main_menu")
-		elseif gui.pick_node(skin_button, action.x, action.y) then
-			msg.post("main:/go", "load_skins")
 		elseif gui.pick_node(eggs_button, action.x, action.y) and enable_eggs_button then
 			msg.post("eggs:/go", "more_eggs")
+		elseif gui.pick_node(skin_button, action.x, action.y) then
+			msg.post("main:/go", "load_skins")
+		elseif gui.pick_node(upgrades_button, action.x, action.y) then
+			msg.post("main:/go", "load_upgrades")
 		end
 	end
 end

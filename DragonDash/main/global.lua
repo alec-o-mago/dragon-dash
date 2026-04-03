@@ -18,6 +18,7 @@ M.STARTING_PLAYER_1_SKIN = 1
 M.STARTING_PLAYER_2_SKIN = 2
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
 M.BOSS_Y_POSITIONS = {128, 360, 592}
+M.UPGRADE_COST = {1, 1, 2, 2, 3, 3, 3}
 M.LEVEL_COLORS = {
 	vmath.vector4(0.6, 0.4, 0.4, 1.0), -- red
 	vmath.vector4(0.4, 0.6, 0.4, 1.0), -- green
@@ -39,6 +40,11 @@ M.high_score_bosses_defeated = 0
 M.high_score_time = 0
 M.last_battle_bosses_defeated = 1
 M.last_battle_time = 120 -- Time in seconds
+M.level_health = 1
+M.level_power = 1
+M.level_speed = 1
+M.level_luck = 1
+M.level_speed = 1
 M.config_music = true
 M.config_sound = true
 M.unlocked_skins = {

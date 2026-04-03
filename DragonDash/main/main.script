@@ -79,12 +79,15 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("load_main_menu") then
 		msg.post(self.loaded_proxy, "unload")
 		msg.post('/go#main_menu_proxy', "load")
-	elseif message_id == hash("load_eggs") then
-		msg.post(self.loaded_proxy, "unload")
-		msg.post('/go#eggs_proxy', "load")
 	elseif message_id == hash("load_skins") then
 		msg.post(self.loaded_proxy, "unload")
 		msg.post('/go#skins_proxy', "load")
+	elseif message_id == hash("load_eggs") then
+		msg.post(self.loaded_proxy, "unload")
+		msg.post('/go#eggs_proxy', "load")
+	elseif message_id == hash("load_upgrades") then
+		msg.post(self.loaded_proxy, "unload")
+		msg.post('/go#upgrades_proxy', "load")
 	elseif message_id == hash("load_battle") then
 		msg.post(self.loaded_proxy, "unload")
 		msg.post('/go#battle_proxy', "load")

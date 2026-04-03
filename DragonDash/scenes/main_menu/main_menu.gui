@@ -29,7 +29,7 @@ nodes {
     y: 1.5
   }
   size {
-    x: 554.0
+    x: 500.0
     y: 140.0
   }
   type: TYPE_TEXT
@@ -144,7 +144,7 @@ nodes {
     y: 50.0
   }
   type: TYPE_TEXT
-  text: "v1.0.2"
+  text: "v1.1.0"
   font: "bit_potion"
   id: "version_label"
   pivot: PIVOT_NE
@@ -153,7 +153,7 @@ nodes {
 nodes {
   position {
     x: 65.0
-    y: 99.0
+    y: 615.0
   }
   size {
     x: 150.0
@@ -216,7 +216,7 @@ nodes {
 nodes {
   position {
     x: 36.0
-    y: 98.0
+    y: 614.0
   }
   scale {
     x: 4.0
@@ -231,7 +231,7 @@ nodes {
 nodes {
   position {
     x: 65.0
-    y: 40.0
+    y: 673.0
     z: 0.1
   }
   size {
@@ -249,7 +249,7 @@ nodes {
 nodes {
   position {
     x: 36.0
-    y: 40.0
+    y: 673.0
     z: 0.1
   }
   scale {
@@ -259,6 +259,21 @@ nodes {
   type: TYPE_BOX
   texture: "core/gold"
   id: "gold_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 70.0
+    y: 70.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/upgrade_button"
+  id: "upgrades_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }

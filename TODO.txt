@@ -1,0 +1,16 @@
+== TODO Dragon Dash ==
+
+- Mais skins de jogador( ??? )
+- - Quantas? 60? -> 60 é o mínimo pra upar 100% os upgrades. Mas planejo colocar bônus de skins de meme.
+
+- Mais bosses
+- - Quantos? x2?
+
+- Loja de upgrades permanentes com base em ovos
+- - Quais? -> Vida, Dano, Quantidade de balas, Velocidade, Sorte?
+- - Custo? 1, 1, 2, 2, 3, 3?
+- - UI? 7 blocos de cor que acendem?
+
+- Sistema roguelike de escolha do boss + bônus aleatório.
+- - Dois botões grandes? O jogador se move para um dos lados da tela?
+- - Fim de grande sucesso ao derrotar todos os bosses

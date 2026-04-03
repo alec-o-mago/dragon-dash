@@ -148,4 +148,22 @@ images {
 images {
   image: "/assets/images/core/bosses/boss7.png"
 }
+images {
+  image: "/assets/images/core/buttons/upgrade_amount.png"
+}
+images {
+  image: "/assets/images/core/buttons/upgrade_health.png"
+}
+images {
+  image: "/assets/images/core/buttons/upgrade_luck.png"
+}
+images {
+  image: "/assets/images/core/buttons/upgrade_power.png"
+}
+images {
+  image: "/assets/images/core/buttons/upgrade_speed.png"
+}
+images {
+  image: "/assets/images/core/buttons/upgrade_progress_bar.png"
+}
 extrude_borders: 1
