@@ -2,10 +2,91 @@
 
 local global = require("main.global")
 
+-- Helper function to update any progress bar
+local function update_progress_bar(bar_prefix, level_value)
+	for i = 1, 7 do
+		local node = gui.get_node(bar_prefix .. i)
+		if level_value >= i then
+			gui.set_color(node, global.RAINBOW_COLORS[i])
+		else
+			gui.set_color(node, global.COLOR_GRAY_TRANSPARENT)
+		end
+	end
+end
+
+local function update_health_ui()
+	update_progress_bar("progress_bar_1_", global.level_health)
+	local egg_icon = gui.get_node("egg_icon1")
+	local egg_label = gui.get_node("eggs_label1")
+	local visible  = (global.level_health<7)
+	gui.set_visible(egg_icon, visible)
+	gui.set_visible(egg_label, visible)
+	if visible then
+		gui.set_text(egg_label, tostring(global.UPGRADE_COST[global.level_health+1]))
+	end
+end
+
+local function update_power_ui()
+	update_progress_bar("progress_bar_2_", global.level_power)
+	local egg_icon = gui.get_node("egg_icon2")
+	local egg_label = gui.get_node("eggs_label2")
+	local visible  = (global.level_power<7)
+	gui.set_visible(egg_icon, visible)
+	gui.set_visible(egg_label, visible)
+	if visible then
+		gui.set_text(egg_label, tostring(global.UPGRADE_COST[global.level_power+1]))
+	end
+end
+
+local function update_quantity_ui()
+	update_progress_bar("progress_bar_3_", global.level_quantity)
+	local egg_icon = gui.get_node("egg_icon3")
+	local egg_label = gui.get_node("eggs_label3")
+	local visible  = (global.level_quantity<7)
+	gui.set_visible(egg_icon, visible)
+	gui.set_visible(egg_label, visible)
+	if visible then
+		gui.set_text(egg_label, tostring(global.UPGRADE_COST[global.level_quantity+1]))
+	end
+end
+
+local function update_speed_ui()
+	update_progress_bar("progress_bar_4_", global.level_speed)
+	local egg_icon = gui.get_node("egg_icon4")
+	local egg_label = gui.get_node("eggs_label4")
+	local visible  = (global.level_speed<7)
+	gui.set_visible(egg_icon, visible)
+	gui.set_visible(egg_label, visible)
+	if visible then
+		gui.set_text(egg_label, tostring(global.UPGRADE_COST[global.level_speed+1]))
+	end
+end
+
+local function update_luck_ui()
+	update_progress_bar("progress_bar_5_", global.level_luck)
+	local egg_icon = gui.get_node("egg_icon5")
+	local egg_label = gui.get_node("eggs_label5")
+	local visible  = (global.level_luck<7)
+	gui.set_visible(egg_icon, visible)
+	gui.set_visible(egg_label, visible)
+	if visible then
+		gui.set_text(egg_label, tostring(global.UPGRADE_COST[global.level_luck+1]))
+	end
+end
+
+local function update_progress_bars()
+	update_health_ui()
+	update_power_ui()
+	update_quantity_ui()
+	update_speed_ui()
+	update_luck_ui()
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	gui.set_text(gui.get_node("gold_label"), global.gold)
 	gui.set_text(gui.get_node("eggs_label"), global.eggs)
+	update_progress_bars()
 end
 
 function on_message(self, message_id, message, sender)

@@ -28,6 +28,17 @@ M.LEVEL_COLORS = {
 	vmath.vector4(0.3, 0.6, 0.6, 1.0), -- 
 	vmath.vector4(0.5, 0.5, 0.5, 1.0), -- gray
 }
+M.RAINBOW_COLORS = {
+	vmath.vector4(1.0, 0.0, 0.0, 1.0),
+	vmath.vector4(1.0, 0.502, 0.0, 1.0),
+	vmath.vector4(1.0, 1.0, 0.0, 1.0),
+	vmath.vector4(0.0, 1.0, 0.0, 1.0),
+	vmath.vector4(0.0, 0.502, 1.0, 1.0),
+	vmath.vector4(0.0, 0.0, 1.0, 1.0),
+	vmath.vector4(0.502, 0.0, 1.0, 1.0),
+}
+M.COLOR_GRAY_OPAQUE = vmath.vector4(0.5, 0.5, 0.5, 1.0)
+M.COLOR_GRAY_TRANSPARENT = vmath.vector4(0.4, 0.4, 0.4, 0.75)
 
 -- Variables
 M.player_hearts = 5
@@ -40,11 +51,11 @@ M.high_score_bosses_defeated = 0
 M.high_score_time = 0
 M.last_battle_bosses_defeated = 1
 M.last_battle_time = 120 -- Time in seconds
-M.level_health = 1
+M.level_health = 5
 M.level_power = 1
-M.level_speed = 1
-M.level_luck = 1
-M.level_speed = 1
+M.level_quantity = 2
+M.level_speed = 4
+M.level_luck = 7
 M.config_music = true
 M.config_sound = true
 M.unlocked_skins = {

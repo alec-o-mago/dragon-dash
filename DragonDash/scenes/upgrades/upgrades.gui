@@ -248,7 +248,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_"
+  id: "progress_bar_1_2"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -263,7 +263,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_2"
+  id: "progress_bar_1_3"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -278,7 +278,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_3"
+  id: "progress_bar_1_4"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -293,7 +293,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_4"
+  id: "progress_bar_1_5"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -308,7 +308,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_5"
+  id: "progress_bar_1_6"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -323,7 +323,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_6"
+  id: "progress_bar_1_7"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -353,7 +353,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_7"
+  id: "progress_bar_2_1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -368,7 +368,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_8"
+  id: "progress_bar_2_2"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -383,7 +383,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_9"
+  id: "progress_bar_2_3"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -398,7 +398,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_10"
+  id: "progress_bar_2_4"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -413,7 +413,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_11"
+  id: "progress_bar_2_5"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -428,7 +428,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_12"
+  id: "progress_bar_2_6"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -443,7 +443,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_13"
+  id: "progress_bar_2_7"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -473,7 +473,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_14"
+  id: "progress_bar_3_1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -488,7 +488,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_15"
+  id: "progress_bar_3_2"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -503,7 +503,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_16"
+  id: "progress_bar_3_3"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -518,7 +518,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_17"
+  id: "progress_bar_3_4"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -533,7 +533,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_18"
+  id: "progress_bar_3_5"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -548,7 +548,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_19"
+  id: "progress_bar_3_6"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -563,7 +563,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_20"
+  id: "progress_bar_3_7"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -593,7 +593,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_21"
+  id: "progress_bar_4_1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -608,7 +608,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_22"
+  id: "progress_bar_4_2"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -623,7 +623,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_23"
+  id: "progress_bar_4_3"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -638,7 +638,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_24"
+  id: "progress_bar_4_4"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -653,7 +653,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_25"
+  id: "progress_bar_4_5"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -668,7 +668,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_26"
+  id: "progress_bar_4_6"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -683,7 +683,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_27"
+  id: "progress_bar_4_7"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -713,7 +713,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_28"
+  id: "progress_bar_5_1"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -728,7 +728,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_29"
+  id: "progress_bar_5_2"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -743,7 +743,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_30"
+  id: "progress_bar_5_3"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -758,7 +758,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_31"
+  id: "progress_bar_5_4"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -773,7 +773,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_32"
+  id: "progress_bar_5_5"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -788,7 +788,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_33"
+  id: "progress_bar_5_6"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -803,7 +803,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_progress_bar"
-  id: "progress_bar_1_34"
+  id: "progress_bar_5_7"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -933,3 +933,7 @@ nodes {
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
+materials {
+  name: "sprite_color_add"
+  material: "/assets/shaders/sprite_color_add.material"
+}
