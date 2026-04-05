@@ -63,7 +63,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_button"
-  id: "upgrades_button1"
+  id: "upgrade_power_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -78,7 +78,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_button"
-  id: "upgrades_button2"
+  id: "upgrade_quantity_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -93,7 +93,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_button"
-  id: "upgrades_button3"
+  id: "upgrade_speed_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -108,7 +108,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "core/upgrade_button"
-  id: "upgrades_button4"
+  id: "upgrade_luck_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }

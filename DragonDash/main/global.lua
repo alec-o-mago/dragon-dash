@@ -44,6 +44,7 @@ M.COLOR_GRAY_TRANSPARENT = vmath.vector4(0.4, 0.4, 0.4, 0.75)
 M.player_hearts = 5
 M.gold = 100
 M.eggs = 3
+M.unlocked_skin_count = 0
 M.player_position = vmath.vector3(200, 360, 0)
 M.player_1_selected_skin = 3
 M.player_2_selected_skin = 2
@@ -51,11 +52,11 @@ M.high_score_bosses_defeated = 0
 M.high_score_time = 0
 M.last_battle_bosses_defeated = 1
 M.last_battle_time = 120 -- Time in seconds
-M.level_health = 5
-M.level_power = 1
-M.level_quantity = 2
-M.level_speed = 4
-M.level_luck = 7
+M.level_health = 0
+M.level_power = 0
+M.level_quantity = 0
+M.level_speed = 0
+M.level_luck = 0
 M.config_music = true
 M.config_sound = true
 M.unlocked_skins = {
@@ -66,6 +67,39 @@ M.unlocked_skins = {
 	false, false, false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, false, false, false, false,
 }
+
+-- Functions
+local function save_game_default()
+	print("save_game_default")
+end
+
+local function save_game_crazy_games()
+	print("save_game_crazy_games")
+end
+
+function M.save_game()
+	if html5 and crazygames then
+		save_game_crazy_games()
+	else
+		save_game_default()
+	end
+end
+
+local function load_game_default()
+	print("load_game_default")
+end
+
+local function load_game_crazy_games()
+	print("load_game_crazy_games")
+end
+
+function M.load_game()
+	if html5 and crazygames then
+		load_game_crazy_games()
+	else
+		load_game_default()
+	end
+end
 
 -- Module return
 return M
