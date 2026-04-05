@@ -1,4 +1,8 @@
 script: "/scenes/eggs/eggs.gui_script"
+fonts {
+  name: "bit_potion_ext"
+  font: "/assets/fonts/bit_potion_ext.font"
+}
 textures {
   name: "core"
   texture: "/assets/images/core/core.atlas"
@@ -64,6 +68,117 @@ nodes {
   type: TYPE_BOX
   texture: "core/upgrade_button"
   id: "upgrades_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 1250.0
+    y: 110.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/notification_dot"
+  id: "upgrade_notification"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 65.0
+    y: 615.0
+  }
+  size {
+    x: 150.0
+    y: 32.0
+  }
+  type: TYPE_TEXT
+  text: "10"
+  font: "bit_potion_ext"
+  id: "eggs_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 36.0
+    y: 614.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/egg"
+  id: "egg_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 65.0
+    y: 673.0
+    z: 0.1
+  }
+  size {
+    x: 200.0
+    y: 32.0
+  }
+  type: TYPE_TEXT
+  text: "100\n"
+  ""
+  font: "bit_potion_ext"
+  id: "gold_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 36.0
+    y: 673.0
+    z: 0.1
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/gold"
+  id: "gold_icon"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 740.0
+    y: 74.0
+  }
+  size {
+    x: 150.0
+    y: 32.0
+  }
+  type: TYPE_TEXT
+  text: "123"
+  font: "bit_potion_ext"
+  id: "egg_cost_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 713.0
+    y: 73.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/gold"
+  id: "egg_cost_icon"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }

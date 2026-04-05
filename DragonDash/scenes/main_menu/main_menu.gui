@@ -277,6 +277,36 @@ nodes {
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
+nodes {
+  position {
+    x: 110.0
+    y: 230.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/notification_dot"
+  id: "egg_notification"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 110.0
+    y: 110.0
+  }
+  scale {
+    x: 4.0
+    y: 4.0
+  }
+  type: TYPE_BOX
+  texture: "core/notification_dot"
+  id: "upgrade_notification"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
 layers {
   name: "main_menu"
 }

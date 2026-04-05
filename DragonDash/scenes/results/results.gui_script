@@ -79,37 +79,6 @@ local function handle_rewarded_ad()
 end
 ]]
 
-local function save_game()
-	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
-	sys.save(save_file, {
-		gold = global.gold,
-		eggs = global.eggs,
-		player_1_selected_skin = global.player_1_selected_skin,
-		player_2_selected_skin = global.player_2_selected_skin,
-		config_music = global.config_music,
-		config_sound = global.config_sound,
-		unlocked_skins = global.unlocked_skins,
-		high_score_bosses_defeated = global.high_score_bosses_defeated,
-		high_score_time = global.high_score_time,
-	})
-end
-
-local function save_game_crazy_games()
-	local save_data = {
-		gold = global.gold,
-		eggs = global.eggs,
-		player_1_selected_skin = global.player_1_selected_skin,
-		player_2_selected_skin = global.player_2_selected_skin,
-		config_music = global.config_music,
-		config_sound = global.config_sound,
-		unlocked_skins = global.unlocked_skins,
-		high_score_bosses_defeated = global.high_score_bosses_defeated,
-		high_score_time = global.high_score_time,
-	}
-	local json_str = json.encode(save_data)
-	crazygames.set_item("dragon_dungeons_save_file", json_str)
-end
-
 function init(self)
 	-- Enable user inputs
 	msg.post(".", "acquire_input_focus")
@@ -139,11 +108,7 @@ function init(self)
 	--gui.set_text(gui.get_node("gold_earned_label"), "+"..gold_earned)
 	update_gold_eggs_label()
 	-- Save game progress
-	if html5 and crazygames then
-		save_game_crazy_games()
-	else
-		save_game()
-	end
+	global.save_game()
 	-- Animate Gold Earned
 	animate_gold_earned(30, 0, gold_earned/30)
 	-- ParticleFX

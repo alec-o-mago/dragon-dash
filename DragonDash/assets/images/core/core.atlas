@@ -166,4 +166,6 @@ images {
 images {
   image: "/assets/images/core/buttons/upgrade_progress_bar.png"
 }
-extrude_borders: 1
+images {
+  image: "/assets/images/core/buttons/notification_dot.png"
+}

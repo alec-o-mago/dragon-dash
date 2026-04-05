@@ -13,37 +13,6 @@ local function loop_egg_colors()
 	end)
 end
 
-local function save_game()
-	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
-	sys.save(save_file, {
-		gold = global.gold,
-		eggs = global.eggs,
-		player_1_selected_skin = global.player_1_selected_skin,
-		player_2_selected_skin = global.player_2_selected_skin,
-		config_music = global.config_music,
-		config_sound = global.config_sound,
-		unlocked_skins = global.unlocked_skins,
-		high_score_bosses_defeated = global.high_score_bosses_defeated,
-		high_score_time = global.high_score_time,
-	})
-end
-
-local function save_game_crazy_games()
-	local save_data = {
-		gold = global.gold,
-		eggs = global.eggs,
-		player_1_selected_skin = global.player_1_selected_skin,
-		player_2_selected_skin = global.player_2_selected_skin,
-		config_music = global.config_music,
-		config_sound = global.config_sound,
-		unlocked_skins = global.unlocked_skins,
-		high_score_bosses_defeated = global.high_score_bosses_defeated,
-		high_score_time = global.high_score_time,
-	}
-	local json_str = json.encode(save_data)
-	crazygames.set_item("dragon_dungeons_save_file", json_str)
-end
-
 local function unlock_egg()
 	-- Reset main image to egg
 	sprite.play_flipbook("/big_egg#sprite", "big_egg")
@@ -63,11 +32,7 @@ local function unlock_egg()
 		global.unlocked_skin_count = global.unlocked_skin_count + 1
 		global.player_1_selected_skin = choosen_skin
 		-- Save game progress
-		if html5 and crazygames then
-			save_game_crazy_games()
-		else
-			save_game()
-		end
+		global.save_game()
 		-- Visual Effects
 		particlefx.play("/fx#open_egg")
 		loop_egg_colors()
@@ -80,14 +45,17 @@ local function unlock_egg()
 		end)
 	end
 	-- Check if player can unlock another egg
-	local next_egg_cost = (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs))
-	if global.gold < next_egg_cost then
+	if global.gold < global.next_egg_cost() then
 		msg.post("eggs:/gui#gui", "disable_eggs_button")
 	end
+	msg.post("eggs:/gui#gui", "update_ui")
 end
 
 function init(self)
-	unlock_egg()
+	-- Check if player can unlock an egg
+	if global.gold < global.next_egg_cost() then
+		msg.post("eggs:/gui#gui", "disable_eggs_button")
+	end
 end
 
 function on_message(self, message_id, message, sender)

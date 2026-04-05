@@ -9,16 +9,12 @@ M.SCREEN_HEIGHT = 720
 M.MAX_EGGS = 60
 M.TOTAL_BOSSES = 7
 M.STARTING_SKIN_COST = 100
-M.SKIN_COST_INCREMENT = 15 -- previously 20
+M.SKIN_COST_INCREMENT = 20 -- previously 15
 M.STARTING_BOSS_HEALTH = 100
 M.BOSS_HEALTH_INCREMENT = 12
-M.STARTING_GOLD = 100
-M.STARTING_EGGS = 0
-M.STARTING_PLAYER_1_SKIN = 1
-M.STARTING_PLAYER_2_SKIN = 2
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
 M.BOSS_Y_POSITIONS = {128, 360, 592}
-M.UPGRADE_COST = {1, 1, 2, 2, 3, 3, 3}
+M.UPGRADE_COST = {1, 1, 2, 2, 3, 3, 3, 9999} -- Very high last number is for upgrade cost logic
 M.LEVEL_COLORS = {
 	vmath.vector4(0.6, 0.4, 0.4, 1.0), -- red
 	vmath.vector4(0.4, 0.6, 0.4, 1.0), -- green
@@ -69,12 +65,55 @@ M.unlocked_skins = {
 }
 
 -- Functions
+function M.next_egg_cost()
+	return (M.STARTING_SKIN_COST + (M.SKIN_COST_INCREMENT * M.unlocked_skin_count))
+end
+
+function M.next_upgrade_cost()
+	return math.min(M.UPGRADE_COST[M.level_health+1], M.UPGRADE_COST[M.level_power+1], M.UPGRADE_COST[M.level_quantity+1], M.UPGRADE_COST[M.level_speed+1], M.UPGRADE_COST[M.level_luck+1])
+end
+
 local function save_game_default()
-	print("save_game_default")
+	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
+	sys.save(save_file, {
+		gold = M.gold,
+		eggs = M.eggs,
+		level_health = M.level_health,
+		level_power = M.level_power,
+		level_quantity = M.level_quantity,
+		level_speed = M.level_speed,
+		level_luck = M.level_luck,
+		player_1_selected_skin = M.player_1_selected_skin,
+		player_2_selected_skin = M.player_2_selected_skin,
+		config_music = M.config_music,
+		config_sound = M.config_sound,
+		unlocked_skin_count = M.unlocked_skin_count,
+		unlocked_skins = M.unlocked_skins,
+		high_score_bosses_defeated = M.high_score_bosses_defeated,
+		high_score_time = M.high_score_time,
+	})
 end
 
 local function save_game_crazy_games()
-	print("save_game_crazy_games")
+	local save_data = {
+		gold = M.gold,
+		eggs = M.eggs,
+		level_health = M.level_health,
+		level_power = M.level_power,
+		level_quantity = M.level_quantity,
+		level_speed = M.level_speed,
+		level_luck = M.level_luck,
+		player_1_selected_skin = M.player_1_selected_skin,
+		player_2_selected_skin = M.player_2_selected_skin,
+		config_music = M.config_music,
+		config_sound = M.config_sound,
+		unlocked_skin_count = M.unlocked_skin_count,
+		unlocked_skins = M.unlocked_skins,
+		high_score_bosses_defeated = M.high_score_bosses_defeated,
+		high_score_time = M.high_score_time,
+	}
+	local json_str = json.encode(save_data)
+	crazygames.set_item("dragon_dungeons_save_file", json_str)
 end
 
 function M.save_game()
@@ -86,11 +125,55 @@ function M.save_game()
 end
 
 local function load_game_default()
-	print("load_game_default")
+	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
+	local save_data = sys.load(save_file)
+	M.gold = save_data.gold or M.gold
+	M.eggs = save_data.eggs or M.eggs
+	M.level_health = save_data.level_health or M.level_health
+	M.level_power = save_data.level_power or M.level_power
+	M.level_quantity = save_data.level_quantity or M.level_quantity
+	M.level_speed = save_data.level_speed or M.level_speed
+	M.level_luck = save_data.level_luck or M.level_luck
+	M.high_score_bosses_defeated = save_data.high_score_bosses_defeated or M.high_score_bosses_defeated
+	M.high_score_time = save_data.high_score_time or M.high_score_time
+	M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
+	M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
+	M.config_music = save_data.config_music or M.config_music
+	M.config_sound = save_data.config_sound or M.config_sound
+	M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
+	-- Load unlocked skins in a way that doesn't break the save system if I add more skins in the future
+	if save_data.unlocked_skins then -- If there is save data for unlocked skins in the first place
+		for i = 1, #save_data.unlocked_skins do
+			M.unlocked_skins[i] = save_data.unlocked_skins[i]
+		end
+	end
 end
 
 local function load_game_crazy_games()
-	print("load_game_crazy_games")
+	local json_str = crazygames.get_item("dragon_dungeons_save_file")
+	if json_str then
+		local save_data = json.decode(json_str)
+		M.gold = save_data.gold or M.gold
+		M.eggs = save_data.eggs or M.eggs
+		M.level_health = save_data.level_health or M.level_health
+		M.level_power = save_data.level_power or M.level_power
+		M.level_quantity = save_data.level_quantity or M.level_quantity
+		M.level_speed = save_data.level_speed or M.level_speed
+		M.level_luck = save_data.level_luck or M.level_luck
+		M.high_score_bosses_defeated = save_data.high_score_bosses_defeated or M.high_score_bosses_defeated
+		M.high_score_time = save_data.high_score_time or M.high_score_time
+		M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
+		M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
+		M.config_music = save_data.config_music or M.config_music
+		M.config_sound = save_data.config_sound or M.config_sound
+		M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
+		-- Load unlocked skins without breaking if new skins are added later
+		if save_data.unlocked_skins then
+			for i = 1, #save_data.unlocked_skins do
+				M.unlocked_skins[i] = save_data.unlocked_skins[i]
+			end
+		end
+	end
 end
 
 function M.load_game()

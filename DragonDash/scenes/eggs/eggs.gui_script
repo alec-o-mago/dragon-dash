@@ -1,14 +1,20 @@
 -- eggs.gui_script
 
+local global = require("main.global")
 
-local enable_leave = false
 local enable_eggs_button = true
+
+local function update_ui()
+	gui.set_text(gui.get_node("eggs_label"), tostring(global.eggs))
+	gui.set_text(gui.get_node("egg_cost_label"), tostring(global.next_egg_cost()))
+end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	timer.delay(1, false, function()
-		enable_leave = true
-	end)
+	enable_eggs_button = true
+	gui.set_text(gui.get_node("gold_label"), tostring(global.gold))
+	gui.set_visible(gui.get_node("upgrade_notification"), global.eggs >= global.next_upgrade_cost())
+	update_ui()
 end
 
 function on_input(self, action_id, action)
@@ -16,7 +22,7 @@ function on_input(self, action_id, action)
 	local eggs_button = gui.get_node("eggs_button")
 	local skin_button = gui.get_node("skin_button")
 	local upgrades_button = gui.get_node("upgrades_button")
-	if action_id == hash("touch") and action.pressed and enable_leave then
+	if action_id == hash("touch") and action.pressed then
 		if gui.pick_node(menu_button, action.x, action.y) then
 			msg.post("main:/go", "load_main_menu")
 		elseif gui.pick_node(eggs_button, action.x, action.y) and enable_eggs_button then
@@ -30,12 +36,13 @@ function on_input(self, action_id, action)
 end
 
 function on_message(self, message_id, message, sender)
-	local eggs_button = gui.get_node("eggs_button")
 	if message_id == hash("enable_eggs_button") then
-		gui.set_visible(eggs_button, true)
+		gui.set_color(gui.get_node("eggs_button"), vmath.vector4(1, 1, 1, 1))
 		enable_eggs_button = true
 	elseif message_id == hash("disable_eggs_button") then
-		gui.set_visible(gui.get_node("eggs_button"), false)
+		gui.set_color(gui.get_node("eggs_button"), global.COLOR_GRAY_OPAQUE)
 		enable_eggs_button = false
+	elseif message_id == hash("update_ui") then
+		update_ui()
 	end
 end

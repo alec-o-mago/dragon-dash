@@ -106,6 +106,7 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	gui.set_text(gui.get_node("gold_label"), global.gold)
+	gui.set_visible(gui.get_node("egg_notification"), global.gold >= global.next_egg_cost())
 	update_ui()
 end
 

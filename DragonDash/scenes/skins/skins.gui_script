@@ -1,4 +1,4 @@
--- eggs.gui_script
+-- skins.gui_script
 
 
 local global = require("main.global")
@@ -16,50 +16,14 @@ local function set_skins()
 			gui.play_flipbook(gui.get_node("skin_show"..index), "question_mark")
 		end
 	end
-	gui.set_text(gui.get_node("page_label"), current_page.."/4")
-end
-
-
-local function save_game()
-	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
-	sys.save(save_file, {
-		gold = global.gold,
-		eggs = global.eggs,
-		player_1_selected_skin = global.player_1_selected_skin,
-		player_2_selected_skin = global.player_2_selected_skin,
-		config_music = global.config_music,
-		config_sound = global.config_sound,
-		unlocked_skins = global.unlocked_skins,
-		high_score_bosses_defeated = global.high_score_bosses_defeated,
-		high_score_time = global.high_score_time,
-	})
-end
-
-local function save_game_crazy_games()
-	local save_data = {
-		gold = global.gold,
-		eggs = global.eggs,
-		player_1_selected_skin = global.player_1_selected_skin,
-		player_2_selected_skin = global.player_2_selected_skin,
-		config_music = global.config_music,
-		config_sound = global.config_sound,
-		unlocked_skins = global.unlocked_skins,
-		high_score_bosses_defeated = global.high_score_bosses_defeated,
-		high_score_time = global.high_score_time,
-	}
-	local json_str = json.encode(save_data)
-	crazygames.set_item("dragon_dash_dungeons_save_file", json_str)
+	gui.set_text(gui.get_node("page_label"), current_page.."/"..TOTAL_PAGES)
 end
 
 local function change_skin(skin)
 	-- Change skin
 	global.player_1_selected_skin = skin + ((current_page-1)*15)
 	-- Save game progress
-	if html5 and crazygames then
-		save_game_crazy_games()
-	else
-		save_game()
-	end
+	global.save_game()
 	-- Leave
 	msg.post("main:/go", "load_main_menu")
 end
