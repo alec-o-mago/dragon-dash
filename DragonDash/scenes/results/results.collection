@@ -1,4 +1,13 @@
 name: "results"
+instances {
+  id: "tutorial_arrow_eggs"
+  prototype: "/components/tutorial_arrow/tutorial_arrow.go"
+  position {
+    x: 900.0
+    y: 74.0
+    z: 0.9
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "go"

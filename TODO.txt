@@ -1,17 +1,18 @@
 == TODO Dragon Dash ==
 
 - Utils
--> Imagem de fundo escura padrão no main pra simplificar outras telas.
--> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades
+-> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades ???
 
 - Implementar upgrades na batalha
+->-> Só falta "sorte"
 
 - Mais bosses
 - - Quantos? x2?
 
-- Mais skins de jogador( ??? )
-- - Quantas? Mais 15(no mínimo) (ou 30 ou 45)
+- Mais 15 skins de jogador
+->-> Mais imagens
+->-> Implementar nas telas "eggs" e "skins"
 
-- Algum Fim de Grande Sucesso no final
+- Algum Fim de Grande Sucesso no final???
 ->-> Como??? Chefão Final Final??? Nível Máximo de chefão?
 

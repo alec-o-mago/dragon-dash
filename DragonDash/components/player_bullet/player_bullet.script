@@ -1,9 +1,19 @@
+-- player_bullet.script
+
+
+local global = require("main.global")
+
 go.property("speed", 1000)
 go.property("direction", vmath.vector3(1,0,0))
 
 function init(self)
+	-- Set color based on upgrade level
+	if global.level_power>0 then
+		go.set("#sprite", "tint", global.RAINBOW_COLORS[global.level_power])
+	end
+	self.speed = 1000 + (global.level_speed/7 * 600)
 	-- Self delete after some time
-	timer.delay(5, false, function() go.delete() end)
+	timer.delay(2, false, function() go.delete() end)
 end
 
 function fixed_update(self, dt)
@@ -11,8 +21,4 @@ function fixed_update(self, dt)
 	local pos = go.get_position()
 	pos = pos + self.direction * self.speed * dt
 	go.set_position(pos)
-end
-
-function on_message(self, message_id, message, sender)
-	-- on_message
 end

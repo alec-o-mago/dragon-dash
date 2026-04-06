@@ -1,6 +1,61 @@
 -- battle.gui_script
 
 
+local global = require("main.global")
+
+local function update_player_health(hearts, max_hearts)
+	local heart_1 = gui.get_node("player_heart_1")
+	local heart_2 = gui.get_node("player_heart_2")
+	local heart_3 = gui.get_node("player_heart_3")
+	local heart_4 = gui.get_node("player_heart_4")
+	local heart_5 = gui.get_node("player_heart_5")
+	local heart_6 = gui.get_node("player_heart_6")
+	local heart_7 = gui.get_node("player_heart_7")
+	local heart_8 = gui.get_node("player_heart_8")
+	local heart_9 = gui.get_node("player_heart_9")
+	local heart_10 = gui.get_node("player_heart_10")
+	gui.set_visible(heart_1, max_hearts >= 1)
+	gui.set_visible(heart_2, max_hearts >= 2)
+	gui.set_visible(heart_3, max_hearts >= 3)
+	gui.set_visible(heart_4, max_hearts >= 4)
+	gui.set_visible(heart_5, max_hearts >= 5)
+	gui.set_visible(heart_6, max_hearts >= 6)
+	gui.set_visible(heart_7, max_hearts >= 7)
+	gui.set_visible(heart_8, max_hearts >= 8)
+	gui.set_visible(heart_9, max_hearts >= 9)
+	gui.set_visible(heart_10, max_hearts >= 10)
+	if hearts <= 0 then
+		gui.set_color(heart_1, global.COLOR_GRAY_OPAQUE)
+	end
+	if hearts <= 1 then
+		gui.set_color(heart_2, global.COLOR_GRAY_OPAQUE)
+	end
+	if hearts <= 2 then
+		gui.set_color(heart_3, global.COLOR_GRAY_OPAQUE)
+	end
+	if hearts <= 3 then
+		gui.set_color(heart_4, global.COLOR_GRAY_OPAQUE)
+	end
+	if hearts <= 4 then
+		gui.set_color(heart_5, global.COLOR_GRAY_OPAQUE)
+	end
+	if hearts <= 5 then
+		gui.set_color(heart_6, global.COLOR_GRAY_OPAQUE)
+	end
+	if hearts <= 6 then
+		gui.set_color(heart_7, global.COLOR_GRAY_OPAQUE)
+	end
+	if hearts <= 7 then
+		gui.set_color(heart_8, global.COLOR_GRAY_OPAQUE)
+	end
+	if hearts <= 8 then
+		gui.set_color(heart_9, global.COLOR_GRAY_OPAQUE)
+	end
+	if hearts <= 9 then
+		gui.set_color(heart_10, global.COLOR_GRAY_OPAQUE)
+	end
+end
+
 function init(self)
 	self.boss_health_max_size = 644
 	self.health_bar_progress_node_1 = gui.get_node("health_bar_progress_1")
@@ -9,16 +64,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("update_player_health") then
-		gui.set_visible(gui.get_node("player_heart_1"), message.hearts > 0)
-		gui.set_visible(gui.get_node("player_heart_2"), message.hearts > 1)
-		gui.set_visible(gui.get_node("player_heart_3"), message.hearts > 2)
-		gui.set_visible(gui.get_node("player_heart_4"), message.hearts > 3)
-		gui.set_visible(gui.get_node("player_heart_5"), message.hearts > 4)
-		gui.set_visible(gui.get_node("player_heart_6"), message.hearts > 5)
-		gui.set_visible(gui.get_node("player_heart_7"), message.hearts > 6)
-		gui.set_visible(gui.get_node("player_heart_8"), message.hearts > 7)
-		gui.set_visible(gui.get_node("player_heart_9"), message.hearts > 8)
-		gui.set_visible(gui.get_node("player_heart_10"), message.hearts > 9)
+		update_player_health(message.hearts, message.max_hearts)
 	elseif message_id == hash("update_boss_health") then
 		local progress_bar_1_size = math.max(0, ((message.percentage-0.5)*2) * self.boss_health_max_size)
 		local progress_bar_2_size = math.min(self.boss_health_max_size, (message.percentage*2) * self.boss_health_max_size)

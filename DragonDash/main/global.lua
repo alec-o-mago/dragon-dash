@@ -10,8 +10,8 @@ M.MAX_EGGS = 60
 M.TOTAL_BOSSES = 7
 M.STARTING_SKIN_COST = 100
 M.SKIN_COST_INCREMENT = 20 -- previously 15
-M.STARTING_BOSS_HEALTH = 100
-M.BOSS_HEALTH_INCREMENT = 12
+M.STARTING_BOSS_HEALTH = 50
+M.BOSS_HEALTH_INCREMENT = 40
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
 M.BOSS_Y_POSITIONS = {128, 360, 592}
 M.UPGRADE_COST = {1, 1, 2, 2, 3, 3, 3, 9999} -- Very high last number is for upgrade cost logic
@@ -33,13 +33,13 @@ M.RAINBOW_COLORS = {
 	vmath.vector4(0.0, 0.0, 1.0, 1.0),
 	vmath.vector4(0.502, 0.0, 1.0, 1.0),
 }
-M.COLOR_GRAY_OPAQUE = vmath.vector4(0.5, 0.5, 0.5, 1.0)
+M.COLOR_GRAY_OPAQUE = vmath.vector4(0.4, 0.4, 0.4, 1.0)
 M.COLOR_GRAY_TRANSPARENT = vmath.vector4(0.4, 0.4, 0.4, 0.75)
 
 -- Variables
 M.player_hearts = 5
-M.gold = 100
-M.eggs = 3
+M.gold = 100 -- 100 is default. Change for testing upgrades
+M.eggs = 3 -- 3 us default. Change for testing upgrandes
 M.unlocked_skin_count = 0
 M.player_position = vmath.vector3(200, 360, 0)
 M.player_1_selected_skin = 3

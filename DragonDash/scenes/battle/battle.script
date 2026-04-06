@@ -31,7 +31,7 @@ local function load_next_boss()
 	current_boss = current_boss + 1
 	local next_boss = boss_order[(current_boss%7)+1]
 	boss_id = factory.create("battle:/boss_factories#"..next_boss, vmath.vector3(1050, 360, 0))
-	boss_health_max = global.STARTING_BOSS_HEALTH + (current_boss * 20)
+	boss_health_max = global.STARTING_BOSS_HEALTH + (current_boss * global.BOSS_HEALTH_INCREMENT)
 	boss_health = boss_health_max
 	go.animate("/bg1#bg1","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[boss_order[next_boss]], go.EASING_LINEAR, 2)
 	go.animate("/bg2#bg2","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[boss_order[next_boss]], go.EASING_LINEAR, 2)
@@ -85,8 +85,8 @@ function init(self)
 	math.randomseed(os.time()) -- randomizes
 	boss_order = create_random_order(global.TOTAL_BOSSES)
 	--boss_order = {1, 2, 3, 4, 5, 6, 7}
-	player_hearts = global.player_hearts
-	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
+	player_hearts = global.level_health + 3
+	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
 	-- Load first boss
 	timer.delay(2.4, false, function ()
 		load_next_boss()
@@ -106,7 +106,7 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 	elseif message_id == hash("player_took_damage") then
-		if player_hearts <= 0 then -- Player defeated
+		if player_hearts <= 1 then -- Player defeated
 			global.last_battle_bosses_defeated = current_boss - 1
 			global.last_battle_time = time_passed
 			msg.post("main:/go", "set_battle_speed", { speed = 1 })
@@ -120,12 +120,13 @@ function on_message(self, message_id, message, sender)
 			msg.post("main:/go", "load_results")
 		else
 			player_hearts = player_hearts - 1
-			msg.post("/gui#battle", "update_player_health", {hearts = player_hearts})
+			msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
 			if global.config_sound then
 				sound.play("/go#player_hit_sound")
 			end
 		end
 	elseif message_id == hash("boss_took_damage") then
+		boss_health = boss_health - ((2+global.level_power)/2)
 		if boss_health <= 0 then -- Boss was defeated
 			-- Particle effects
 			go.set_position(go.get_position(boss_id), "/particlefx#boss_defeat")
@@ -136,7 +137,6 @@ function on_message(self, message_id, message, sender)
 			go.delete(boss_id)
 			load_next_boss()
 		else -- Boss not defeated
-			boss_health = boss_health - message.damage
 			local boss_percentage = (boss_health/boss_health_max)
 			msg.post("/gui#battle", "update_boss_health", {percentage = boss_percentage})
 			if boss_phase == 1 and boss_percentage <= 0.5 then

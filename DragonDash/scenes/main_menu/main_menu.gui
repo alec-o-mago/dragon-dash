@@ -160,7 +160,7 @@ nodes {
     y: 32.0
   }
   type: TYPE_TEXT
-  text: "10"
+  text: "12"
   font: "bit_potion"
   id: "eggs_label"
   pivot: PIVOT_W
@@ -239,7 +239,7 @@ nodes {
     y: 32.0
   }
   type: TYPE_TEXT
-  text: "100\n"
+  text: "123\n"
   ""
   font: "bit_potion"
   id: "gold_label"

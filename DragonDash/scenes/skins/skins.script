@@ -2,5 +2,5 @@
 
 
 function init(self)
-	go.set("/bg#bg", "tint", vmath.vector4(0.7, 0.7, 0.7, 1))
+	--go.set("/bg#bg", "tint", vmath.vector4(0.7, 0.7, 0.7, 1))
 end

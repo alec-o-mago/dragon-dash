@@ -27,7 +27,7 @@ local function unlock_egg()
 		local randomIndexInFalseIndices = math.random(1, #falseIndices)
 		local choosen_skin = falseIndices[randomIndexInFalseIndices]
 		global.unlocked_skins[choosen_skin] = true
-		global.gold = global.gold - (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs))
+		global.gold = global.gold - global.next_egg_cost()
 		global.eggs = global.eggs + 1
 		global.unlocked_skin_count = global.unlocked_skin_count + 1
 		global.player_1_selected_skin = choosen_skin
@@ -48,6 +48,7 @@ local function unlock_egg()
 	if global.gold < global.next_egg_cost() then
 		msg.post("eggs:/gui#gui", "disable_eggs_button")
 	end
+	msg.post("/tutorial_arrow_eggs", "disable")
 	msg.post("eggs:/gui#gui", "update_ui")
 end
 
@@ -55,6 +56,10 @@ function init(self)
 	-- Check if player can unlock an egg
 	if global.gold < global.next_egg_cost() then
 		msg.post("eggs:/gui#gui", "disable_eggs_button")
+	end
+	-- Tutorial Arrow
+	if global.unlocked_skin_count > 0 then
+		msg.post("/tutorial_arrow_eggs", "disable")
 	end
 end
 

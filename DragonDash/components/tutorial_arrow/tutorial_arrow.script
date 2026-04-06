@@ -1,0 +1,6 @@
+-- tutorial_arrow.script
+
+
+function init(self)
+	go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, go.get_position()+vmath.vector3(48, 0, 0), go.EASING_OUTSINE, 1)
+end

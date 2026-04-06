@@ -169,3 +169,7 @@ images {
 images {
   image: "/assets/images/core/buttons/notification_dot.png"
 }
+images {
+  image: "/assets/images/core/tutorial_arrow.png"
+}
+inner_padding: 1

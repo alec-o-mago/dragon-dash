@@ -22,21 +22,10 @@ end
 
 local function update_gold_eggs_label()
 	-- Configure Gold and Eggs labels
-	local next_egg_cost = (global.STARTING_SKIN_COST + (global.SKIN_COST_INCREMENT * global.eggs))
-	if global.gold < next_egg_cost then -- If not enough gold
-		gui.set_color(gui.get_node("eggs_button"), vmath.vector4(0.4, 0.4, 0.4, 1))
-	else
-		gui.set_color(gui.get_node("gold_label"), vmath.vector4(0.2, 1, 0.2, 1))
-	end
-	if global.eggs < global.MAX_EGGS then
-		gui.set_text(gui.get_node("eggs_label"), string.format("%.1f%%", (global.eggs/global.MAX_EGGS*100)))
-		gui.set_text(gui.get_node("gold_label"), global.gold.."/"..next_egg_cost)
-	else
-		gui.set_text(gui.get_node("eggs_label"), "100%")
-		gui.set_color(gui.get_node("eggs_label"), vmath.vector4(0.9, 0.9, 0.1, 1))
-		gui.set_text(gui.get_node("gold_label"), global.gold)
-		gui.set_color(gui.get_node("gold_label"), vmath.vector4(0.9, 0.9, 0.1, 1))
-	end
+	gui.set_visible(gui.get_node("egg_notification"), global.gold >= global.next_egg_cost())
+	gui.set_text(gui.get_node("eggs_label"), tostring(global.eggs))
+	gui.set_text(gui.get_node("gold_label"), tostring(global.gold))
+
 end
 
 local function animate_gold_earned(n, current, increment)
@@ -126,7 +115,7 @@ function on_input(self, action_id, action)
 		local retry_button = gui.get_node("retry_button")
 		local menu_button = gui.get_node("menu_button")
 		local eggs_button = gui.get_node("eggs_button")
-		local ad_button = gui.get_node("ad_button")
+		--local ad_button = gui.get_node("ad_button")
 		if gui.pick_node(retry_button, action.x, action.y) then
 			msg.post("main:/go", "load_battle")
 		elseif gui.pick_node(menu_button, action.x, action.y) then

@@ -11,6 +11,9 @@ function init(self)
 	if global.config_music then
 		sound.play("/go#sound")
 	end
+	if global.unlocked_skin_count > 0 then
+		msg.post("/tutorial_arrow_eggs", "disable")
+	end
 end
 
 function on_message(self, message_id, message, sender)

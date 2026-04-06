@@ -127,7 +127,7 @@ function on_message(self, message_id, message, sender)
 		go.delete(message.other_id)
 		-- handle damage math
 		--self.boss_health = self.boss_health - 1
-		msg.post("battle:/go","boss_took_damage", { damage = 1 })
+		msg.post("battle:/go","boss_took_damage")
 		-- make the boss blink white
 		go.set("#sprite", "color_add.w", 0)
 		go.animate("#sprite", "color_add.w", go.PLAYBACK_ONCE_PINGPONG, 0.5, go.EASING_INQUAD, 0.3)

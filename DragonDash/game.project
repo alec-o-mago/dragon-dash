@@ -31,13 +31,13 @@ default_texture_mag_filter = nearest
 
 [sprite]
 subpixels = 0
-max_count = 256
+max_count = 512
 
 [label]
 subpixels = 0
 
 [physics]
-max_collision_object_count = 256
+max_collision_object_count = 512
 
 [native_extension]
 app_manifest = /default.appmanifest
