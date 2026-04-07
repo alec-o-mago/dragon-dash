@@ -50,9 +50,10 @@ local function on_commercial_break_finished(self)
 end
 
 local function spawn_collectable_health()
+	factory.create("battle:/collectable_health_spawn#factory", vmath.vector3(1280, math.random(128, 592), 0))
 	-- Based on player luck level(from 0 to 7), health will spawn from every 5 minutes to every 1 minute, with a 20% random variation for more or less time
 	timer.delay(math.floor((300-(global.level_luck*35)*(0.8+(math.random()*0.4)))), true, function ()
-		factory.create("battle:/collectable_health_spawn#factory", vmath.vector3(1280, math.random(128, 592), 0))
+		spawn_collectable_health()
 	end)
 end
 
@@ -99,7 +100,9 @@ function init(self)
 		load_next_boss()
 	end)
 	-- Collectable Health
-	spawn_collectable_health()
+	timer.delay(math.floor((30*(0.8+(math.random()*0.4)))), true, function ()
+		spawn_collectable_health()
+	end)
 	-- Sound Effects
 	if global.config_music then
 		sound.play("go#background_sound")
@@ -141,7 +144,7 @@ function on_message(self, message_id, message, sender)
 			-- player heal sound here?
 		end
 	elseif message_id == hash("boss_took_damage") then
-		boss_health = boss_health - ((2+global.level_power)/2)
+		boss_health = boss_health - (2+global.level_power)
 		if boss_health <= 0 then -- Boss was defeated
 			-- Particle effects
 			go.set_position(go.get_position(boss_id), "/particlefx#boss_defeat")

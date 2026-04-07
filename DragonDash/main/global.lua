@@ -6,12 +6,12 @@ local M = {}
 -- Constants
 M.SCREEN_WIDTH = 1280
 M.SCREEN_HEIGHT = 720
-M.MAX_EGGS = 60
+M.MAX_EGGS = 75
 M.TOTAL_BOSSES = 7
 M.STARTING_SKIN_COST = 100
 M.SKIN_COST_INCREMENT = 20 -- previously 15
 M.STARTING_BOSS_HEALTH = 50
-M.BOSS_HEALTH_INCREMENT = 40
+M.BOSS_HEALTH_INCREMENT = 33
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
 M.BOSS_Y_POSITIONS = {128, 360, 592}
 M.UPGRADE_COST = {1, 1, 2, 2, 3, 3, 3, 9999} -- Very high last number is for upgrade cost logic
@@ -62,6 +62,8 @@ M.unlocked_skins = {
 	false, false, false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false, false, false,
+	false, false, false, false, false,
 }
 
 -- Functions

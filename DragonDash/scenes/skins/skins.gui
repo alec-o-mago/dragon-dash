@@ -540,6 +540,22 @@ nodes {
   pivot: PIVOT_E
   inherit_alpha: true
 }
+nodes {
+  position {
+    x: 40.0
+    y: 668.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "12.3%"
+  font: "bit_potion_ext"
+  id: "percent_label"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
 layers {
   name: "layer1"
 }

@@ -58,7 +58,7 @@ function init(self)
 	self.velocity = vmath.vector3()
 	msg.post(".", "acquire_input_focus")
 	-- Bullet Spawning
-	self.bullet_timer = timer.delay((1-(0.1*global.level_speed)), true, function()
+	self.bullet_timer = timer.delay((0.75-(0.075*global.level_speed)), true, function()
 		spawn_bullet()
 	end)
 	self.dragging = false
