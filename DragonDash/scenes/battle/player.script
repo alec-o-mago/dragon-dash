@@ -50,7 +50,6 @@ local function loop_blink_transparent(loop)
 		end)
 	else
 		invunerable = false
-		-- msg.post("#collisionobject", "enable")
 	end
 end
 
@@ -75,16 +74,21 @@ function fixed_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") and message.enter and not invunerable then -- player received damage
-		-- delete the bullet
-		go.delete(message.other_id)
-		-- handle damage math
-		msg.post("battle:/go","player_took_damage")
-		-- make the player temporarily invunerable
-		invunerable = true
-		-- make the player blink transparent
-		--go.set("#sprite", "tint.w", 1)
-		loop_blink_transparent(4)
+	if message_id == hash("trigger_response") and message.enter then -- player received damage
+		if message.group == hash("boss_bullets") and not invunerable then
+			-- delete the bullet
+			go.delete(message.other_id)
+			-- handle damage math
+			msg.post("battle:/go","player_took_damage")
+			-- make the player temporarily invunerable
+			invunerable = true
+			-- make the player blink transparent
+			--go.set("#sprite", "tint.w", 1)
+			loop_blink_transparent(4)
+		elseif message.group == hash("collectable_health") then
+			go.delete(message.other_id)
+			msg.post("battle:/go","player_heal")
+		end
 	elseif message_id == hash("contact_point_response") then
 		if message.group == hash("walls") then
 			local proj = vmath.dot(vmath.vector3(0,0,0), message.normal)

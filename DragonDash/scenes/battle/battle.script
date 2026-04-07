@@ -49,6 +49,13 @@ local function on_commercial_break_finished(self)
 	msg.post("main:/go", "set_time_step", { factor = 1, mode = 0 }) -- Unpause the game
 end
 
+local function spawn_collectable_health()
+	-- Based on player luck level(from 0 to 7), health will spawn from every 5 minutes to every 1 minute, with a 20% random variation for more or less time
+	timer.delay(math.floor((300-(global.level_luck*35)*(0.8+(math.random()*0.4)))), true, function ()
+		factory.create("battle:/collectable_health_spawn#factory", vmath.vector3(1280, math.random(128, 592), 0))
+	end)
+end
+
 function init(self)
 	-- Poki SDK
 	-- if html5 then
@@ -91,6 +98,8 @@ function init(self)
 	timer.delay(2.4, false, function ()
 		load_next_boss()
 	end)
+	-- Collectable Health
+	spawn_collectable_health()
 	-- Sound Effects
 	if global.config_music then
 		sound.play("go#background_sound")
@@ -110,7 +119,7 @@ function on_message(self, message_id, message, sender)
 			global.last_battle_bosses_defeated = current_boss - 1
 			global.last_battle_time = time_passed
 			msg.post("main:/go", "set_battle_speed", { speed = 1 })
-			--if html5 then
+			--if html5 and poki_sdk then
 			--	poki_sdk.gameplay_stop() -- Tell Poki SDK that gameplay has stopped
 			--end
 			-- Crazy Games SDK
@@ -124,6 +133,12 @@ function on_message(self, message_id, message, sender)
 			if global.config_sound then
 				sound.play("/go#player_hit_sound")
 			end
+		end
+	elseif message_id == hash("player_heal") then
+		if player_hearts < global.level_health+3 then -- if not max health
+			player_hearts = player_hearts + 1
+			msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
+			-- player heal sound here?
 		end
 	elseif message_id == hash("boss_took_damage") then
 		boss_health = boss_health - ((2+global.level_power)/2)

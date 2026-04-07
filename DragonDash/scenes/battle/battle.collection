@@ -39,6 +39,7 @@ embedded_instances {
   "mask: \\\"walls\\\"\\n"
   "mask: \\\"boss\\\"\\n"
   "mask: \\\"boss_bullets\\\"\\n"
+  "mask: \\\"collectable_health\\\"\\n"
   "embedded_collision_shape {\\n"
   "  shapes {\\n"
   "    shape_type: TYPE_SPHERE\\n"
@@ -362,4 +363,14 @@ embedded_instances {
     y: 206.0
     z: 0.9
   }
+}
+embedded_instances {
+  id: "collectable_health_spawn"
+  data: "embedded_components {\n"
+  "  id: \"factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/components/collectable_health/collectable_health.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
 }
