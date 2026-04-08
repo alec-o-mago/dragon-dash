@@ -5,6 +5,7 @@
 -> Tela de eggs esconder label e icone de preço ao comprar todos os ovos
 -> ícone de estrelinha no lugar da bolinha de notificação ao comprar todos os ovos/upgrades e também pra todas as skins
 -> Tutorial arrows na tela de upgrades
+-> Improve bullet count logic so that it doesn't start with just 1 bullet
 
 - Mais 15 skins de jogador
 ->-> Mais imagens
@@ -12,11 +13,12 @@
 ->->Otimizar imagens pra caber em 512x512px
 
 - Mais bosses
-- - Quantos? x2?
+- - Quantos? +3 normais e 1 boss
 
 - Balanceamento
 
 - Algum Fim de Grande Sucesso no final???
 ->-> Como??? Chefão Final Final??? Nível Máximo de chefão?
+->-> 20 níveis + 1 boss final 
 
 - Polimento

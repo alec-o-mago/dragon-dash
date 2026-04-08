@@ -1097,15 +1097,6 @@ animations {
   images {
     image: "/assets/images/player/65/1.png"
   }
-  images {
-    image: "/assets/images/player/65/2.png"
-  }
-  images {
-    image: "/assets/images/player/65/3.png"
-  }
-  images {
-    image: "/assets/images/player/65/4.png"
-  }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 10
 }
@@ -1181,15 +1172,6 @@ animations {
   id: "70"
   images {
     image: "/assets/images/player/70/1.png"
-  }
-  images {
-    image: "/assets/images/player/70/2.png"
-  }
-  images {
-    image: "/assets/images/player/70/3.png"
-  }
-  images {
-    image: "/assets/images/player/70/4.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 10
