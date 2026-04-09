@@ -15,7 +15,7 @@ local function set_skins()
 		else
 			gui.play_flipbook(gui.get_node("skin_show"..index), "question_mark")
 		end
-		gui.play_flipbook(gui.get_node("skin_show"..index), tostring(skin_pos))
+		--gui.play_flipbook(gui.get_node("skin_show"..index), tostring(skin_pos))
 	end
 	gui.set_text(gui.get_node("page_label"), current_page.."/"..TOTAL_PAGES)
 end
