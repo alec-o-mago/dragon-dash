@@ -6,7 +6,7 @@
 -> ícone de estrelinha no lugar da bolinha de notificação ao comprar todos os ovos/upgrades e também pra todas as skins
 -> Tutorial arrows na tela de upgrades
 -> Improve bullet count logic so that it doesn't start with just 1 bullet
--> Fix not loading config for music and sfx
+
 
 - Mais 15 skins de jogador
 ->-> Mais imagens

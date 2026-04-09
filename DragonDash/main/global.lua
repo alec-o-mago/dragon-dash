@@ -140,8 +140,8 @@ local function load_game_default()
 	M.high_score_time = save_data.high_score_time or M.high_score_time
 	M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
 	M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
-	M.config_music = save_data.config_music or M.config_music
-	M.config_sound = save_data.config_sound or M.config_sound
+	M.config_music = save_data.config_music
+	M.config_sound = save_data.config_sound
 	M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
 	-- Load unlocked skins in a way that doesn't break the save system if I add more skins in the future
 	if save_data.unlocked_skins then -- If there is save data for unlocked skins in the first place
