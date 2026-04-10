@@ -1060,14 +1060,8 @@ animations {
   images {
     image: "/assets/images/player/63/2.png"
   }
-  images {
-    image: "/assets/images/player/63/3.png"
-  }
-  images {
-    image: "/assets/images/player/63/4.png"
-  }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 10
+  fps: 5
 }
 animations {
   id: "64"
@@ -1136,14 +1130,8 @@ animations {
   images {
     image: "/assets/images/player/68/2.png"
   }
-  images {
-    image: "/assets/images/player/68/3.png"
-  }
-  images {
-    image: "/assets/images/player/68/4.png"
-  }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 10
+  fps: 5
 }
 animations {
   id: "69"
@@ -1203,14 +1191,8 @@ animations {
   images {
     image: "/assets/images/player/73/2.png"
   }
-  images {
-    image: "/assets/images/player/73/3.png"
-  }
-  images {
-    image: "/assets/images/player/73/4.png"
-  }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 10
+  fps: 5
 }
 animations {
   id: "74"
