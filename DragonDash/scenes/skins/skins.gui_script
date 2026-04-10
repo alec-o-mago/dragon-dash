@@ -31,7 +31,8 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	gui.set_text(gui.get_node("percent_label"), string.format("%.1f", ((global.unlocked_skin_count+3)/global.MAX_EGGS)*100).."%")
+	local percentage = math.floor(((global.unlocked_skin_count+3)/global.MAX_EGGS)*100)
+	gui.set_text(gui.get_node("percent_label"), percentage.."%")
 	-- Enable and disable skins based on obtaine dor not
 	set_skins()
 end

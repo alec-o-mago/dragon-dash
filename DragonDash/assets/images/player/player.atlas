@@ -1043,14 +1043,8 @@ animations {
   images {
     image: "/assets/images/player/62/2.png"
   }
-  images {
-    image: "/assets/images/player/62/3.png"
-  }
-  images {
-    image: "/assets/images/player/62/4.png"
-  }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 10
+  fps: 5
 }
 animations {
   id: "63"
@@ -1174,14 +1168,8 @@ animations {
   images {
     image: "/assets/images/player/72/2.png"
   }
-  images {
-    image: "/assets/images/player/72/3.png"
-  }
-  images {
-    image: "/assets/images/player/72/4.png"
-  }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 10
+  fps: 5
 }
 animations {
   id: "73"
