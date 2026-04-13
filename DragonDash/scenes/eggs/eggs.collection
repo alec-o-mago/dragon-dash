@@ -8,6 +8,23 @@ instances {
     z: 0.9
   }
 }
+instances {
+  id: "tutorial_arrow_upgrades"
+  prototype: "/components/tutorial_arrow/tutorial_arrow.go"
+  position {
+    x: 1070.0
+    y: 74.0
+    z: 0.9
+  }
+  component_properties {
+    id: "tutorial_arrow"
+    properties {
+      id: "flip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "go"

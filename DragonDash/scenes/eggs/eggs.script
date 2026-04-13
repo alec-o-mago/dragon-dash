@@ -44,11 +44,13 @@ local function unlock_egg()
 			end
 		end)
 	end
-	-- Check if player can unlock another egg
-	if global.gold < global.next_egg_cost() then
+	msg.post("/tutorial_arrow_eggs", "disable")
+	if not global.can_buy_egg() then
 		msg.post("eggs:/gui#gui", "disable_eggs_button")
 	end
-	msg.post("/tutorial_arrow_eggs", "disable")
+	if global.unlocked_skin_count - global.eggs + 3 <= 0 then -- If player never bought upgrades
+		msg.post("/tutorial_arrow_upgrades", "enable")
+	end
 	msg.post("eggs:/gui#gui", "update_ui")
 end
 
@@ -57,9 +59,12 @@ function init(self)
 	if global.gold < global.next_egg_cost() then
 		msg.post("eggs:/gui#gui", "disable_eggs_button")
 	end
-	-- Tutorial Arrow
+	-- Tutorial Arrows
 	if global.unlocked_skin_count > 0 then
 		msg.post("/tutorial_arrow_eggs", "disable")
+		if global.unlocked_skin_count - global.eggs + 3 > 0 then -- If player already bought upgrades
+			msg.post("/tutorial_arrow_upgrades", "disable")
+		end
 	end
 end
 

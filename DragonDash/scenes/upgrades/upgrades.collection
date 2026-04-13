@@ -1,4 +1,60 @@
 name: "upgrades"
+instances {
+  id: "tutorial_arrow_eggs"
+  prototype: "/components/tutorial_arrow/tutorial_arrow.go"
+  position {
+    x: 1084.0
+    y: 68.0
+  }
+  component_properties {
+    id: "tutorial_arrow"
+    properties {
+      id: "flip"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+  }
+}
+instances {
+  id: "tutorial_arrow_1"
+  prototype: "/components/tutorial_arrow/tutorial_arrow.go"
+  position {
+    x: 1094.0
+    y: 630.0
+  }
+}
+instances {
+  id: "tutorial_arrow_2"
+  prototype: "/components/tutorial_arrow/tutorial_arrow.go"
+  position {
+    x: 1094.0
+    y: 510.0
+  }
+}
+instances {
+  id: "tutorial_arrow_3"
+  prototype: "/components/tutorial_arrow/tutorial_arrow.go"
+  position {
+    x: 1094.0
+    y: 390.0
+  }
+}
+instances {
+  id: "tutorial_arrow_4"
+  prototype: "/components/tutorial_arrow/tutorial_arrow.go"
+  position {
+    x: 1094.0
+    y: 270.0
+  }
+}
+instances {
+  id: "tutorial_arrow_5"
+  prototype: "/components/tutorial_arrow/tutorial_arrow.go"
+  position {
+    x: 1094.0
+    y: 150.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "go"

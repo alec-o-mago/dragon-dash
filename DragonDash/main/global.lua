@@ -75,6 +75,22 @@ function M.next_upgrade_cost()
 	return math.min(M.UPGRADE_COST[M.level_health+1], M.UPGRADE_COST[M.level_power+1], M.UPGRADE_COST[M.level_quantity+1], M.UPGRADE_COST[M.level_speed+1], M.UPGRADE_COST[M.level_luck+1])
 end
 
+function M.all_eggs_bought()
+	return M.unlocked_skin_count + 3 >= M.MAX_EGGS
+end
+
+function M.all_upgrades_bought()
+	return (M.level_health >= 7) and (M.level_power >= 7) and (M.level_quantity >= 7) and (M.level_speed >= 7) and (M.level_luck >= 7) 
+end
+
+function M.can_buy_egg()
+	return M.eggs >= M.next_egg_cost() and not M.all_eggs_bought()
+end
+
+function M.can_buy_upgrade()
+	return M.gold >= M.next_upgrade_cost() and not M.all_upgrades_bought()
+end
+
 local function save_game_default()
 	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
 	sys.save(save_file, {

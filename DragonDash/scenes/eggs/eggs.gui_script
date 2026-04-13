@@ -8,12 +8,17 @@ local function update_ui()
 	gui.set_text(gui.get_node("gold_label"), tostring(global.gold))
 	gui.set_text(gui.get_node("eggs_label"), tostring(global.eggs))
 	gui.set_text(gui.get_node("egg_cost_label"), tostring(global.next_egg_cost()))
+	if global.all_eggs_bought() then
+		gui.set_color(gui.get_node("eggs_button"), global.COLOR_GRAY_OPAQUE)
+		gui.set_visible(gui.get_node("egg_cost_icon"), false)
+		gui.set_visible(gui.get_node("egg_cost_label"), false)
+	end
 end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	enable_eggs_button = true
-	gui.set_visible(gui.get_node("upgrade_notification"), global.eggs >= global.next_upgrade_cost())
+	gui.set_visible(gui.get_node("upgrade_notification"), global.can_buy_upgrade())
 	update_ui()
 end
 

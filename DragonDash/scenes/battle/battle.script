@@ -59,7 +59,7 @@ end
 
 function init(self)
 	-- Poki SDK
-	-- if html5 then
+	-- if html5 and poki_sdk then
 	-- 	poki_sdk.gameplay_start()
 	--	sound.pause("/go#background_sound", true)
 	--	msg.post("main:/go", "set_time_step", { factor = 0, mode = 0 }) -- Pause the game

@@ -44,8 +44,8 @@ function init(self)
 	self.selected_level = global.selected_level
 	gui.set_text(gui.get_node("eggs_label"), tostring(global.eggs))
 	gui.set_text(gui.get_node("gold_label"), tostring(global.gold))
-	gui.set_visible(gui.get_node("egg_notification"), global.gold >= global.next_egg_cost())
-	gui.set_visible(gui.get_node("upgrade_notification"), global.eggs >= global.next_upgrade_cost())
+	gui.set_visible(gui.get_node("egg_notification"), global.can_buy_egg())
+	gui.set_visible(gui.get_node("upgrade_notification"), global.can_buy_upgrade())
 	update_music_button_image()
 	update_sound_button_image()
 end

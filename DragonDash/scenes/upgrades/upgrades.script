@@ -1,14 +1,26 @@
 -- upgrades.script
 
+local global = require("main.global")
+
+local function update_tutorial_arrows()
+	if global.unlocked_skin_count - global.eggs + 3 > 0 then
+		msg.post("/tutorial_arrow_1", "disable")
+		msg.post("/tutorial_arrow_2", "disable")
+		msg.post("/tutorial_arrow_3", "disable")
+		msg.post("/tutorial_arrow_4", "disable")
+		msg.post("/tutorial_arrow_5", "disable")
+	end
+	if global.unlocked_skin_count - global.eggs + 3 <= 0 or global.unlocked_skin_count > 0 then
+		msg.post("/tutorial_arrow_eggs", "disable")
+	end
+end
 
 function init(self)
-	--
+	update_tutorial_arrows()
 end
 
 function on_message(self, message_id, message, sender)
-	--
-end
-
-function on_input(self, action_id, action)
-	--
+	if message_id == hash("update_tutorial_arrows") then
+		update_tutorial_arrows()
+	end
 end

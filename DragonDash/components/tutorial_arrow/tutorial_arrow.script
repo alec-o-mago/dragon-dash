@@ -1,6 +1,13 @@
 -- tutorial_arrow.script
 
 
+go.property("flip", false)
+
 function init(self)
-	go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, go.get_position()+vmath.vector3(48, 0, 0), go.EASING_OUTSINE, 1)
+	if not self.flip then
+		go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, go.get_position()+vmath.vector3(48, 0, 0), go.EASING_OUTSINE, 1)
+	else
+		go.set("#sprite", "scale", vmath.vector3(-4,4,0))
+		go.animate(".", "position", go.PLAYBACK_LOOP_PINGPONG, go.get_position()+vmath.vector3(-48, 0, 0), go.EASING_OUTSINE, 1)
+	end
 end

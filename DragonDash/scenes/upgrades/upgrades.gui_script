@@ -101,12 +101,13 @@ local function update_ui()
 	update_speed_ui()
 	update_luck_ui()
 	gui.set_text(gui.get_node("eggs_label"), global.eggs)
+	msg.post("upgrades:/go", "update_tutorial_arrows")
 end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	gui.set_text(gui.get_node("gold_label"), global.gold)
-	gui.set_visible(gui.get_node("egg_notification"), global.gold >= global.next_egg_cost())
+	gui.set_visible(gui.get_node("egg_notification"), global.can_buy_egg())
 	update_ui()
 end
 
