@@ -2,7 +2,7 @@
 
 - Utils
 -> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades ???
--> Tela de eggs esconder label e icone de preço ao comprar todos os ovos
+-> Tela de eggs esconder label e icone de preço ao comprar todos os ovos e esconder notificação vermelha da tela incial se tiver comprado tudo
 -> ícone de estrelinha no lugar da bolinha de notificação ao comprar todos os ovos/upgrades e também pra todas as skins
 -> Tutorial arrows na tela de upgrades
 -> Improve bullet count logic so that it doesn't start with just 1 bullet
@@ -11,7 +11,7 @@
 - Mais 15 skins de jogador
 ->-> Mais imagens
 ->-> Implementar nas telas "eggs" e "skins"
-->->Otimizar imagens pra caber em 512x512px
+
 
 - Mais bosses
 - - Quantos? +3 normais e 1 boss
