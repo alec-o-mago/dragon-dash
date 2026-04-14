@@ -1,5 +1,6 @@
 -- pink_bullet.script
 
+
 go.property("target", vmath.vector3(640, 360, 0))
 go.property("phase2", false)
 local ref_vector = vmath.vector3(1, 0, 0)

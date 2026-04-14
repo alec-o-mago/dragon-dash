@@ -1,5 +1,6 @@
 -- pink_bullet.script
 
+
 go.property("speed", 260)
 go.property("direction", vmath.vector3(-1,0,0))
 

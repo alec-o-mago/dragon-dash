@@ -4,11 +4,10 @@
 go.property("speed", 250)
 go.property("direction", vmath.vector3(-1,0,0))
 go.property("max_bounces", 2)
-
-local current_bounces
+go.property("current_bounces", 0)
 
 function init(self)
-	current_bounces = 0
+	self.current_bounces = 0
 	-- self delete after some time
 	timer.delay(7, false, function() go.delete() end)
 end
@@ -17,8 +16,8 @@ function fixed_update(self, dt)
 	-- Update the bullet position based on velocity
 	local pos = go.get_position()
 	if pos.y <= 32 or pos.y >= 688 then -- boncing on floor and ceiling
-		current_bounces = current_bounces + 1
-		if current_bounces > self.max_bounces then
+		self.current_bounces = self.current_bounces + 1
+		if self.current_bounces > self.max_bounces then
 			go.delete()
 		end
 		self.direction.y  = -self.direction.y
@@ -27,6 +26,3 @@ function fixed_update(self, dt)
 	go.set_position(pos)
 end
 
-function on_message(self, message_id, message, sender)
-	-- on_message
-end
