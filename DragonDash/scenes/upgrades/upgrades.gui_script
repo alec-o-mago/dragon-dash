@@ -114,6 +114,7 @@ end
 function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then
 		local menu_button = gui.get_node("menu_button")
+		local skin_button = gui.get_node("skin_button")
 		local eggs_button = gui.get_node("eggs_button")
 		local upgrade_health_button = gui.get_node("upgrade_health_button")
 		local upgrade_power_button = gui.get_node("upgrade_power_button")
@@ -122,27 +123,34 @@ function on_input(self, action_id, action)
 		local upgrade_luck_button = gui.get_node("upgrade_luck_button")
 		if gui.pick_node(menu_button, action.x, action.y) then
 			msg.post("main:/go", "load_main_menu")
+		elseif gui.pick_node(skin_button, action.x, action.y) then
+			msg.post("main:/go", "load_skins")
 		elseif gui.pick_node(eggs_button, action.x, action.y) then
 			msg.post("main:/go", "load_eggs")
 		elseif gui.pick_node(upgrade_health_button, action.x, action.y) and global.UPGRADE_COST[global.level_health+1] <= global.eggs then
 			global.eggs = global.eggs - global.UPGRADE_COST[global.level_health+1]
 			global.level_health = global.level_health + 1
+			global.save_game()
 			update_ui()
 		elseif gui.pick_node(upgrade_power_button, action.x, action.y) and global.UPGRADE_COST[global.level_power+1] <= global.eggs then
 			global.eggs = global.eggs - global.UPGRADE_COST[global.level_power+1]
 			global.level_power = global.level_power + 1
+			global.save_game()
 			update_ui()
 		elseif gui.pick_node(upgrade_quantity_button, action.x, action.y) and global.UPGRADE_COST[global.level_quantity+1] <= global.eggs then
 			global.eggs = global.eggs - global.UPGRADE_COST[global.level_quantity+1]
 			global.level_quantity = global.level_quantity + 1
+			global.save_game()
 			update_ui()
 		elseif gui.pick_node(upgrade_speed_button, action.x, action.y) and global.UPGRADE_COST[global.level_speed+1] <= global.eggs then
 			global.eggs = global.eggs - global.UPGRADE_COST[global.level_speed+1]
 			global.level_speed = global.level_speed + 1
+			global.save_game()
 			update_ui()
 		elseif gui.pick_node(upgrade_luck_button, action.x, action.y) and global.UPGRADE_COST[global.level_luck+1] <= global.eggs then
 			global.eggs = global.eggs - global.UPGRADE_COST[global.level_luck+1]
 			global.level_luck = global.level_luck + 1
+			global.save_game()
 			update_ui()
 		end
 	end

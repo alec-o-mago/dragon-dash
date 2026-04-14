@@ -90,6 +90,15 @@ function on_message(self, message_id, message, sender)
 		local progress_bar_2_size = math.min(self.boss_health_max_size, (message.percentage*2) * self.boss_health_max_size)
 		gui.set_size(self.health_bar_progress_node_1, vmath.vector3(24, progress_bar_1_size, 0))
 		gui.set_size(self.health_bar_progress_node_2, vmath.vector3(24, progress_bar_2_size, 0))
+	elseif message_id == hash("show_level_label") then
+		local level_label_node = gui.get_node("level_label")
+		if message.level <= 20 then
+			gui.set_text(level_label_node, "Level "..message.level.."/20")
+		else
+			gui.set_text(level_label_node, "Final Level!")
+		end
+		gui.set_position(level_label_node, vmath.vector3(640, 756, 0))
+		gui.animate(level_label_node, "position.y", -40, gui.EASING_OUTINQUAD, 2)
 	end
 end
 

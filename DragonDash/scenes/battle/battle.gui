@@ -1,4 +1,12 @@
 script: "/scenes/battle/battle.gui_script"
+fonts {
+  name: "level_select"
+  font: "/assets/fonts/level_select.font"
+}
+fonts {
+  name: "main_menu_title"
+  font: "/assets/fonts/main_menu_title.font"
+}
 textures {
   name: "core"
   texture: "/assets/images/core/core.atlas"
@@ -270,6 +278,21 @@ nodes {
   type: TYPE_BOX
   id: "health_bar_progress_1"
   pivot: PIVOT_S
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 640.0
+    y: 756.0
+  }
+  size {
+    x: 256.0
+    y: 64.0
+  }
+  type: TYPE_TEXT
+  text: "Level 2/20"
+  font: "main_menu_title"
+  id: "level_label"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"

@@ -31,12 +31,15 @@ local function load_next_boss()
 	current_boss = current_boss + 1
 	local next_boss = boss_order[(current_boss%7)+1]
 	boss_id = factory.create("battle:/boss_factories#"..next_boss, vmath.vector3(1050, 360, 0))
-	boss_health_max = global.STARTING_BOSS_HEALTH + (current_boss * global.BOSS_HEALTH_INCREMENT)
+	boss_health_max = global.STARTING_BOSS_HEALTH + (current_boss * (current_boss-1) * global.BOSS_HEALTH_INCREMENT)
 	boss_health = boss_health_max
+	-- Background Color
 	go.animate("/bg1#bg1","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[boss_order[next_boss]], go.EASING_LINEAR, 2)
 	go.animate("/bg2#bg2","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[boss_order[next_boss]], go.EASING_LINEAR, 2)
-	--go.set("/bg1#bg1","tint", global.LEVEL_COLORS[boss_order[next_boss]])
-	--go.set("/bg2#bg2","tint", global.LEVEL_COLORS[boss_order[next_boss]])
+	-- Level Text
+	if current_boss > 1 then -- Do not show level text for level 1 to make space for tutorial images
+		msg.post("/gui#battle", "show_level_label", {level = current_boss})
+	end
 	-- Make the world faster
 	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.03})
 	go.set("/go#background_sound", "speed", 1 + current_boss * 0.02)
