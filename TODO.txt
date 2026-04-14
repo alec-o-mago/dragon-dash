@@ -1,26 +1,25 @@
 == TODO Dragon Dash ==
 
 - Utils
--> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades ???
--> Tela de eggs esconder label e icone de preço ao comprar todos os ovos e esconder notificação vermelha da tela incial se tiver comprado tudo
--> ícone de estrelinha no lugar da bolinha de notificação ao comprar todos os ovos/upgrades e também pra todas as skins
--> Improve bullet count logic so that it doesn't start with just 1 bullet
--> add (1% to 15% (+2% per luck_level)) critical rate chance (double damage)
--> add (1% to 15% (+2% per luck_level)) evasion chance
-
-
-- Refinar skins
-
+-> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades???
 
 - Mais bosses
 - - Quantos? +3 normais e 1 boss final
 
 - Audio
+-> adicionar
+->-> audio de Evasão
+->-> pressionar botão de comprar ovo/upgrade
+-> trocar
+->-> tema principal
 
-- Balanceamento
-
-- Algum Fim de Grande Sucesso no final???
-->-> Como??? Chefão Final Final??? Nível Máximo de chefão?
-->-> 20 níveis + 1 boss final 
+- Final
+->-> Chefão Final (21º nível)
+->-> Tela de Agradecimento. 
+->-> Mudanças na tela inicial pra simbolizar que o chefão final foi derrotado.
+->->-> Botão de "Play" vira botão "Infinito"???
+->->-> Textos de níveis na tela de batalha deixam de ter "/20"???
 
 - Polimento
+->-> Balanceamento
+->-> Refinar skins
