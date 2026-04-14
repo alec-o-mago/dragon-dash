@@ -9,7 +9,7 @@ local function calculate_gold(bosses_defeated, time_in_seconds)
 	if bosses_defeated <= 0 then
 		return math.floor(time_in_seconds)
 	end
-	return (5 * bosses_defeated * bosses_defeated + 95 * bosses_defeated) + math.floor(time_in_seconds)
+	return (bosses_defeated * 100) + (bosses_defeated*(bosses_defeated-1)*20) + math.floor(time_in_seconds)
 end
 
 local function format_time(seconds)

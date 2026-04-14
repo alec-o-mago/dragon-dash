@@ -3,43 +3,31 @@
 local global = require("main.global")
 local invunerable = false
 
-local function spawn_bullet()
-	-- Get the ID of the Factory component
+local function spawn_bullets()
 	local factory_id = "/player_bullet_spawn#factory"
 	local pos = go.get_position()
 	pos.x = pos.x + 64
-	local angle_1 = vmath.quat_rotation_z(math.rad(10))
-	local angle_2 = vmath.quat_rotation_z(math.rad(-10))
-	local angle_3 = vmath.quat_rotation_z(math.rad(20))
-	local angle_4 = vmath.quat_rotation_z(math.rad(-20))
-	local angle_5 = vmath.quat_rotation_z(math.rad(30))
-	local angle_6 = vmath.quat_rotation_z(math.rad(-30))
-	local angle_7 = vmath.quat_rotation_z(math.rad(40))
-	local angle_8 = vmath.quat_rotation_z(math.rad(-40))
+
 	local ref_vector = vmath.vector3(1, 0, 0)
-	-- Spawn the bullet using the factory
-	factory.create(factory_id, pos)
-	if global.level_quantity >= 1 then
-		factory.create(factory_id, pos, angle_1, {direction = vmath.rotate(angle_1, ref_vector)})
-	end
-	if global.level_quantity >= 2 then
-		factory.create(factory_id, pos, angle_2, {direction = vmath.rotate(angle_2, ref_vector)})
-	end
-	if global.level_quantity >= 3 then
-		factory.create(factory_id, pos, angle_3, {direction = vmath.rotate(angle_3, ref_vector)})
-	end
-	if global.level_quantity >= 4 then
-		factory.create(factory_id, pos, angle_4, {direction = vmath.rotate(angle_4, ref_vector)})
-	end
-	if global.level_quantity >= 5 then
-		factory.create(factory_id, pos, angle_5, {direction = vmath.rotate(angle_5, ref_vector)})
-	end
-	if global.level_quantity >= 6 then
-		factory.create(factory_id, pos, angle_6, {direction = vmath.rotate(angle_6, ref_vector)})
-	end
-	if global.level_quantity >= 7 then
-		factory.create(factory_id, pos, angle_7, {direction = vmath.rotate(angle_7, ref_vector)})
-		factory.create(factory_id, pos, angle_8, {direction = vmath.rotate(angle_8, ref_vector)})
+
+	-- Dynamic values based on upgrade level
+	local level = global.level_quantity
+	local num_bullets = 3 + level
+	local angle_step_deg = 15 - (5 * level / 7)  -- Linear from 15° (level 0) to 10° (level 7)
+
+	-- Calculate starting angle so the fan is perfectly centered around 0° (right)
+	local half_span = (num_bullets - 1) / 2
+	local start_angle_deg = -half_span * angle_step_deg
+
+	-- Spawn all bullets in a clean loop
+	for i = 0, num_bullets - 1 do
+		local angle_deg = start_angle_deg + i * angle_step_deg
+		local angle_rad = math.rad(angle_deg)
+
+		local rotation = vmath.quat_rotation_z(angle_rad)
+		local direction = vmath.rotate(rotation, ref_vector)
+
+		factory.create(factory_id, pos, rotation, { direction = direction })
 	end
 end
 
@@ -58,8 +46,8 @@ function init(self)
 	self.velocity = vmath.vector3()
 	msg.post(".", "acquire_input_focus")
 	-- Bullet Spawning
-	self.bullet_timer = timer.delay((0.75-(0.075*global.level_speed)), true, function()
-		spawn_bullet()
+	self.bullet_timer = timer.delay((0.7-(0.065*global.level_speed)), true, function()
+		spawn_bullets()
 	end)
 	self.dragging = false
 	self.last_drag_pos = vmath.vector3()

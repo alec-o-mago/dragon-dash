@@ -1,17 +1,26 @@
 -- big_blue_bullet.script
 
+
 go.property("speed", 250)
 go.property("direction", vmath.vector3(-1,0,0))
+go.property("max_bounces", 2)
+
+local current_bounces
 
 function init(self)
+	current_bounces = 0
 	-- self delete after some time
-	timer.delay(8, false, function() go.delete() end)
+	timer.delay(7, false, function() go.delete() end)
 end
 
 function fixed_update(self, dt)
 	-- Update the bullet position based on velocity
 	local pos = go.get_position()
-	if pos.y <= 32 or pos.y >= 688 then
+	if pos.y <= 32 or pos.y >= 688 then -- boncing on floor and ceiling
+		current_bounces = current_bounces + 1
+		if current_bounces > self.max_bounces then
+			go.delete()
+		end
 		self.direction.y  = -self.direction.y
 	end
 	pos = pos + self.direction * self.speed * dt

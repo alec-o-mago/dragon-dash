@@ -68,7 +68,7 @@ M.unlocked_skins = {
 
 -- Functions
 function M.next_egg_cost()
-	return (M.STARTING_SKIN_COST + (M.SKIN_COST_INCREMENT * M.unlocked_skin_count))
+	return M.STARTING_SKIN_COST + (M.SKIN_COST_INCREMENT * (M.unlocked_skin_count * (M.unlocked_skin_count+1)))
 end
 
 function M.next_upgrade_cost()
@@ -84,11 +84,11 @@ function M.all_upgrades_bought()
 end
 
 function M.can_buy_egg()
-	return M.eggs >= M.next_egg_cost() and not M.all_eggs_bought()
+	return M.gold >= M.next_egg_cost() and not M.all_eggs_bought()
 end
 
 function M.can_buy_upgrade()
-	return M.gold >= M.next_upgrade_cost() and not M.all_upgrades_bought()
+	return M.eggs >= M.next_upgrade_cost() and not M.all_upgrades_bought()
 end
 
 local function save_game_default()

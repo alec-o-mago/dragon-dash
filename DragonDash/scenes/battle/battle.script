@@ -100,7 +100,7 @@ function init(self)
 		load_next_boss()
 	end)
 	-- Collectable Health
-	timer.delay(math.floor((30*(0.8+(math.random()*0.4)))), true, function ()
+	timer.delay(math.floor((30*(0.8+(math.random()*0.4)))), false, function ()
 		spawn_collectable_health()
 	end)
 	-- Sound Effects
@@ -118,7 +118,22 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 	elseif message_id == hash("player_took_damage") then
-		if player_hearts <= 1 then -- Player defeated
+		-- Evasion chance: 1% + 2% per luck level, up to 15%
+		local evaded = (math.random() <= (0.01 + (global.level_luck*0.02)))
+		if evaded then
+			go.set_rotation(vmath.quat_rotation_z(math.rad(0)), "/player")
+			go.animate("/player", "euler.z", go.PLAYBACK_ONCE_FORWARD, 360, go.EASING_OUTQUAD, 0.5)
+			if global.config_sound then
+				print("add evasion sound here")
+			end
+		else
+			player_hearts = player_hearts - 1
+			msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
+			if global.config_sound then
+				sound.play("/go#player_hit_sound")
+			end
+		end
+		if player_hearts <= 0 then -- Player defeated
 			global.last_battle_bosses_defeated = current_boss - 1
 			global.last_battle_time = time_passed
 			msg.post("main:/go", "set_battle_speed", { speed = 1 })
@@ -130,12 +145,6 @@ function on_message(self, message_id, message, sender)
 				crazygames.gameplay_stop()
 			end
 			msg.post("main:/go", "load_results")
-		else
-			player_hearts = player_hearts - 1
-			msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
-			if global.config_sound then
-				sound.play("/go#player_hit_sound")
-			end
 		end
 	elseif message_id == hash("player_heal") then
 		if player_hearts < global.level_health+3 then -- if not max health
@@ -145,6 +154,11 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("boss_took_damage") then
 		boss_health = boss_health - (2+global.level_power)
+		-- Critical chance: 1% + 2% per luck level, up to 15%
+		local critical = (math.random() > (0.01 + global.level_luck*0.02))
+		if critical then -- Deal double damage if critical
+			boss_health = boss_health - (2+global.level_power)
+		end
 		if boss_health <= 0 then -- Boss was defeated
 			-- Particle effects
 			go.set_position(go.get_position(boss_id), "/particlefx#boss_defeat")
