@@ -7,7 +7,6 @@ local M = {}
 M.SCREEN_WIDTH = 1280
 M.SCREEN_HEIGHT = 720
 M.MAX_EGGS = 75
-M.TOTAL_BOSSES = 7
 M.STARTING_SKIN_COST = 100
 M.SKIN_COST_INCREMENT = 10
 M.STARTING_BOSS_HEALTH = 50
@@ -23,6 +22,10 @@ M.LEVEL_COLORS = {
 	vmath.vector4(0.6, 0.3, 0.6, 1.0), -- 
 	vmath.vector4(0.3, 0.6, 0.6, 1.0), -- 
 	vmath.vector4(0.5, 0.5, 0.5, 1.0), -- gray
+	vmath.vector4(0.6, 0.4, 0.4, 1.0), -- red
+	vmath.vector4(0.4, 0.6, 0.4, 1.0), -- green
+	vmath.vector4(0.4, 0.4, 0.6, 1.0), -- blue
+	vmath.vector4(0.6, 0.6, 0.3, 1.0), -- yellow
 }
 M.RAINBOW_COLORS = {
 	vmath.vector4(1.0, 0.0, 0.0, 1.0),

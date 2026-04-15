@@ -128,27 +128,6 @@ images {
   image: "/assets/images/core/tutorial_movement_touch.png"
 }
 images {
-  image: "/assets/images/core/bosses/boss1.png"
-}
-images {
-  image: "/assets/images/core/bosses/boss2.png"
-}
-images {
-  image: "/assets/images/core/bosses/boss3.png"
-}
-images {
-  image: "/assets/images/core/bosses/boss4.png"
-}
-images {
-  image: "/assets/images/core/bosses/boss5.png"
-}
-images {
-  image: "/assets/images/core/bosses/boss6.png"
-}
-images {
-  image: "/assets/images/core/bosses/boss7.png"
-}
-images {
   image: "/assets/images/core/buttons/upgrade_amount.png"
 }
 images {
@@ -171,5 +150,44 @@ images {
 }
 images {
   image: "/assets/images/core/tutorial_arrow.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss1.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss10.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss11.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss2.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss3.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss4.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss5.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss6.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss7.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss8.png"
+}
+images {
+  image: "/assets/images/core/bosses/boss9.png"
+}
+images {
+  image: "/assets/images/core/bullets/chest_barrier.png"
+}
+images {
+  image: "/assets/images/core/bullets/chest_bullet.png"
 }
 inner_padding: 1

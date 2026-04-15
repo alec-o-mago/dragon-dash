@@ -1,0 +1,130 @@
+-- 9.script
+
+
+local global = require("main.global")
+local phase = 1
+local current_position = 2
+
+local function bullet_burst_1() -- make many bullets fall from the top at an angle
+	local pos1 = vmath.vector3(256,720,0)
+	local pos2 = vmath.vector3(512,720,0)
+	local pos3 = vmath.vector3(768,720,0)
+	local pos4 = vmath.vector3(1024,720,0)
+	local pos5 = vmath.vector3(1280,720,0)
+	local angle = vmath.quat_rotation_z(math.rad(-120))
+	local ref_vector = vmath.vector3(1, 0, 0)
+	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos3, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos4, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos5, angle, {direction = vmath.rotate(angle, ref_vector)})
+end
+
+local function bullet_burst_1_lv2() -- make many bullets fall from the top at an angle
+	local pos1 = vmath.vector3(256,720,0)
+	local pos2 = vmath.vector3(512,720,0)
+	local pos3 = vmath.vector3(768,720,0)
+	local pos4 = vmath.vector3(1024,720,0)
+	local pos5 = vmath.vector3(1280,720,0)
+	local pos6 = vmath.vector3(256+16,752,0)
+	local pos7 = vmath.vector3(512+16,752,0)
+	local pos8 = vmath.vector3(768+16,752,0)
+	local pos9 = vmath.vector3(1024+16,752,0)
+	local pos10 = vmath.vector3(1280+16,752,0)
+	local angle = vmath.quat_rotation_z(math.rad(-120))
+	local ref_vector = vmath.vector3(1, 0, 0)
+	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos3, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos4, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos5, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos6, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos7, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos8, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos9, angle, {direction = vmath.rotate(angle, ref_vector)})
+	factory.create("#bullet_factory", pos10, angle, {direction = vmath.rotate(angle, ref_vector)})
+end
+
+local function bullet_pattern_1(loop)
+	if loop > 0 then
+		if phase == 1 then
+			bullet_burst_1()
+		else
+			bullet_burst_1_lv2()
+		end
+		timer.delay(1, false, function() bullet_pattern_1(loop-1) end)
+	else
+		timer.delay(4, false, function() bullet_pattern_1(10) end)
+	end
+end
+
+local function bullet_burst_2()
+	local pos1 = vmath.vector3(1280, global.player_position.y, 0)
+	local pos2 = vmath.vector3(1280, global.player_position.y+32, 0)
+	local pos3 = vmath.vector3(1280, global.player_position.y-32, 0)
+	factory.create("#bullet_factory", pos1)
+	factory.create("#bullet_factory", pos2)
+	factory.create("#bullet_factory", pos3)
+end
+
+local function bullet_burst_2_lv2()
+	local pos1 = vmath.vector3(1280, global.player_position.y, 0)
+	local pos2 = vmath.vector3(1280, global.player_position.y+32, 0)
+	local pos3 = vmath.vector3(1280, global.player_position.y-32, 0)
+	local pos4 = vmath.vector3(1280, global.player_position.y+64, 0)
+	local pos5 = vmath.vector3(1280, global.player_position.y-64, 0)
+	factory.create("#bullet_factory", pos1)
+	factory.create("#bullet_factory", pos2)
+	factory.create("#bullet_factory", pos3)
+	factory.create("#bullet_factory", pos4)
+	factory.create("#bullet_factory", pos5)
+end
+
+local function bullet_pattern_2(loop)
+	if loop > 0 then
+		if phase == 1 then
+			bullet_burst_2()
+		else
+			bullet_burst_2_lv2()
+		end
+		timer.delay(1, false, function() bullet_pattern_2(loop-1) end)
+	else
+		timer.delay(4, false, function() bullet_pattern_2(10) end)
+	end
+end
+
+local function boss_move()
+	math.randomseed(os.time())
+	current_position = current_position + math.random(2)
+	if current_position > 3 then
+		current_position = current_position - 3
+	end
+	go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, global.BOSS_Y_POSITIONS[current_position], go.EASING_LINEAR, 1.5, 2, function() boss_move() end)
+end
+
+function init(self)
+	-- Boss movement
+	go.set_position(vmath.vector3(1580, 360, 0))
+	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(1060, 360, 0), go.EASING_INOUTSINE, 4)
+	timer.delay(2, true, function() boss_move() end)
+	-- Bullet spawning
+	timer.delay(3, false, function() bullet_pattern_1(10) end)
+	timer.delay(6, false, function() bullet_pattern_2(10) end)
+	-- Spawn particlefx
+	particlefx.play("#spawn")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") and message.enter then -- boss received damage
+		-- delete the bullet
+		go.delete(message.other_id)
+		-- handle damage math
+		--self.boss_health = self.boss_health - 1
+		msg.post("battle:/go","boss_took_damage")
+		-- make the boss blink white
+		go.set("#sprite", "color_add.w", 0)
+		go.animate("#sprite", "color_add.w", go.PLAYBACK_ONCE_PINGPONG, 0.5, go.EASING_INQUAD, 0.3)
+	elseif message_id == hash("phase_2") then
+		phase = 2
+	end
+end

@@ -29,7 +29,7 @@ end
 
 local function load_next_boss()
 	current_boss = current_boss + 1
-	local next_boss = boss_order[(current_boss%7)+1]
+	local next_boss = boss_order[(current_boss%10)+1]
 	boss_id = factory.create("battle:/boss_factories#"..next_boss, vmath.vector3(1050, 360, 0))
 	boss_health_max = global.STARTING_BOSS_HEALTH + (current_boss * (current_boss-1) * global.BOSS_HEALTH_INCREMENT)
 	boss_health = boss_health_max
@@ -94,8 +94,8 @@ function init(self)
 	particlefx.play("/player#spawn")
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
-	boss_order = create_random_order(global.TOTAL_BOSSES)
-	--boss_order = {1, 2, 3, 4, 5, 6, 7}
+	boss_order = create_random_order(10)
+	--boss_order = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	player_hearts = global.level_health + 3
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
 	-- Load first boss
@@ -121,8 +121,8 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "init")
 		msg.post(sender, "enable")
 	elseif message_id == hash("player_took_damage") then
-		-- Evasion chance: 1% + 2% per luck level, up to 15%
-		local evaded = (math.random() <= (0.01 + (global.level_luck*0.02)))
+		-- Evasion chance: 1% + 3% per luck level, up to 22%
+		local evaded = (math.random() <= (0.01 + (global.level_luck*0.03)))
 		if evaded then
 			go.set_rotation(vmath.quat_rotation_z(math.rad(0)), "/player")
 			go.animate("/player", "euler.z", go.PLAYBACK_ONCE_FORWARD, 360, go.EASING_OUTQUAD, 0.5)
@@ -157,8 +157,8 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("boss_took_damage") then
 		boss_health = boss_health - (2+global.level_power)
-		-- Critical chance: 1% + 2% per luck level, up to 15%
-		local critical = (math.random() > (0.01 + global.level_luck*0.02))
+		-- Critical chance: 1% + 3% per luck level, up to 22%
+		local critical = (math.random() > (0.01 + global.level_luck*0.03))
 		if critical then -- Deal double damage if critical
 			boss_health = boss_health - (2+global.level_power)
 		end
