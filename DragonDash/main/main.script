@@ -7,7 +7,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.loaded_proxy = nil
 	go.set("/bg#bg", "tint", global.COLOR_GRAY_OPAQUE)
-	global.load_game()
+	--global.load_game()
 	if global.unlocked_skin_count > 0 then -- If player already played before
 		msg.post('/go#main_menu_proxy', "load") -- Start game on main menu for old players
 	else

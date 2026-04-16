@@ -7,9 +7,9 @@ components {
   component: "/components/particles/spawn.particlefx"
 }
 embedded_components {
-  id: "bullet_factory"
+  id: "bullet_factory_barrier"
   type: "factory"
-  data: "prototype: \"/components/boss_bullets/red/red_bullet.go\"\n"
+  data: "prototype: \"/components/boss_bullets/chest_barrier/chest_barrier.go\"\n"
   "load_dynamically: true\n"
   "dynamic_prototype: true\n"
   ""
@@ -60,4 +60,12 @@ embedded_components {
     x: 4.0
     y: 4.0
   }
+}
+embedded_components {
+  id: "bullet_factory_box"
+  type: "factory"
+  data: "prototype: \"/components/boss_bullets/chest_box/chest_box.go\"\n"
+  "load_dynamically: true\n"
+  "dynamic_prototype: true\n"
+  ""
 }

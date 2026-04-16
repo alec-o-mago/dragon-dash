@@ -1,0 +1,35 @@
+-- arrow_pink_bullet.script
+
+
+go.property("speed", 300)
+go.property("direction", vmath.vector3(-1,0,0))
+go.property("phase2", false)
+
+local function spawn_bullets(self) -- Spawns 2 perpendicular bullets
+	local pos = go.get_position()
+	local dx = self.direction.x
+	local dy = self.direction.y
+	local small_dir1 = vmath.vector3(-dy, dx, 0)   -- +90° rotation
+	local small_dir2 = vmath.vector3( dy, -dx, 0)  -- -90° rotation
+	local small_rot1 = vmath.quat_rotation_z(math.atan2(small_dir1.y, small_dir1.x))
+	local small_rot2 = vmath.quat_rotation_z(math.atan2(small_dir2.y, small_dir2.x))
+	factory.create("#bullet_factory", pos, small_rot1, {direction = small_dir1})
+	factory.create("#bullet_factory", pos, small_rot2, {direction = small_dir2})
+end
+
+function init(self)
+	if self.phase2 then
+		timer.delay(0.5, true, function() spawn_bullets(self) end)
+	else
+		timer.delay(1, true, function() spawn_bullets(self) end)
+		end
+	-- self delete after some time
+	timer.delay(10, false, function() go.delete() end)
+end
+
+function fixed_update(self, dt)
+	-- Update the bullet position based on velocity
+	local pos = go.get_position()
+	pos = pos + self.direction * self.speed * dt
+	go.set_position(pos)
+end

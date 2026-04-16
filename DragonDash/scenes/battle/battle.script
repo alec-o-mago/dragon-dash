@@ -41,7 +41,7 @@ local function load_next_boss()
 		msg.post("/gui#battle", "show_level_label", {level = current_boss})
 	end
 	-- Make the world faster
-	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.03})
+	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.02})
 	go.set("/go#background_sound", "speed", 1 + current_boss * 0.02)
 end
 
@@ -94,8 +94,11 @@ function init(self)
 	particlefx.play("/player#spawn")
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
-	boss_order = create_random_order(10)
-	--boss_order = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	if global.unlocked_skin_count > 0 then -- If player already played before
+		boss_order = create_random_order(10)
+	else
+		boss_order = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	end
 	player_hearts = global.level_health + 3
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
 	-- Load first boss

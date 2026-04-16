@@ -1,4 +1,5 @@
--- 2.script
+-- 4.script
+
 
 local global = require("main.global")
 local ref_vector = vmath.vector3(1, 0, 0)
@@ -89,6 +90,8 @@ local function boss_move()
 end
 
 function init(self)
+	-- Reset Phase
+	phase = 1
 	-- Boss movement
 	go.set_position(vmath.vector3(1580, 360, 0))
 	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(1060, 360, 0), go.EASING_INOUTSINE, 4)

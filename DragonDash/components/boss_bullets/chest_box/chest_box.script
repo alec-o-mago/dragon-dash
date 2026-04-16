@@ -6,7 +6,7 @@ go.property("direction", vmath.vector3(-1,0,0))
 
 function init(self)
 	-- self delete after some time
-	timer.delay(5, false, function() go.delete() end)
+	timer.delay(20, false, function() go.delete() end)
 end
 
 function fixed_update(self, dt)

@@ -1,7 +1,7 @@
 -- 7.script
 
+
 local global = require("main.global")
-local ref_vector = vmath.vector3(1, 0, 0)
 local phase = 1
 local current_position = 2
 
@@ -98,7 +98,7 @@ local function bullet_pattern_2(loop)
 		end
 		timer.delay(1.5, false, function() bullet_pattern_2(loop-1) end)
 	else
-		timer.delay(6, false, function() bullet_pattern_2(4) end)
+		timer.delay(6.5, false, function() bullet_pattern_2(3) end)
 	end
 end
 
@@ -112,13 +112,15 @@ local function boss_move()
 end
 
 function init(self)
+	-- Reset Phase
+	phase = 1
 	-- Boss movement
 	go.set_position(vmath.vector3(1580, 360, 0))
 	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(1060, 360, 0), go.EASING_INOUTSINE, 4)
 	timer.delay(2, true, function() boss_move() end)
 	-- Bullet spawning
 	timer.delay(2, false, function() bullet_pattern_1(5) end)
-	timer.delay(5, false, function() bullet_pattern_2(4) end)
+	timer.delay(5, false, function() bullet_pattern_2(3) end)
 end
 
 function on_message(self, message_id, message, sender)

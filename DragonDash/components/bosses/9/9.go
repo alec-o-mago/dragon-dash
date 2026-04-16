@@ -9,7 +9,7 @@ components {
 embedded_components {
   id: "bullet_factory"
   type: "factory"
-  data: "prototype: \"/components/boss_bullets/red/red_bullet.go\"\n"
+  data: "prototype: \"/components/boss_bullets/pink/pink_bullet.go\"\n"
   "load_dynamically: true\n"
   "dynamic_prototype: true\n"
   ""
@@ -60,4 +60,12 @@ embedded_components {
     x: 4.0
     y: 4.0
   }
+}
+embedded_components {
+  id: "bullet_factory_arrow"
+  type: "factory"
+  data: "prototype: \"/components/boss_bullets/arrow_pink/arrow_pink_bullet.go\"\n"
+  "load_dynamically: true\n"
+  "dynamic_prototype: true\n"
+  ""
 }

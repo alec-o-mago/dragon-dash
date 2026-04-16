@@ -190,4 +190,7 @@ images {
 images {
   image: "/assets/images/core/bullets/chest_bullet.png"
 }
+images {
+  image: "/assets/images/core/bullets/arrow_pink_bullet.png"
+}
 inner_padding: 1

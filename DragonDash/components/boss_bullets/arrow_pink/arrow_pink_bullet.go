@@ -1,6 +1,6 @@
 components {
-  id: "chest_barrier"
-  component: "/components/boss_bullets/chest_barrier/chest_barrier.script"
+  id: "star_pink_bullet"
+  component: "/components/boss_bullets/arrow_pink/arrow_pink_bullet.script"
 }
 embedded_components {
   id: "collisionobject"
@@ -13,26 +13,23 @@ embedded_components {
   "mask: \"player\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
-  "    shape_type: TYPE_BOX\n"
+  "    shape_type: TYPE_SPHERE\n"
   "    position {\n"
-  "      x: 320.0\n"
   "    }\n"
   "    rotation {\n"
   "    }\n"
   "    index: 0\n"
-  "    count: 3\n"
-  "    id: \"box\"\n"
+  "    count: 1\n"
+  "    id: \"sphere\"\n"
   "  }\n"
-  "  data: 12.0\n"
-  "  data: 640.0\n"
-  "  data: 10.0\n"
+  "  data: 21.0\n"
   "}\n"
   ""
 }
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"chest_barrier\"\n"
+  data: "default_animation: \"arrow_pink_bullet\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
@@ -40,11 +37,16 @@ embedded_components {
   "}\n"
   ""
   position {
-    x: 320.0
     z: 0.7
   }
   scale {
     x: 4.0
-    y: 400.0
+    y: 4.0
   }
+}
+embedded_components {
+  id: "bullet_factory"
+  type: "factory"
+  data: "prototype: \"/components/boss_bullets/pink/pink_bullet.go\"\n"
+  ""
 }
