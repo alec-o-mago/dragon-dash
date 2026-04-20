@@ -47,7 +47,7 @@ local function load_next_boss()
 		msg.post("/gui#battle", "show_level_label", {level = current_boss})
 	end
 	-- Make the world faster
-	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.02})
+	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.015})
 	go.set("/go#background_sound", "speed", 1 + current_boss * 0.02)
 end
 
@@ -60,8 +60,8 @@ end
 
 local function spawn_collectable_health()
 	factory.create("battle:/collectable_health_spawn#factory", vmath.vector3(1280, math.random(128, 592), 0))
-	-- Based on player luck level(from 0 to 7), health will spawn from every 5 minutes to every 1 minute, with a 20% random variation for more or less time
-	timer.delay(math.floor((300-(global.level_luck*35)*(0.8+(math.random()*0.4)))), false, function ()
+	-- Based on player luck level(from 0 to 7), health will spawn from every 5 minutes to every 27 seconds, with a 15% random variation for more or less time
+	timer.delay(math.floor(((300-(global.level_luck*39))*(0.85+(math.random()*0.3)))), false, function ()
 		spawn_collectable_health()
 	end)
 end
@@ -117,7 +117,7 @@ function init(self)
 		load_next_boss()
 	end)
 	-- Collectable Health
-	timer.delay(math.floor((30*(0.8+(math.random()*0.4)))), false, function ()
+	timer.delay(math.floor((28*(0.85+(math.random()*0.3)))), false, function ()
 		spawn_collectable_health()
 	end)
 	-- Sound Effects
