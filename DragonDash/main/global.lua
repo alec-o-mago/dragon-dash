@@ -1,5 +1,6 @@
 -- global.lua
 
+
 -- Module initialize
 local M = {}
 
@@ -10,7 +11,7 @@ M.MAX_EGGS = 75
 M.STARTING_SKIN_COST = 100
 M.SKIN_COST_INCREMENT = 10
 M.STARTING_BOSS_HEALTH = 100
-M.BOSS_HEALTH_INCREMENT = 10
+M.BOSS_HEALTH_INCREMENT = 40
 M.STARTING_BOSS_POSITION = vmath.vector3(1060, 360, 0)
 M.BOSS_Y_POSITIONS = {128, 360, 592}
 M.UPGRADE_COST = {1, 1, 2, 2, 3, 3, 3, 9999} -- Very high last number is for upgrade cost logic
@@ -26,6 +27,7 @@ M.LEVEL_COLORS = {
 	vmath.vector4(0.4, 0.6, 0.4, 1.0), -- green
 	vmath.vector4(0.4, 0.4, 0.6, 1.0), -- blue
 	vmath.vector4(0.6, 0.6, 0.3, 1.0), -- yellow
+	vmath.vector4(0.5, 0.5, 0.5, 1.0), -- gray
 }
 M.RAINBOW_COLORS = {
 	vmath.vector4(1.0, 0.0, 0.0, 1.0),
@@ -56,6 +58,7 @@ M.level_power = 0
 M.level_quantity = 0
 M.level_speed = 0
 M.level_luck = 0
+M.game_beaten = false
 M.config_music = true
 M.config_sound = true
 M.unlocked_skins = {
@@ -106,6 +109,7 @@ local function save_game_default()
 		level_luck = M.level_luck,
 		player_1_selected_skin = M.player_1_selected_skin,
 		player_2_selected_skin = M.player_2_selected_skin,
+		game_beaten = M.game_beaten,
 		config_music = M.config_music,
 		config_sound = M.config_sound,
 		unlocked_skin_count = M.unlocked_skin_count,
@@ -126,6 +130,7 @@ local function save_game_crazy_games()
 		level_luck = M.level_luck,
 		player_1_selected_skin = M.player_1_selected_skin,
 		player_2_selected_skin = M.player_2_selected_skin,
+		game_beaten = M.game_beaten,
 		config_music = M.config_music,
 		config_sound = M.config_sound,
 		unlocked_skin_count = M.unlocked_skin_count,
@@ -159,6 +164,7 @@ local function load_game_default()
 	M.high_score_time = save_data.high_score_time or M.high_score_time
 	M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
 	M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
+	M.game_beaten = save_data.game_beaten
 	M.config_music = save_data.config_music
 	M.config_sound = save_data.config_sound
 	M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
@@ -185,8 +191,9 @@ local function load_game_crazy_games()
 		M.high_score_time = save_data.high_score_time or M.high_score_time
 		M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
 		M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
-		M.config_music = save_data.config_music or M.config_music
-		M.config_sound = save_data.config_sound or M.config_sound
+		M.game_beaten = save_data.game_beaten
+		M.config_music = save_data.config_music
+		M.config_sound = save_data.config_sound
 		M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
 		-- Load unlocked skins without breaking if new skins are added later
 		if save_data.unlocked_skins then

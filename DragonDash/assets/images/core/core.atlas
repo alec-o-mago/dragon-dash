@@ -193,4 +193,10 @@ images {
 images {
   image: "/assets/images/core/bullets/arrow_pink_bullet.png"
 }
+images {
+  image: "/assets/images/core/bullets/laser_active.png"
+}
+images {
+  image: "/assets/images/core/bullets/star_boss_blue_bullet.png"
+}
 inner_padding: 1

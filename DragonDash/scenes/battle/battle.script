@@ -30,6 +30,12 @@ end
 local function load_next_boss()
 	current_boss = current_boss + 1
 	local next_boss = boss_order[(current_boss%10)+1]
+	if current_boss == 21 and not global.game_beaten then
+		next_boss = 11
+	end
+	if global.game_beaten then
+		next_boss = boss_order[(current_boss%11)+1]
+	end
 	boss_id = factory.create("battle:/boss_factories#"..next_boss, vmath.vector3(1050, 360, 0))
 	boss_health_max = global.STARTING_BOSS_HEALTH + (current_boss * (current_boss-1) * global.BOSS_HEALTH_INCREMENT)
 	boss_health = boss_health_max
@@ -95,10 +101,15 @@ function init(self)
 	-- Decide boss order
 	math.randomseed(os.time()) -- randomizes
 	if global.unlocked_skin_count > 0 then -- If player already played before
-		boss_order = create_random_order(10)
+		if global.game_beaten then
+			boss_order = create_random_order(11) -- Add final boss to game rotation if game was already beaten
+		else
+			boss_order = create_random_order(10)
+		end
 	else
-		boss_order = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+		boss_order = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 	end
+	--boss_order = {11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11}
 	player_hearts = global.level_health + 3
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
 	-- Load first boss
@@ -143,9 +154,6 @@ function on_message(self, message_id, message, sender)
 			global.last_battle_bosses_defeated = current_boss - 1
 			global.last_battle_time = time_passed
 			msg.post("main:/go", "set_battle_speed", { speed = 1 })
-			--if html5 and poki_sdk then
-			--	poki_sdk.gameplay_stop() -- Tell Poki SDK that gameplay has stopped
-			--end
 			-- Crazy Games SDK
 			if html5 and crazygames then
 				crazygames.gameplay_stop()
@@ -173,6 +181,16 @@ function on_message(self, message_id, message, sender)
 			boss_phase = 1
 			-- Replace boss
 			go.delete(boss_id)
+			if current_boss == 21 and not global.game_beaten then -- The player just beat the game!!! :D
+				msg.post("main:/go", "set_battle_speed", { speed = 1 })
+				-- Crazy Games SDK
+				if html5 and crazygames then
+					crazygames.gameplay_stop()
+				end
+				global.game_beaten = true
+				global.save_game()
+				msg.post("main:/go", "load_results") -- Use new scene instead of results here
+			end
 			load_next_boss()
 		else -- Boss not defeated
 			local boss_percentage = (boss_health/boss_health_max)

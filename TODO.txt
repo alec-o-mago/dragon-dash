@@ -2,9 +2,7 @@
 
 - Utils
 -> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades???
-
-- Mais bosses
-- - Quantos? +3 normais e 1 boss final
+-> Make main menu bg color change over time
 
 - Audio
 -> adicionar
@@ -14,11 +12,9 @@
 ->-> tema principal
 
 - Final
-->-> Chefão Final (21º nível)
 ->-> Tela de Agradecimento. 
 ->-> Mudanças na tela inicial pra simbolizar que o chefão final foi derrotado.
 ->->-> Botão de "Play" vira botão "Infinito"???
-->->-> Textos de níveis na tela de batalha deixam de ter "/20"???
 
 - Polimento
 ->-> Balanceamento

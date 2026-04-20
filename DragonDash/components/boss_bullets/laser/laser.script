@@ -1,0 +1,17 @@
+-- laser.script
+
+
+local function laser_activate()
+	go.set("#sprite", "tint", vmath.vector4(1,1,1,1))
+	msg.post("#collisionobject", "enable")
+end
+
+function init(self)
+	msg.post("#collisionobject", "disable")
+	go.set("#sprite", "tint", vmath.vector4(1,0,0,1))
+	go.animate("#sprite", "scale.x", go.PLAYBACK_ONCE_FORWARD, 4, go.EASING_LINEAR, 1.5)
+	-- avtivate after some time
+	timer.delay(1.5, false, function() laser_activate() end)
+	-- self delete after some time
+	timer.delay(3, false, function() go.delete() end)
+end

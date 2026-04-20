@@ -1,6 +1,6 @@
 components {
-  id: "red_bullet"
-  component: "/components/boss_bullets/red/red_bullet.script"
+  id: "star_blue_bullet"
+  component: "/components/boss_bullets/star_blue/star_blue_bullet.script"
 }
 embedded_components {
   id: "collisionobject"
@@ -22,16 +22,14 @@ embedded_components {
   "    count: 1\n"
   "    id: \"sphere\"\n"
   "  }\n"
-  "  data: 12.0\n"
+  "  data: 21.5\n"
   "}\n"
-  "event_collision: false\n"
-  "event_contact: false\n"
   ""
 }
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"boss_red_bullet\"\n"
+  data: "default_animation: \"star_boss_blue_bullet\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
@@ -39,10 +37,16 @@ embedded_components {
   "}\n"
   ""
   position {
-    z: 0.7
+    z: 0.8
   }
   scale {
     x: 4.0
     y: 4.0
   }
+}
+embedded_components {
+  id: "bullet_factory"
+  type: "factory"
+  data: "prototype: \"/components/boss_bullets/blue/blue_bullet.go\"\n"
+  ""
 }

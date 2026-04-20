@@ -6,43 +6,29 @@ local phase = 1
 local current_position = 2
 
 local function bullet_burst_1() -- make many bullets fall from the top at an angle
-	local pos1 = vmath.vector3(256,720,0)
-	local pos2 = vmath.vector3(512,720,0)
-	local pos3 = vmath.vector3(768,720,0)
-	local pos4 = vmath.vector3(1024,720,0)
-	local pos5 = vmath.vector3(1280,720,0)
-	local angle = vmath.quat_rotation_z(math.rad(-120))
-	local ref_vector = vmath.vector3(1, 0, 0)
-	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos3, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos4, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos5, angle, {direction = vmath.rotate(angle, ref_vector)})
+	local boss_y = go.get_position().y
+	local pos1 = vmath.vector3(640,boss_y,0)
+	local pos2 = vmath.vector3(640,boss_y+384,0)
+	local pos3 = vmath.vector3(640,boss_y-384,0)
+	local rot = vmath.quat_rotation_z(math.rad(90+math.random(-2.5,2.5)))
+	factory.create("#bullet_factory", pos1, rot)
+	factory.create("#bullet_factory", pos2, rot)
+	factory.create("#bullet_factory", pos3, rot)
 end
 
 local function bullet_burst_1_lv2() -- make many bullets fall from the top at an angle
-	local pos1 = vmath.vector3(256,720,0)
-	local pos2 = vmath.vector3(512,720,0)
-	local pos3 = vmath.vector3(768,720,0)
-	local pos4 = vmath.vector3(1024,720,0)
-	local pos5 = vmath.vector3(1280,720,0)
-	local pos6 = vmath.vector3(256+16,752,0)
-	local pos7 = vmath.vector3(512+16,752,0)
-	local pos8 = vmath.vector3(768+16,752,0)
-	local pos9 = vmath.vector3(1024+16,752,0)
-	local pos10 = vmath.vector3(1280+16,752,0)
-	local angle = vmath.quat_rotation_z(math.rad(-120))
-	local ref_vector = vmath.vector3(1, 0, 0)
-	factory.create("#bullet_factory", pos1, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos2, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos3, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos4, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos5, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos6, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos7, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos8, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos9, angle, {direction = vmath.rotate(angle, ref_vector)})
-	factory.create("#bullet_factory", pos10, angle, {direction = vmath.rotate(angle, ref_vector)})
+	local boss_y = go.get_position().y
+	local pos1 = vmath.vector3(640,boss_y,0)
+	local pos2 = vmath.vector3(640,boss_y+256,0)
+	local pos3 = vmath.vector3(640,boss_y-256,0)
+	local pos4 = vmath.vector3(640,boss_y+512,0)
+	local pos5 = vmath.vector3(640,boss_y-512,0)
+	local rot = vmath.quat_rotation_z(math.rad(90+math.random(-5,5)))
+	factory.create("#bullet_factory", pos1, rot)
+	factory.create("#bullet_factory", pos2, rot)
+	factory.create("#bullet_factory", pos3, rot)
+	factory.create("#bullet_factory", pos4, rot)
+	factory.create("#bullet_factory", pos5, rot)
 end
 
 local function bullet_pattern_1(loop)
@@ -54,30 +40,40 @@ local function bullet_pattern_1(loop)
 		end
 		timer.delay(1, false, function() bullet_pattern_1(loop-1) end)
 	else
-		timer.delay(4, false, function() bullet_pattern_1(10) end)
+		timer.delay(3, false, function() bullet_pattern_1(4) end)
 	end
 end
 
 local function bullet_burst_2()
-	local pos1 = vmath.vector3(1280, global.player_position.y, 0)
-	local pos2 = vmath.vector3(1280, global.player_position.y+32, 0)
-	local pos3 = vmath.vector3(1280, global.player_position.y-32, 0)
-	factory.create("#bullet_factory", pos1)
-	factory.create("#bullet_factory", pos2)
-	factory.create("#bullet_factory", pos3)
+	local player_pos = global.player_position
+	local pos1 = vmath.vector3(player_pos.x, 360, 0)
+	local pos2 = vmath.vector3(player_pos.x+384, 360, 0)
+	local pos3 = vmath.vector3(player_pos.x-384, 360, 0)
+	local rot1 = vmath.quat_rotation_z(math.rad(math.random(-5,5)))
+	local rot2 = vmath.quat_rotation_z(math.rad(math.random(-5,5)))
+	local rot3 = vmath.quat_rotation_z(math.rad(math.random(-5,5)))
+	factory.create("#bullet_factory", pos1, rot1)
+	factory.create("#bullet_factory", pos2, rot2)
+	factory.create("#bullet_factory", pos3, rot3)
 end
 
 local function bullet_burst_2_lv2()
-	local pos1 = vmath.vector3(1280, global.player_position.y, 0)
-	local pos2 = vmath.vector3(1280, global.player_position.y+32, 0)
-	local pos3 = vmath.vector3(1280, global.player_position.y-32, 0)
-	local pos4 = vmath.vector3(1280, global.player_position.y+64, 0)
-	local pos5 = vmath.vector3(1280, global.player_position.y-64, 0)
-	factory.create("#bullet_factory", pos1)
-	factory.create("#bullet_factory", pos2)
-	factory.create("#bullet_factory", pos3)
-	factory.create("#bullet_factory", pos4)
-	factory.create("#bullet_factory", pos5)
+	local player_pos = global.player_position
+	local pos1 = vmath.vector3(player_pos.x, 360, 0)
+	local pos2 = vmath.vector3(player_pos.x+256, 360, 0)
+	local pos3 = vmath.vector3(player_pos.x-256, 360, 0)
+	local pos4 = vmath.vector3(player_pos.x+512, 360, 0)
+	local pos5 = vmath.vector3(player_pos.x-512, 360, 0)
+	local rot1 = vmath.quat_rotation_z(math.rad(math.random(-10,10)))
+	local rot2 = vmath.quat_rotation_z(math.rad(math.random(-10,10)))
+	local rot3 = vmath.quat_rotation_z(math.rad(math.random(-10,10)))
+	local rot4 = vmath.quat_rotation_z(math.rad(math.random(-10,10)))
+	local rot5 = vmath.quat_rotation_z(math.rad(math.random(-10,10)))
+	factory.create("#bullet_factory", pos1, rot1)
+	factory.create("#bullet_factory", pos2, rot2)
+	factory.create("#bullet_factory", pos3, rot3)
+	factory.create("#bullet_factory", pos4, rot4)
+	factory.create("#bullet_factory", pos5, rot5)
 end
 
 local function bullet_pattern_2(loop)
@@ -89,7 +85,7 @@ local function bullet_pattern_2(loop)
 		end
 		timer.delay(1, false, function() bullet_pattern_2(loop-1) end)
 	else
-		timer.delay(4, false, function() bullet_pattern_2(10) end)
+		timer.delay(3, false, function() bullet_pattern_2(3) end)
 	end
 end
 
@@ -110,8 +106,8 @@ function init(self)
 	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, vmath.vector3(1060, 360, 0), go.EASING_INOUTSINE, 4)
 	timer.delay(2, true, function() boss_move() end)
 	-- Bullet spawning
-	timer.delay(3, false, function() bullet_pattern_1(10) end)
-	timer.delay(6, false, function() bullet_pattern_2(10) end)
+	timer.delay(4.5, false, function() bullet_pattern_1(4) end)
+	timer.delay(6, false, function() bullet_pattern_2(3) end)
 	-- Spawn particlefx
 	particlefx.play("#spawn")
 end

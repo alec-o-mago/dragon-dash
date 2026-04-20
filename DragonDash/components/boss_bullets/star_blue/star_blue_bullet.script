@@ -1,0 +1,42 @@
+-- star_blue_bullet.script
+
+
+go.property("phase2", false)
+go.property("speed", 150)
+go.property("direction", vmath.vector3(-1,0,0))
+go.property("rotation_speed", 90)
+
+local function spawn_bullets(self) -- Spawns a single bullet at an angle that increments by 45° + the big bullet's rotation since last spawn
+	local pos = go.get_position()
+	local rot = go.get_rotation() -- Radians
+	local base_angle = 2 * math.atan2(rot.z, rot.w)
+	local offset_angle = math.rad(self.spawn_angle) -- Accumulating offset (starts at 0° and grows by 45° each spawn)
+	local total_angle = base_angle + offset_angle -- Total angle for this small bullet = current visual rotation + offset
+	local small_dir = vmath.vector3(math.cos(total_angle), math.sin(total_angle), 0) -- Direction vector for the small bullet (unit length)
+	local small_rot = vmath.quat_rotation_z(total_angle) -- Rotation for the small bullet so it faces its travel direction
+	factory.create("#bullet_factory", pos, small_rot, {direction = small_dir})
+	self.spawn_angle = self.spawn_angle + 45
+end
+
+function init(self)
+	self.spawn_angle = 0   -- Start at 0°; will increment by 45° each spawn
+	if self.phase2 then
+		self.rotation_speed = 180
+		timer.delay(0.1, true, function() spawn_bullets(self) end)
+	else
+		timer.delay(0.2, true, function() spawn_bullets(self) end)
+	end
+	-- self delete after some time
+	timer.delay(8, false, function() go.delete() end)
+end
+
+function fixed_update(self, dt)
+	-- Movement
+	local pos = go.get_position()
+	pos = pos + self.direction * self.speed * dt
+	go.set_position(pos)
+	-- Rotation
+	local rot = go.get_rotation()
+	local rotation_step = vmath.quat_rotation_z(math.rad(self.rotation_speed * dt))
+	go.set_rotation(rot * rotation_step)
+end

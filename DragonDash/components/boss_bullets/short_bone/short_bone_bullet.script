@@ -13,6 +13,5 @@ function fixed_update(self, dt)
 	-- Update the bullet position based on velocity
 	local rot = go.get_rotation()
 	local rotation_step = vmath.quat_rotation_z(math.rad(self.rotation_speed * dt))
-	-- rot = rot + vmath.quat_rotation_z(self.rotation_speed * dt)
 	go.set_rotation(rot * rotation_step)
 end
