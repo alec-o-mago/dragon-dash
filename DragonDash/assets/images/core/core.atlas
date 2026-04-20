@@ -199,4 +199,7 @@ images {
 images {
   image: "/assets/images/core/bullets/star_boss_blue_bullet.png"
 }
+images {
+  image: "/assets/images/core/buttons/infinite_button.png"
+}
 inner_padding: 1

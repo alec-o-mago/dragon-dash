@@ -12,9 +12,8 @@
 ->-> tema principal
 
 - Final
-->-> Tela de Agradecimento. 
+->-> Tela de Agradecimento.
 ->-> Mudanças na tela inicial pra simbolizar que o chefão final foi derrotado.
-->->-> Botão de "Play" vira botão "Infinito"???
 
 - Polimento
 ->-> Balanceamento

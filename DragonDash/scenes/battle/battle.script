@@ -109,7 +109,7 @@ function init(self)
 	else
 		boss_order = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 	end
-	--boss_order = {11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11}
+	-- boss_order = {11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11}
 	player_hearts = global.level_health + 3
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
 	-- Load first boss
