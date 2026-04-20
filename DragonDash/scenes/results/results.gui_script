@@ -9,7 +9,7 @@ local function calculate_gold(bosses_defeated, time_in_seconds)
 	if bosses_defeated <= 0 then
 		return math.floor(time_in_seconds)
 	end
-	return ((bosses_defeated * 100) + (bosses_defeated*(bosses_defeated+1)*50) + math.floor(time_in_seconds)*(1+(global.level_luck*0.1)))
+	return math.floor(((bosses_defeated * 100) + (bosses_defeated*(bosses_defeated+1)*50) + math.floor(time_in_seconds))*(1+(global.level_luck*0.11)))
 end
 
 local function format_time(seconds)
@@ -25,7 +25,6 @@ local function update_gold_eggs_label()
 	gui.set_visible(gui.get_node("egg_notification"), global.gold >= global.next_egg_cost())
 	gui.set_text(gui.get_node("eggs_label"), tostring(global.eggs))
 	gui.set_text(gui.get_node("gold_label"), tostring(global.gold))
-
 end
 
 local function animate_gold_earned(n, current, increment)
