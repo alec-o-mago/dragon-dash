@@ -203,7 +203,7 @@ function on_message(self, message_id, message, sender)
 				end
 				global.game_beaten = true
 				global.save_game()
-				msg.post("main:/go", "load_results") -- Use new scene instead of results here
+				msg.post("main:/go", "load_game_over")
 			end
 			load_next_boss()
 		else -- Boss not defeated

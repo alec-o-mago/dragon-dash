@@ -1,0 +1,10 @@
+-- game_over.script
+
+
+function init(self)
+	-- Set background tint blue
+	go.set("/background#sprite", "tint", vmath.vector4(0.2, 0.2, 0.8, 1.0))
+	timer.delay(10, false, function ()
+		msg.post("main:/go", "load_results")
+	end)
+end

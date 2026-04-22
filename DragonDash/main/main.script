@@ -38,6 +38,9 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("load_results") then
 		msg.post(self.loaded_proxy, "unload")
 		msg.post('/go#results_proxy', "load")
+	elseif message_id == hash("load_game_over") then
+		msg.post(self.loaded_proxy, "unload")
+		msg.post('/go#game_over_proxy', "load")
 	elseif message_id == hash("set_battle_speed") then
 		msg.post("#battle_proxy", "set_time_step", { factor = message.speed, mode = 0 })
 	end

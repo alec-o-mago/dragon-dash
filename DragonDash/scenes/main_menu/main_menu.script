@@ -7,7 +7,7 @@ local function update_background_tint()
 	local selected_color = math.random(7)
 	go.animate("/bg1#bg1","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[selected_color], go.EASING_LINEAR, 2)
 	go.animate("/bg2#bg2","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[selected_color], go.EASING_LINEAR, 2)
-	timer.delay(4.5, true, function ()
+	timer.delay(4.5, false, function ()
 		update_background_tint()
 	end)
 end
