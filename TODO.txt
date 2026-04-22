@@ -2,7 +2,6 @@
 
 - Utils
 -> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades???
--> Make main menu bg color change over time
 
 - Audio
 -> adicionar

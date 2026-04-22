@@ -5,8 +5,11 @@ local global = require("main.global")
 local function update_background_tint()
 	math.randomseed(os.time()) -- randomizes
 	local selected_color = math.random(7)
-	go.set("/bg1#bg1","tint", global.LEVEL_COLORS[selected_color])
-	go.set("/bg2#bg2","tint", global.LEVEL_COLORS[selected_color])
+	go.animate("/bg1#bg1","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[selected_color], go.EASING_LINEAR, 2)
+	go.animate("/bg2#bg2","tint", go.PLAYBACK_ONCE_FORWARD, global.LEVEL_COLORS[selected_color], go.EASING_LINEAR, 2)
+	timer.delay(4.5, true, function ()
+		update_background_tint()
+	end)
 end
 
 function init(self)
@@ -15,7 +18,6 @@ function init(self)
 	update_background_tint()
 	-- Main dragon skin
 	sprite.play_flipbook(msg.url("/dragon#sprite"), tostring(global.player_1_selected_skin))
-	--sprite.play_flipbook(msg.url("/dragon#sprite"), "56")
 	-- Main dragon particle effect
 	particlefx.play("/particle#1")
 	-- Sound Effects

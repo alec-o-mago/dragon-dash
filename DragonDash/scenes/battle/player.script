@@ -46,7 +46,7 @@ function init(self)
 	self.velocity = vmath.vector3()
 	msg.post(".", "acquire_input_focus")
 	-- Bullet Spawning
-	self.bullet_timer = timer.delay((0.7-(0.065*global.level_speed)), true, function()
+	self.bullet_timer = timer.delay((0.8-(0.092*global.level_speed)), true, function() -- Speed goes from 1/0.8 to 1/0.15
 		spawn_bullets()
 	end)
 	self.dragging = false
@@ -77,7 +77,7 @@ function on_message(self, message_id, message, sender)
 			go.delete(message.other_id)
 			msg.post("battle:/go","player_heal")
 		end
-	elseif message_id == hash("contact_point_response") then
+	elseif message_id == hash("contact_point_response") then -- player touched walls
 		if message.group == hash("walls") then
 			local proj = vmath.dot(vmath.vector3(0,0,0), message.normal)
 			-- calculate the compensation we need to make for this contact point

@@ -80,9 +80,9 @@ local function bullet_pattern_2(loop)
 		else
 			bullet_burst_2_lv2()
 		end
-		timer.delay(5, false, function() bullet_pattern_2(loop-1) end)
+		timer.delay(4, false, function() bullet_pattern_2(loop-1) end)
 	else
-		timer.delay(10, false, function() bullet_pattern_2(5) end)
+		timer.delay(8, false, function() bullet_pattern_2(5) end)
 	end
 end
 

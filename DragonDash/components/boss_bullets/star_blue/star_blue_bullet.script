@@ -27,7 +27,7 @@ function init(self)
 		timer.delay(0.2, true, function() spawn_bullets(self) end)
 	end
 	-- self delete after some time
-	timer.delay(8, false, function() go.delete() end)
+	timer.delay(7, false, function() go.delete() end)
 end
 
 function fixed_update(self, dt)
