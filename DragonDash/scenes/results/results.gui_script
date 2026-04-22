@@ -9,8 +9,8 @@ local function calculate_gold(bosses_defeated, time_in_seconds)
 	if bosses_defeated <= 0 then
 		return math.floor(time_in_seconds)
 	end
-	local gold = (bosses_defeated * 100) + (bosses_defeated*(bosses_defeated+1)*50) + math.floor(time_in_seconds) -- base gold calculation
-	gold = math.floor(gold*(1+(global.level_luck*0.11))) -- increase by 11% per luck level
+	local gold = (bosses_defeated * 50) + (bosses_defeated*(bosses_defeated+1)*110) + math.floor(time_in_seconds) -- base gold calculation
+	gold = math.floor(gold*(1+(global.level_luck*0.15))) -- increase by 15% per luck level
 	if global.game_beaten then
 		gold = math.floor(gold*1.5) -- 50% gold bonus for beating the game
 	end

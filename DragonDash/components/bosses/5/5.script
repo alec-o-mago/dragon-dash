@@ -79,9 +79,9 @@ local function bullet_pattern_2(loop)
 		else
 			bullet_burst_2_lv2()
 		end
-		timer.delay(1.5, false, function() bullet_pattern_2(loop-1) end)
+		timer.delay(1.6, false, function() bullet_pattern_2(loop-1) end)
 	else
-		timer.delay(6, false, function() bullet_pattern_2(10) end)
+		timer.delay(6, false, function() bullet_pattern_2(6) end)
 	end
 end
 
@@ -103,7 +103,7 @@ function init(self)
 	timer.delay(2, true, function() boss_move() end)
 	-- Bullet spawning
 	timer.delay(2, false, function() bullet_pattern_1(10) end)
-	timer.delay(5, false, function() bullet_pattern_2(10) end) 
+	timer.delay(5, false, function() bullet_pattern_2(6) end) 
 end
 
 function on_message(self, message_id, message, sender)

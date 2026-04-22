@@ -3,9 +3,6 @@
 - Utils
 -> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades???
 -> Make main menu bg color change over time
--> Make bosses imune for few seconds so they don't die off-screen
--> Make flower boss bullets spawn less frequently: Less spawners in a row.
--> Balance gold: less starting gold and more gold over time.
 
 - Audio
 -> adicionar

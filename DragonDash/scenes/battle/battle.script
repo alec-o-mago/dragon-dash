@@ -11,6 +11,7 @@ local current_boss = 0
 local boss_health_max = 1
 local boss_health = 1
 local player_hearts = 5
+local boss_invulnerable = false
 
 local function create_random_order(n)
 	-- Create a table with numbers from 1 to n
@@ -46,6 +47,11 @@ local function load_next_boss()
 	if current_boss > 1 then -- Do not show level text for level 1 to make space for tutorial images
 		msg.post("/gui#battle", "show_level_label", {level = current_boss})
 	end
+	-- Boss Invulnerability
+	boss_invulnerable = true
+	timer.delay(2, false, function ()
+		boss_invulnerable = false
+	end)
 	-- Make the world faster
 	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.015})
 	go.set("/go#background_sound", "speed", 1 + current_boss * 0.02)
@@ -166,14 +172,16 @@ function on_message(self, message_id, message, sender)
 			msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
 			-- player heal sound here?
 		end
-	elseif message_id == hash("boss_took_damage") then
-		boss_health = boss_health - (2+global.level_power)
+	elseif message_id == hash("boss_took_damage") and not boss_invulnerable then
+		boss_health = boss_health - (2+(global.level_power*1.2))
 		-- Critical chance: 1% + 3% per luck level, up to 22%
 		local critical = (math.random() > (0.01 + global.level_luck*0.03))
 		if critical then -- Deal double damage if critical
 			boss_health = boss_health - (2+global.level_power)
 		end
 		if boss_health <= 0 then -- Boss was defeated
+			-- Reset Boss health
+			msg.post("/gui#battle", "update_boss_health", {percentage = 1})
 			-- Particle effects
 			go.set_position(go.get_position(boss_id), "/particlefx#boss_defeat")
 			particlefx.play("/particlefx#boss_defeat")
