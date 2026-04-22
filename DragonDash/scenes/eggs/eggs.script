@@ -36,11 +36,14 @@ local function unlock_egg()
 		-- Visual Effects
 		particlefx.play("/fx#open_egg")
 		loop_egg_colors()
+		if global.config_sound then
+			sound.play("go#buy_sound")
+		end
 		timer.delay(1, false, function()
 			sprite.play_flipbook("/big_egg#sprite", tostring(choosen_skin))
 			-- Sound Effects
 			if global.config_sound then
-				sound.play("go#sound")
+				sound.play("go#open_sound")
 			end
 		end)
 	end

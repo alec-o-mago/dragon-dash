@@ -22,5 +22,9 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("update_tutorial_arrows") then
 		update_tutorial_arrows()
+	elseif message_id == hash("play_buy_sound") then
+		if global.config_sound then
+			sound.play("go#buy_sound")
+		end
 	end
 end

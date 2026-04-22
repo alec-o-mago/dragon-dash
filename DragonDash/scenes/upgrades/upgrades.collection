@@ -62,6 +62,12 @@ embedded_instances {
   "  id: \"upgrades\"\n"
   "  component: \"/scenes/upgrades/upgrades.script\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"buy_sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/assets/sounds/mixkit-unlock-game-notification.ogg\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }
 embedded_instances {

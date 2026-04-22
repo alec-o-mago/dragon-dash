@@ -67,8 +67,8 @@ local function load_next_boss()
 		boss_invulnerable = false
 	end)
 	-- Make the world faster
-	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.015})
-	go.set("/go#background_sound", "speed", 1 + current_boss * 0.02)
+	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.016})
+	go.set("/go#background_sound", "speed", 1 + current_boss * 0.016)
 end
 
 local function on_commercial_break_finished(self)
@@ -153,7 +153,7 @@ function on_message(self, message_id, message, sender)
 			go.set_rotation(vmath.quat_rotation_z(math.rad(0)), "/player")
 			go.animate("/player", "euler.z", go.PLAYBACK_ONCE_FORWARD, 360, go.EASING_OUTQUAD, 0.5)
 			if global.config_sound then
-				print("add evasion sound here")
+				sound.play("/go#player_evade_sound")
 			end
 		else
 			player_hearts = player_hearts - 1
@@ -176,7 +176,9 @@ function on_message(self, message_id, message, sender)
 		if player_hearts < global.level_health+3 then -- if not max health
 			player_hearts = player_hearts + 1
 			msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
-			-- player heal sound here?
+			if global.config_sound then
+				sound.play("/go#player_evade_sound")
+			end
 		end
 	elseif message_id == hash("boss_took_damage") and not boss_invulnerable then
 		boss_health = boss_health - (2+(global.level_power*1.25))
