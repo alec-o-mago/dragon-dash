@@ -1,8 +1,5 @@
 == TODO Dragon Dash ==
 
-- Utils
--> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades???
-
 - Audio
 -> adicionar
 ->-> audio de Evasão
@@ -10,10 +7,10 @@
 -> trocar
 ->-> tema principal
 
-- Final
-->-> Tela de Agradecimento.
-->-> Mudanças na tela inicial pra simbolizar que o chefão final foi derrotado.
+- Utils
+-> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades???
+
 
 - Polimento
 ->-> Balanceamento
-->-> Refinar skins
+->-> Refinar skins e imagens de bosses
