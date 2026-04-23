@@ -22,8 +22,9 @@ splash_image = /assets/images/system/game_logo_20x.png
 show_console_banner = 0
 
 [project]
-title = Dragon Dungeons
 dependencies#0 = https://github.com/defold/extension-crazygames/archive/refs/tags/1.2.0.zip
+title = Dragon Dash Dungeons
+version = 1.1.0
 
 [graphics]
 default_texture_min_filter = nearest
