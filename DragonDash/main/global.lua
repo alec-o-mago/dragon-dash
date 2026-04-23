@@ -164,7 +164,7 @@ local function load_game_default()
 	M.high_score_time = save_data.high_score_time or M.high_score_time
 	M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
 	M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
-	M.game_beaten = save_data.game_beaten
+	M.game_beaten = (save_data.game_beaten == true) -- Looks weird to deal with nil values
 	M.config_music = (save_data.config_music == true) -- Looks weird to deal with nil values
 	M.config_sound = (save_data.config_sound == true) -- Looks weird to deal with nil values
 	M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
@@ -191,7 +191,7 @@ local function load_game_crazy_games()
 		M.high_score_time = save_data.high_score_time or M.high_score_time
 		M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
 		M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
-		M.game_beaten = save_data.game_beaten
+		M.game_beaten = (save_data.game_beaten == true) -- Looks weird to deal with nil values
 		M.config_music = (save_data.config_music == true) -- Looks weird to deal with nil values
 		M.config_sound = (save_data.config_sound == true) -- Looks weird to deal with nil values
 		M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
