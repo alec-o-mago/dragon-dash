@@ -26,7 +26,7 @@ local function format_time(seconds)
 end
 
 local function update_gold_eggs_label()
-	gui.set_visible(gui.get_node("egg_notification"), global.gold >= global.next_egg_cost())
+	gui.set_visible(gui.get_node("egg_notification"), global.can_buy_egg())
 	gui.set_text(gui.get_node("eggs_label"), tostring(global.eggs))
 	gui.set_text(gui.get_node("gold_label"), tostring(global.gold))
 end
