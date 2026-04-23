@@ -1,8 +1,4 @@
 == TODO Dragon Dash ==
 
-- Utils
--> Controle de música no main pra não cortar música ao mudar de telas pras telas de eggs e upgrades???
-
 - Polimento
-->-> Balanceamento
-->-> Refinar imagens de skins e bosses
+- Balanceamento
