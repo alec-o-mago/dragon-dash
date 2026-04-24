@@ -67,8 +67,8 @@ local function load_next_boss()
 		boss_invulnerable = false
 	end)
 	-- Make the world faster
-	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.016})
-	global.last_game_speed = 0.90 + current_boss * 0.016
+	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.017})
+	global.last_game_speed = 0.90 + current_boss * 0.017
 	msg.post("main:/go", "set_music_speed", { speed = 1 + current_boss * 0.016})
 end
 

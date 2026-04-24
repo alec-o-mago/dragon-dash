@@ -14,8 +14,8 @@ local function calculate_gold(bosses_defeated, time_in_seconds)
 	if global.game_beaten then
 		gold = gold*1.5 -- 50% gold bonus for beating the game
 	end
-	if global.has_ad_functionality() then -- reduce gold earned as incentive to watch ads
-		gold = 0.6*gold
+	if global.has_ad_functionality() then -- reduce gold earned as rebalance and incentive to ads
+		gold = 0.5*gold
 	end
 	return math.floor(gold)
 end
@@ -146,6 +146,7 @@ function on_message(self, message_id, message)
 		global.gold = global.gold + gold_earned*2
 		gold_earned = gold_earned*3
 		global.save_game()
+		msg.post("main:/go", "music_stop")
 		update_gold_eggs_label()
 		animate_gold_earned(30, 0, gold_earned/30)
 	end
