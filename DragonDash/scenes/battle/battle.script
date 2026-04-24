@@ -68,28 +68,11 @@ local function load_next_boss()
 	end)
 	-- Make the world faster
 	msg.post("main:/go", "set_battle_speed", { speed = 0.90 + current_boss * 0.016})
-	go.set("/go#background_sound", "speed", 1 + current_boss * 0.016)
-end
-
-local function on_commercial_break_finished(self)
-	-- continue game
-	-- print("Comercial finished")
-	sound.pause("/go#background_sound", false)
-	msg.post("main:/go", "set_time_step", { factor = 1, mode = 0 }) -- Unpause the game
+	global.last_game_speed = 0.90 + current_boss * 0.016
+	msg.post("main:/go", "set_music_speed", { speed = 1 + current_boss * 0.016})
 end
 
 function init(self)
-	-- Poki SDK
-	-- if html5 and poki_sdk then
-	-- 	poki_sdk.gameplay_start()
-	--	sound.pause("/go#background_sound", true)
-	--	msg.post("main:/go", "set_time_step", { factor = 0, mode = 0 }) -- Pause the game
-	--	poki_sdk.commercial_break(function() on_commercial_break_finished(self) end)
-	--end
-	-- Crazy Games SDK
-	if html5 and crazygames then
-		crazygames.gameplay_start()
-	end
 	-- Enable player input
 	msg.post(".", "acquire_input_focus")
 	-- Manage Tutorial messages
@@ -132,9 +115,13 @@ function init(self)
 	timer.delay(math.floor((28*(0.85+(math.random()*0.3)))), false, function ()
 		spawn_collectable_health()
 	end)
-	-- Sound Effects
-	if global.config_music then
-		sound.play("go#background_sound")
+	-- Game Distribution SDK
+	if html5 and gdsdk then
+		gdsdk.show_interstitial_ad() -- Game Distribution SDK documentation encourages showing ads even before first gameplay
+	end
+	-- Crazy Games SDK
+	if html5 and crazygames then
+		crazygames.gameplay_start()
 	end
 end
 
@@ -166,6 +153,7 @@ function on_message(self, message_id, message, sender)
 			global.last_battle_bosses_defeated = current_boss - 1
 			global.last_battle_time = time_passed
 			msg.post("main:/go", "set_battle_speed", { speed = 1 })
+			global.last_game_speed = 1
 			-- Crazy Games SDK
 			if html5 and crazygames then
 				crazygames.gameplay_stop()
@@ -199,6 +187,7 @@ function on_message(self, message_id, message, sender)
 			go.delete(boss_id)
 			if current_boss == 21 and not global.game_beaten then -- The player just beat the game!!! :D
 				msg.post("main:/go", "set_battle_speed", { speed = 1 })
+				global.last_game_speed = 1
 				-- Crazy Games SDK
 				if html5 and crazygames then
 					crazygames.gameplay_stop()

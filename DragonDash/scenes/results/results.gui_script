@@ -14,6 +14,9 @@ local function calculate_gold(bosses_defeated, time_in_seconds)
 	if global.game_beaten then
 		gold = gold*1.5 -- 50% gold bonus for beating the game
 	end
+	if global.has_ad_functionality() then -- reduce gold earned as incentive to watch ads
+		gold = 0.6*gold
+	end
 	return math.floor(gold)
 end
 
@@ -34,7 +37,7 @@ end
 local function animate_gold_earned(n, current, increment)
 	if n >= 1 then
 		gui.set_text(gui.get_node("gold_earned_label"), "+"..math.floor(current))
-		gui.set_text(gui.get_node("ad_gold_earned_label"), "(+"..math.floor(current*1.5)..")")
+		gui.set_text(gui.get_node("ad_gold_earned_label"), "(+"..math.floor(current*2)..")")
 		timer.delay(0.05, false, function() animate_gold_earned(n-1, current+increment, increment) end)
 	end
 end
@@ -105,7 +108,9 @@ function init(self)
 	gui.play_particlefx(gui.get_node("party_left_fx"))
 	gui.play_particlefx(gui.get_node("party_right_fx"))
 	-- Disable Ad button if not in HTML5
-	if (not html5) or (not crazygames) then
+	if global.has_ad_functionality() then
+		gui.set_text(gui.get_node("ad_gold_earned_label"), "(+"..(gold_earned*2)..")")
+	else
 		gui.set_enabled(gui.get_node("ad_button"), false)
 		gui.set_enabled(gui.get_node("ad_gold_earned_label"), false)
 	end
@@ -116,15 +121,32 @@ function on_input(self, action_id, action)
 		local retry_button = gui.get_node("retry_button")
 		local menu_button = gui.get_node("menu_button")
 		local eggs_button = gui.get_node("eggs_button")
-		--local ad_button = gui.get_node("ad_button")
+		local ad_button = gui.get_node("ad_button")
 		if gui.pick_node(retry_button, action.x, action.y) then
 			msg.post("main:/go", "load_battle")
 		elseif gui.pick_node(menu_button, action.x, action.y) then
 			msg.post("main:/go", "load_main_menu")
 		elseif gui.pick_node(eggs_button, action.x, action.y) then
 			msg.post("main:/go", "load_eggs")
-		--elseif gui.pick_node(ad_button, action.x, action.y) and html5 then
-		--	handle_rewarded_ad()
+		elseif gui.pick_node(ad_button, action.x, action.y) and html5 then
+			gui.set_enabled(ad_button, false)
+			gui.set_enabled(gui.get_node("ad_gold_earned_label"), false)
+			msg.post("results:/go", "stop_sound")
+			timer.delay(0.1, false, function ()
+				if gdsdk then
+					gdsdk.show_rewarded_ad()
+				end
+			end)
 		end
+	end
+end
+
+function on_message(self, message_id, message)
+	if message_id == hash("rewarded_ad_sucess") then
+		global.gold = global.gold + gold_earned*2
+		gold_earned = gold_earned*3
+		global.save_game()
+		update_gold_eggs_label()
+		animate_gold_earned(30, 0, gold_earned/30)
 	end
 end

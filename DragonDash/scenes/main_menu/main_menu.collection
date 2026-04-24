@@ -24,15 +24,6 @@ embedded_instances {
   "  id: \"main_menu\"\n"
   "  component: \"/scenes/main_menu/main_menu.script\"\n"
   "}\n"
-  "embedded_components {\n"
-  "  id: \"sound\"\n"
-  "  type: \"sound\"\n"
-  "  data: \"sound: \\\"/assets/sounds/DDD.ogg\\\"\\n"
-  "looping: 1\\n"
-  "gain: 0.7\\n"
-  "speed: 0.85\\n"
-  "\"\n"
-  "}\n"
   ""
 }
 embedded_instances {

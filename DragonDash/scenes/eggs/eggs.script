@@ -11,6 +11,10 @@ local function loop_egg_colors()
 	go.animate("/big_egg#sprite", "tint", go.PLAYBACK_ONCE_PINGPONG, end_color, go.EASING_INOUTCIRC, 1, 0, function()
 		go.set("/big_egg#sprite", "tint", vmath.vector4(1, 1, 1, 1))
 	end)
+	if global.config_music then
+		msg.post("main:/go", "set_music_speed", { speed = 0.86})
+		msg.post("main:/go", "music_start")
+	end
 end
 
 local function unlock_egg()

@@ -21,8 +21,10 @@ function init(self)
 	-- Main dragon particle effect
 	particlefx.play("/particle#1")
 	-- Sound Effects
+	-- Stop Main Sound
+	msg.post("main:/go", "set_music_speed", { speed = 0.86})
 	if global.config_music then
-		sound.play("go#sound")
+		msg.post("main:/go", "music_start")
 	end
 	-- Tutorial Arrows
 	if global.unlocked_skin_count > 0 then
@@ -37,8 +39,8 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("change_background") then
 		update_background_tint()
 	elseif message_id == hash("music_on") then
-		sound.play("go#sound")
+		msg.post("main:/go", "music_start")
 	elseif message_id == hash("music_off") then
-		sound.pause("go#sound", true)
+		msg.post("main:/go", "music_stop")
 	end
 end

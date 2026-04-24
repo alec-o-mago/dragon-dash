@@ -48,6 +48,14 @@ embedded_instances {
   "  data: \"collection: \\\"/scenes/game_over/game_over.collection\\\"\\n"
   "\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"background_sound\"\n"
+  "  type: \"sound\"\n"
+  "  data: \"sound: \\\"/assets/sounds/DDD.ogg\\\"\\n"
+  "looping: 1\\n"
+  "gain: 0.8\\n"
+  "\"\n"
+  "}\n"
   ""
 }
 embedded_instances {

@@ -22,9 +22,10 @@ splash_image = /assets/images/system/game_logo_20x.png
 show_console_banner = 0
 
 [project]
-dependencies#0 = https://github.com/defold/extension-crazygames/archive/refs/tags/1.2.0.zip
 title = Dragon Dash Dungeons
 version = 1.1.0
+dependencies#0 = https://github.com/GameDistribution/gd-defold/archive/main.zip
+dependencies#1 = https://github.com/defold/extension-crazygames/archive/refs/tags/1.2.0.zip
 
 [graphics]
 default_texture_min_filter = nearest
@@ -42,4 +43,7 @@ max_collision_object_count = 512
 
 [native_extension]
 app_manifest = /default.appmanifest
+
+[gamedistribution]
+game_id = 1c0fced653f745799969f114f273a650
 

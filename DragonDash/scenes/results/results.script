@@ -7,6 +7,9 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Set background tint blue
 	go.set("/background#sprite", "tint", vmath.vector4(0.2, 0.2, 0.8, 1.0))
+	-- Stop Main Sound
+	msg.post("main:/go", "set_music_speed", { speed = 1})
+	msg.post("main:/go", "music_stop")
 	-- Play victory sound
 	if global.config_music then
 		sound.play("/go#sound")
