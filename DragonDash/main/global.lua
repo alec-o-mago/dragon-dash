@@ -110,8 +110,6 @@ local function save_game_default()
 		player_1_selected_skin = M.player_1_selected_skin,
 		player_2_selected_skin = M.player_2_selected_skin,
 		game_beaten = M.game_beaten,
-		config_music = M.config_music,
-		config_sound = M.config_sound,
 		unlocked_skin_count = M.unlocked_skin_count,
 		unlocked_skins = M.unlocked_skins,
 		high_score_bosses_defeated = M.high_score_bosses_defeated,
@@ -131,8 +129,6 @@ local function save_game_crazy_games()
 		player_1_selected_skin = M.player_1_selected_skin,
 		player_2_selected_skin = M.player_2_selected_skin,
 		game_beaten = M.game_beaten,
-		config_music = M.config_music,
-		config_sound = M.config_sound,
 		unlocked_skin_count = M.unlocked_skin_count,
 		unlocked_skins = M.unlocked_skins,
 		high_score_bosses_defeated = M.high_score_bosses_defeated,
@@ -165,8 +161,6 @@ local function load_game_default()
 	M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
 	M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
 	M.game_beaten = (save_data.game_beaten == true) -- Looks weird to deal with nil values
-	M.config_music = (save_data.config_music == true) -- Looks weird to deal with nil values
-	M.config_sound = (save_data.config_sound == true) -- Looks weird to deal with nil values
 	M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
 	-- Load unlocked skins in a way that doesn't break the save system if I add more skins in the future
 	if save_data.unlocked_skins then -- If there is save data for unlocked skins in the first place
@@ -192,8 +186,6 @@ local function load_game_crazy_games()
 		M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
 		M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
 		M.game_beaten = (save_data.game_beaten == true) -- Looks weird to deal with nil values
-		M.config_music = (save_data.config_music == true) -- Looks weird to deal with nil values
-		M.config_sound = (save_data.config_sound == true) -- Looks weird to deal with nil values
 		M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
 		-- Load unlocked skins without breaking if new skins are added later
 		if save_data.unlocked_skins then
