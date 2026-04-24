@@ -6,4 +6,7 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- Set background tint blue
 	go.set("/background#sprite", "tint", vmath.vector4(0.2, 0.2, 0.8, 1.0))
+	timer.delay(10, false, function ()
+		msg.post("main:/go", "load_main_menu")
+	end)
 end
