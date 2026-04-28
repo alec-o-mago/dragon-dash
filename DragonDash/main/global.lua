@@ -1,6 +1,9 @@
 -- global.lua
 
 
+-- Other modules import
+local bridge = require("bridge.bridge")
+
 -- Module initialize
 local M = {}
 
@@ -99,7 +102,7 @@ function M.can_buy_upgrade()
 end
 
 local function save_game_default()
-	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
+	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
 	sys.save(save_file, {
 		gold = M.gold,
 		eggs = M.eggs,
@@ -120,7 +123,7 @@ local function save_game_default()
 	})
 end
 
-local function save_game_crazy_games()
+local function save_game_bridge()
 	local save_data = {
 		gold = M.gold,
 		eggs = M.eggs,
@@ -139,20 +142,32 @@ local function save_game_crazy_games()
 		high_score_bosses_defeated = M.high_score_bosses_defeated,
 		high_score_time = M.high_score_time,
 	}
-	local json_str = json.encode(save_data)
-	crazygames.set_item("dragon_dungeons_save_file", json_str)
+	local method = "internal_storage"
+	if not bridge.storage.is_available("internal_storage") then
+		method = "local_storage"
+	end
+	bridge.storage.set(
+		save_data,
+		function (_)
+			-- success
+		end, 
+		function (_)
+			-- error
+		end,
+		method
+	)
 end
 
 function M.save_game()
-	if html5 and crazygames then
-		save_game_crazy_games()
+	if html5 and bridge and (bridge.storage.is_available("local_storage") or bridge.storage.is_available("internal_storage")) then
+		save_game_bridge()
 	else
 		save_game_default()
 	end
 end
 
 local function load_game_default()
-	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
+	local save_file = sys.get_save_file("dragon_dash_dungeons", "save_file")
 	local save_data = sys.load(save_file)
 	M.gold = save_data.gold or M.gold
 	M.eggs = save_data.eggs or M.eggs
@@ -177,37 +192,84 @@ local function load_game_default()
 	end
 end
 
-local function load_game_crazy_games()
-	local json_str = crazygames.get_item("dragon_dungeons_save_file")
-	if json_str then
-		local save_data = json.decode(json_str)
-		M.gold = save_data.gold or M.gold
-		M.eggs = save_data.eggs or M.eggs
-		M.level_health = save_data.level_health or M.level_health
-		M.level_power = save_data.level_power or M.level_power
-		M.level_quantity = save_data.level_quantity or M.level_quantity
-		M.level_speed = save_data.level_speed or M.level_speed
-		M.level_luck = save_data.level_luck or M.level_luck
-		M.high_score_bosses_defeated = save_data.high_score_bosses_defeated or M.high_score_bosses_defeated
-		M.high_score_time = save_data.high_score_time or M.high_score_time
-		M.player_1_selected_skin = save_data.player_1_selected_skin or M.player_1_selected_skin
-		M.player_2_selected_skin = save_data.player_2_selected_skin or M.player_2_selected_skin
-		M.game_beaten = (save_data.game_beaten == true) -- Looks weird to deal with nil values
-		M.config_music = not (save_data.config_music == false) -- Looks weird to deal with nil values
-		M.config_sound = not (save_data.config_sound == false) -- Looks weird to deal with nil values
-		M.unlocked_skin_count = save_data.unlocked_skin_count or M.unlocked_skin_count
-		-- Load unlocked skins without breaking if new skins are added later
-		if save_data.unlocked_skins then
-			for i = 1, #save_data.unlocked_skins do
-				M.unlocked_skins[i] = save_data.unlocked_skins[i]
-			end
-		end
+local function load_game_bridge()
+	local method = "internal_storage"
+	if not bridge.storage.is_available("internal_storage") then
+		method = "local_storage"
 	end
+	bridge.storage.get(
+		{
+			"gold",
+			"eggs",
+			"level_health",
+			"level_power",
+			"level_quantity",
+			"level_speed",
+			"level_luck",
+			"high_score_bosses_defeated",
+			"high_score_time",
+			"player_1_selected_skin",
+			"player_2_selected_skin",
+			"game_beaten",
+			"unlocked_skin_count",
+			"unlocked_skins"
+		},
+		function(_, data)
+			if data.gold then
+				M.gold = data.gold
+			end
+			if data.eggs then
+				M.eggs = data.eggs
+			end
+			if data.level_health then
+				M.level_health = data.level_health
+			end
+			if data.level_power then
+				M.level_power = data.level_power
+			end
+			if data.level_quantity then
+				M.level_quantity = data.level_quantity
+			end
+			if data.level_speed then
+				M.level_speed = data.level_speed
+			end
+			if data.level_luck then
+				M.level_luck = data.level_luck
+			end
+			if data.high_score_bosses_defeated then
+				M.high_score_bosses_defeated = data.high_score_bosses_defeated
+			end
+			if data.high_score_time then
+				M.high_score_time = data.high_score_time
+			end
+			if data.player_1_selected_skin then
+				M.player_1_selected_skin = data.player_1_selected_skin
+			end
+			if data.player_2_selected_skin then
+				M.player_2_selected_skin = data.player_2_selected_skin
+			end
+			-- Explicit boolean handling
+			M.game_beaten = (data.game_beaten == true)
+			if data.unlocked_skin_count then
+				M.unlocked_skin_count = data.unlocked_skin_count
+			end
+			-- Load unlocked skins safely
+			if data.unlocked_skins then
+				for i = 1, #data.unlocked_skins do
+					M.unlocked_skins[i] = data.unlocked_skins[i]
+				end
+			end
+		end,
+		function()
+			-- error
+		end,
+		method
+	)
 end
 
 function M.load_game()
-	if html5 and crazygames then
-		load_game_crazy_games()
+	if html5 and bridge and (bridge.storage.is_available("local_storage") or bridge.storage.is_available("internal_storage")) then
+		load_game_bridge()
 	else
 		load_game_default()
 	end

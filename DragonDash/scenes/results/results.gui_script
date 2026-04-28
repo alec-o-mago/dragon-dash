@@ -74,7 +74,7 @@ function init(self)
 	animate_gold_earned(30, 0, gold_earned/30)
 	-- ParticleFX
 	gui.play_particlefx(gui.get_node("party_left_fx"))
-	gui.play_particlefx(gui.get_node("party_right_fx"))
+	--gui.play_particlefx(gui.get_node("party_right_fx"))
 	-- Disable Ad button if not in HTML5
 	if html5 and bridge and bridge.advertisement.is_rewarded_supported() then
 		gui.set_text(gui.get_node("ad_gold_earned_label"), "(+"..(gold_earned*2)..")")
@@ -82,10 +82,22 @@ function init(self)
 		gui.set_enabled(gui.get_node("ad_button"), false)
 		gui.set_enabled(gui.get_node("ad_gold_earned_label"), false)
 	end
-	-- Game Beaten UI
-	gui.set_enabled(gui.get_node("game_beaten_avatar"), global.game_beaten)
-	gui.set_enabled(gui.get_node("game_beaten_panel"), global.game_beaten)
-	gui.set_enabled(gui.get_node("game_beaten_label"), global.game_beaten)
+	-- Game Beaten UI changes
+	if global.game_beaten then
+		if html5 and bridge then
+			bridge.platform.send_message("player_got_achievement")
+		end
+		timer.delay(2.1, false, function ()
+			timer.delay(2.2, true, function ()
+				gui.play_particlefx(gui.get_node("party_left_fx"))
+			end)
+		end)
+		timer.delay(0.7, false, function ()
+			timer.delay(2.2, true, function ()
+				gui.play_particlefx(gui.get_node("party_right_fx"))
+			end)
+		end)
+	end
 end
 
 function on_input(self, action_id, action)

@@ -93,12 +93,12 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("show_level_label") then
 		local level_label_node = gui.get_node("level_label")
 		if global.game_beaten then
-			gui.set_text(level_label_node, "Level "..message.level)
+			gui.set_text(level_label_node, tostring(message.level))
 		else
 			if message.level <= 20 then
-				gui.set_text(level_label_node, "Level "..message.level.."/20")
+				gui.set_text(level_label_node, message.level.."/20")
 			else
-				gui.set_text(level_label_node, "Final Level!")
+				gui.set_text(level_label_node, "!!!")
 			end
 		end
 		gui.set_position(level_label_node, vmath.vector3(640, 756, 0))
