@@ -98,10 +98,6 @@ function M.can_buy_upgrade()
 	return M.eggs >= M.next_upgrade_cost() and not M.all_upgrades_bought()
 end
 
-function M.has_ad_functionality()
-	return html5 and gdsdk -- Modify logic for multiple SDKs with rewarded ads
-end
-
 local function save_game_default()
 	local save_file = sys.get_save_file("dragon_dungeons", "save_file")
 	sys.save(save_file, {

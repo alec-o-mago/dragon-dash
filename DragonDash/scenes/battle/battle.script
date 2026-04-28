@@ -3,6 +3,7 @@
 
 local global = require("main.global")
 local device = require("main.device")
+local bridge = require("bridge.bridge")
 local boss_id
 local boss_phase = 1
 local time_passed = 0
@@ -78,14 +79,14 @@ function init(self)
 	-- Manage Tutorial messages
 	if device.type == "mobile" or device.type == "tablet" then -- User is playing from mobile
 		go.delete("/tutorial_message_keyboard")
-		go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.5, 0, function()
-			go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.5, 0, function()
+		go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.55, 0, function()
+			go.animate("/tutorial_message_mobile", "position.x", go.PLAYBACK_ONCE_PINGPONG, 740, go.EASING_LINEAR, 1.55, 0, function()
 				go.delete("/tutorial_message_mobile")
 			end)
 		end)
 	else -- User is playing from desktop
 		go.delete("/tutorial_message_mobile")
-		go.animate("/tutorial_message_keyboard#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_INEXPO, 1.5, 1.5, function()
+		go.animate("/tutorial_message_keyboard#sprite", "tint", go.PLAYBACK_ONCE_FORWARD, vmath.vector4(1, 1, 1, 0), go.EASING_INEXPO, 1.5, 1.6, function()
 			go.delete("/tutorial_message_keyboard")
 		end)
 	end
@@ -104,24 +105,20 @@ function init(self)
 	else
 		boss_order = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 	end
-	-- boss_order = {11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11}
+	-- boss_order = {11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11} -- For testing specific boss
 	player_hearts = global.level_health + 3
 	msg.post("/gui#battle", "update_player_health", {hearts = player_hearts, max_hearts = global.level_health+3})
 	-- Load first boss
-	timer.delay(2.4, false, function ()
+	timer.delay(2.5, false, function ()
 		load_next_boss()
 	end)
 	-- Collectable Health
 	timer.delay(math.floor((28*(0.85+(math.random()*0.3)))), false, function ()
 		spawn_collectable_health()
 	end)
-	-- Game Distribution SDK
-	if html5 and gdsdk then
-		gdsdk.show_interstitial_ad() -- Game Distribution SDK documentation encourages showing ads even before first gameplay
-	end
-	-- Crazy Games SDK
-	if html5 and crazygames then
-		crazygames.gameplay_start()
+	-- Playgama SDK
+	if html5 and bridge and bridge.advertisement.is_interstitial_supported() and global.unlocked_skin_count > 0 then -- If has ad support and player is not new
+		bridge.advertisement.show_interstitial()
 	end
 end
 
@@ -154,10 +151,7 @@ function on_message(self, message_id, message, sender)
 			global.last_battle_time = time_passed
 			msg.post("main:/go", "set_battle_speed", { speed = 1 })
 			global.last_game_speed = 1
-			-- Crazy Games SDK
-			if html5 and crazygames then
-				crazygames.gameplay_stop()
-			end
+			-- SDK gameplay stop here
 			msg.post("main:/go", "load_results")
 		end
 	elseif message_id == hash("player_heal") then
@@ -188,13 +182,9 @@ function on_message(self, message_id, message, sender)
 			if current_boss == 21 and not global.game_beaten then -- The player just beat the game!!! :D
 				msg.post("main:/go", "set_battle_speed", { speed = 1 })
 				global.last_game_speed = 1
-				-- Crazy Games SDK
-				if html5 and crazygames then
-					crazygames.gameplay_stop()
-				end
+				-- SDK gameplay stop here
 				global.game_beaten = true
-				global.save_game()
-				msg.post("main:/go", "load_game_over")
+				msg.post("main:/go", "load_results")
 			end
 			load_next_boss()
 		else -- Boss not defeated

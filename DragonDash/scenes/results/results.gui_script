@@ -14,8 +14,8 @@ local function calculate_gold(bosses_defeated, time_in_seconds)
 	if global.game_beaten then
 		gold = gold*1.5 -- 50% gold bonus for beating the game
 	end
-	if global.has_ad_functionality() then -- reduce gold earned as rebalance and incentive to ads
-		gold = 0.5*gold
+	if html5 and bridge and bridge.advertisement.is_rewarded_supported() then -- reduce gold earned as rebalance and incentive to ads
+		gold = 0.55*gold
 	end
 	return math.floor(gold)
 end
@@ -42,38 +42,6 @@ local function animate_gold_earned(n, current, increment)
 	end
 end
 
---[[
-local function handle_rewarded_ad()
-	poki_sdk.rewarded_break(function(self, status)
-		if status == poki_sdk.REWARDED_BREAK_START then
-			-- Pause game sounds and gameplay while the ad plays.
-			-- print("Rewarded break started")
-			msg.post("results:/go", "stop_sound")
-		elseif status == poki_sdk.REWARDED_BREAK_SUCCESS then
-			-- The ad finished successfully, grant the player their reward.
-			-- Resume game sounds and gameplay.
-			-- print("Rewarded break success! Granting reward.")
-			-- Add code here to give the player their reward (e.g., add coins, items).
-			local gold_to_reward = math.floor(calculate_gold(global.last_battle_bosses_defeated, global.last_battle_time)*1.5)
-			global.gold = global.gold + gold_to_reward
-			gui.set_enabled(gui.get_node("ad_button"), false)
-			gui.set_enabled(gui.get_node("ad_gold_earned_label"), false)
-			animate_gold_earned(30, gold_earned, (gold_earned+gold_to_reward)/30)
-			update_gold_eggs_label()
-			-- ParticleFX
-			gui.play_particlefx(gui.get_node("party_left_fx"))
-			gui.play_particlefx(gui.get_node("party_right_fx"))
-		elseif status == poki_sdk.REWARDED_BREAK_ERROR then
-			-- An error occurred while showing the ad.
-			-- Inform the player if necessary and resume gameplay.
-			-- print("Rewarded break error!")
-			gui.set_enabled(gui.get_node("ad_button"), false)
-			gui.set_enabled(gui.get_node("ad_gold_earned_label"), false)
-		end
-	end)
-end
-]]
-
 function init(self)
 	-- Enable user inputs
 	msg.post(".", "acquire_input_focus")
@@ -89,7 +57,7 @@ function init(self)
 		gui.set_color(gui.get_node("highscore_time_label"), vmath.vector4(0.9, 0.9, 0.1, 1))
 		high_score_break = true
 	end
-	--
+	-- High Score
 	gui.set_text(gui.get_node("highscore_bosses_label"), global.high_score_bosses_defeated)
 	gui.set_text(gui.get_node("highscore_time_label"), format_time(global.high_score_time))
 	-- Configure GUI based on last battle result
@@ -108,12 +76,16 @@ function init(self)
 	gui.play_particlefx(gui.get_node("party_left_fx"))
 	gui.play_particlefx(gui.get_node("party_right_fx"))
 	-- Disable Ad button if not in HTML5
-	if global.has_ad_functionality() then
+	if html5 and bridge and bridge.advertisement.is_rewarded_supported() then
 		gui.set_text(gui.get_node("ad_gold_earned_label"), "(+"..(gold_earned*2)..")")
 	else
 		gui.set_enabled(gui.get_node("ad_button"), false)
 		gui.set_enabled(gui.get_node("ad_gold_earned_label"), false)
 	end
+	-- Game Beaten UI
+	gui.set_enabled(gui.get_node("game_beaten_avatar"), global.game_beaten)
+	gui.set_enabled(gui.get_node("game_beaten_panel"), global.game_beaten)
+	gui.set_enabled(gui.get_node("game_beaten_label"), global.game_beaten)
 end
 
 function on_input(self, action_id, action)
@@ -132,11 +104,11 @@ function on_input(self, action_id, action)
 			gui.set_enabled(ad_button, false)
 			gui.set_enabled(gui.get_node("ad_gold_earned_label"), false)
 			msg.post("results:/go", "stop_sound")
-			timer.delay(0.1, false, function ()
-				if gdsdk then
-					gdsdk.show_rewarded_ad()
-				end
-			end)
+			if html5 and bridge and bridge.advertisement.is_rewarded_supported() then
+				timer.delay(0.1, false, function ()
+					bridge.advertisement.show_rewarded()
+				end)
+			end
 		end
 	end
 end

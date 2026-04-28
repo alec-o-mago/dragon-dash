@@ -2,28 +2,36 @@
 
 
 local global = require("main.global")
-
+local bridge = require("bridge.bridge")
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.loaded_proxy = nil
 	go.set("/bg#bg", "tint", global.COLOR_GRAY_OPAQUE)
 	global.load_game()
-	if html5 and gdsdk then
-		--print("INIT gdsdk found")
-		gdsdk.set_listener(function(self, event, message)
-			--print("LISTENER event: ",event," message:", message)
-			if event == gdsdk.SDK_GAME_PAUSE then
-				msg.post(self.loaded_proxy, "set_time_step", { factor = 0, mode = 0 })
-				sound.pause("/go#background_sound", true)
-			elseif event == gdsdk.SDK_GAME_START then
-				msg.post(self.loaded_proxy, "set_time_step", { factor = global.last_game_speed, mode = 0 })
-				sound.pause("/go#background_sound", false)
-			elseif event == gdsdk.SDK_REWARDED_WATCH_COMPLETE then
-				msg.post("results:/gui", "rewarded_ad_sucess")
-			end
-		end)
-	end
+	-- Playgama SDK
+	bridge.advertisement.on("interstitial_state_changed", function (_, state)
+		--print("Interstitial state changed: ", state)
+		if state == "opened" then
+			msg.post(self.loaded_proxy, "set_time_step", { factor = 0, mode = 0 })
+			sound.pause("/go#background_sound", true)
+		elseif state == "closed" then
+			msg.post(self.loaded_proxy, "set_time_step", { factor = global.last_game_speed, mode = 0 })
+			sound.pause("/go#background_sound", false)
+		end
+	end)
+	bridge.advertisement.on("rewarded_state_changed", function (_, state)
+		--print("Rewarded state changed: ", state)
+		if state == "opened" then
+			msg.post(self.loaded_proxy, "set_time_step", { factor = 0, mode = 0 })
+			sound.pause("/go#background_sound", true)
+		elseif state == "closed" then
+			msg.post(self.loaded_proxy, "set_time_step", { factor = global.last_game_speed, mode = 0 })
+			sound.pause("/go#background_sound", false)
+		elseif state == "rewarded" then
+			msg.post("results:/gui", "rewarded_ad_sucess")
+		end
+	end)
 	-- Sound Effects
 	sound.play("go#background_sound")
 	if not global.config_music then
@@ -59,9 +67,6 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("load_results") then
 		msg.post(self.loaded_proxy, "unload")
 		msg.post('/go#results_proxy', "load")
-	elseif message_id == hash("load_game_over") then
-		msg.post(self.loaded_proxy, "unload")
-		msg.post('/go#game_over_proxy', "load")
 	elseif message_id == hash("set_battle_speed") then
 		msg.post("#battle_proxy", "set_time_step", { factor = message.speed, mode = 0 })
 	elseif message_id == hash("music_start") then
