@@ -24,8 +24,8 @@ local function format_time(seconds)
 	-- Calculate minutes and seconds
 	local minutes = math.floor(seconds / 60)
 	local remainingSeconds = math.floor(seconds % 60)
-	-- Format as mm'ss''
-	return string.format("%02d'%02d''", minutes, remainingSeconds)
+	-- Format as mm'ss"
+	return string.format("%02d'%02d\"", minutes, remainingSeconds)
 end
 
 local function update_gold_eggs_label()

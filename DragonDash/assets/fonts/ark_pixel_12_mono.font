@@ -1,0 +1,5 @@
+font: "/assets/fonts/ark-pixel-12px-monospaced-latin.otf"
+material: "/builtins/fonts/font.material"
+size: 36
+antialias: 0
+characters: " !\"%\'()+,./0123456789vRobotWizardGames"

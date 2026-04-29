@@ -1,7 +1,7 @@
 script: "/scenes/results/results.gui_script"
 fonts {
   name: "bit_potion_ext"
-  font: "/assets/fonts/bit_potion_ext.font"
+  font: "/assets/fonts/ark_pixel_12_mono.font"
 }
 textures {
   name: "core"
@@ -179,7 +179,7 @@ nodes {
     z: 0.0
   }
   type: TYPE_TEXT
-  text: "01\'23\'\'"
+  text: "01\'23\""
   font: "bit_potion_ext"
   id: "time_label"
   pivot: PIVOT_W

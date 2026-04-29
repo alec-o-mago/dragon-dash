@@ -1,7 +1,7 @@
 script: "/scenes/skins/skins.gui_script"
 fonts {
   name: "bit_potion_ext"
-  font: "/assets/fonts/bit_potion_ext.font"
+  font: "/assets/fonts/ark_pixel_12_mono.font"
 }
 textures {
   name: "core"
