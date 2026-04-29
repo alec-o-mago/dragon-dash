@@ -144,7 +144,7 @@ nodes {
     y: 50.0
   }
   type: TYPE_TEXT
-  text: "v1.1.0"
+  text: "v1.0.1"
   font: "bit_potion"
   id: "version_label"
   pivot: PIVOT_NE

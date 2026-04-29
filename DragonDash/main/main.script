@@ -52,11 +52,13 @@ function init(self)
 		end)
 		bridge.platform.send_message("game_ready")
 	end
-	if global.unlocked_skin_count > 0 then -- If player already played before
-		msg.post('/go#main_menu_proxy', "load") -- Start game on main menu for old players
-	else
-		msg.post('/go#battle_proxy', "load") -- Start game on battle for new players
-	end
+	timer.delay(0.1, false, function ()
+		if global.unlocked_skin_count > 0 then -- If player already played before
+			msg.post('/go#main_menu_proxy', "load") -- Start game on main menu for old players
+		else
+			msg.post('/go#battle_proxy', "load") -- Start game on battle for new players
+		end
+	end)
 end
 
 function on_message(self, message_id, message, sender)

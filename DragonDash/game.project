@@ -46,6 +46,3 @@ max_collision_object_count = 512
 [native_extension]
 app_manifest = /default.appmanifest
 
-[gamedistribution]
-game_id = 1c0fced653f745799969f114f273a650
-

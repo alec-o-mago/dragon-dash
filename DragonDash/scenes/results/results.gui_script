@@ -2,6 +2,7 @@
 
 
 local global = require("main.global")
+local bridge = require("bridge.bridge")
 
 local gold_earned = 0
 
