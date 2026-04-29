@@ -92,6 +92,7 @@ function init(self)
 	end
 	-- main dragon skin
 	sprite.play_flipbook(msg.url("/player#sprite"), tostring(global.player_1_selected_skin))
+	go.set("/player#collision_sprite", "tint.w", 0.65)
 	-- Particle FX
 	particlefx.play("/player#spawn")
 	-- Decide boss order
