@@ -290,7 +290,7 @@ nodes {
     y: 64.0
   }
   type: TYPE_TEXT
-  text: "Level 2/20"
+  text: "2/20"
   font: "main_menu_title"
   id: "level_label"
   inherit_alpha: true
