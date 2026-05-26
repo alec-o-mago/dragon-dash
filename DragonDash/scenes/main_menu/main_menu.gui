@@ -132,26 +132,6 @@ nodes {
 }
 nodes {
   position {
-    x: 1260.0
-    y: 690.0
-  }
-  scale {
-    x: 0.5
-    y: 0.5
-  }
-  size {
-    x: 100.0
-    y: 50.0
-  }
-  type: TYPE_TEXT
-  text: "v1.0.1"
-  font: "bit_potion"
-  id: "version_label"
-  pivot: PIVOT_NE
-  inherit_alpha: true
-}
-nodes {
-  position {
     x: 65.0
     y: 615.0
   }
